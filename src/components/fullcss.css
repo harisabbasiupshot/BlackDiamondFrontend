@@ -1,0 +1,603 @@
+.color-nav{
+  background-color:#e1f3f7;;
+  min-width: max-content;
+}
+
+.nav-items{
+    font-size: 20px;
+    font-family: Source Sans Pro;
+    color: #fff1c1;
+    background-color: #e41749;
+    margin-top: 1px;
+    font-weight: normal;
+}
+#navitemscolor{
+  color: rgba(36,39,44,.87);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Source Sans Pro;
+
+}
+#navitemscolor2{
+  color: rgba(36,39,44,.87);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: Source Sans Pro;
+
+}
+#bikearenatitle{
+  color: #d02f2f;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Source Sans Pro;
+  cursor: pointer;
+
+}
+#bikearenatitle2{
+  color: #d02f2f;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Source Sans Pro;
+  cursor: pointer;
+  text-align: center;
+
+}
+#logout{
+  color: rgba(36,39,44,.87);
+  font-family: Source Sans Pro;
+
+}
+#navaddbutton{
+  -webkit-text-size-adjust: 100%;
+  color: #72809D;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: inherit;
+  list-style: none;
+  line-height: normal;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  display: inline-block;
+  background: #00ba74;
+  text-align: center;
+  float: none;
+  border: none!important;
+  border-radius: 4px;
+  top: 15px;
+  position: relative;
+  height: 50px;
+}
+#submitpropertybutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 12px 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: all ease .4s;
+  border: 1px solid #fd5332;
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-bottom: 5px;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#newloginbutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  line-height: 1.25;
+  transition: all .15s ease-in-out;
+  width: 100%;
+  border: 2px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 50px;
+  padding: 20px 0;
+  margin-top: .6rem;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#BrowseAllProperty{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  box-sizing: inherit;
+  outline: none;
+  margin-top: 0;
+  color: #2D3954;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  margin-bottom: 0;
+  font-size: 29px;
+  line-height: 1.2;
+
+}
+#BrowseAllPropertypar{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  color: #72809D;
+  font-weight: 400;
+  text-align: center;
+  box-sizing: inherit;
+  outline: none;
+  line-height: 1.8;
+  margin: 0 0 10px;
+  margin-bottom: 5px;
+  font-style: italic;
+  font-family: 'Lora',serif;
+  font-size: 22px;
+}
+#slicktrack{
+  opacity: 1; width: 4270px; transform: translate3d(-3660px, 0px, 0px); transition: transform 500ms ease 0s;
+}
+#newsignupbutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  line-height: 1.25;
+  transition: all .15s ease-in-out;
+  width: 100%;
+  border: 2px solid transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 50px;
+  padding: 20px 0;
+  margin-top: .6rem;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#uploadprofilepic{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  border: none;
+  border-radius: 5px;
+  padding-left: 45px;
+  height: 60px;
+  background: #fff;
+  overflow: hidden;
+  
+}
+#findnewhomebutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  font-size: 1rem;
+  line-height: 1.25;
+  width: 100%;
+  padding: 12px 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: all ease .4s;
+  border: 1px solid #fd5332;
+  border-radius: 4px;
+  margin-right: 4px;
+  margin-bottom: 5px;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#listingdetailsbutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+}
+#listingdetailsbuttontext{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  text-decoration: none;
+  padding: 6px 12px;
+  color: #fff;
+  border: 1px solid #fd5332;
+  border-radius: 2px;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#listingprizediv{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  flex: 1;
+  color: #0ac1a7;
+}
+#listingprizedivtext{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  color: #2a4fba;
+  font-size: 18px;
+  margin: 0;
+}
+#listingfeaturesinfoline{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+}
+#ulflexing{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: .5rem 1rem 1.5rem;
+} 
+#libeds{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  display: inline-block;
+  flex: 0 0 33.333333%;
+  width: 33.333333%;
+  list-style: none;
+}
+#listing-short-detail{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  flex: 1;
+}
+#listing-name{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  margin-top: 0;
+  color: #2D3954;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+#listing-namea{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 17px;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  color: #2D3954;
+  text-decoration: none;
+  background-color: transparent;
+
+}
+#previousitem{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  display: inline;
+}
+#previousitemlink{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  display: block;
+  position: relative;
+  float: left;
+  padding: 0;
+  margin: 5px;
+  text-decoration: none;
+  width: 37px;
+  height: 37px;
+  text-align: center;
+  line-height: 37px;
+  box-shadow: 0 2px 10px 0 #d8dde6;
+  border: 1px solid #fd5332;
+  border-radius: 2px;
+  color: #fff;
+  margin-left: 0;
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#sellerprofiledes{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  line-height: 1.7;
+}
+#sellerprofilelocation{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  margin-top: 5px;
+  font-size: 17px;
+}
+#sellerprofilename{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 21px;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  color: #2D3954;
+  text-decoration: none;
+  background-color: transparent;
+}
+#sellerprofileimgdiv{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  color: #2D3954;
+  text-decoration: none;
+  background-color: transparent;
+  flex: 1;
+  margin: 0 26px 0 0;
+}
+#sellerprofileimg{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  color: #2D3954;
+  box-sizing: inherit;
+  outline: none;
+  vertical-align: middle;
+  border-style: none;
+  margin: 32px 0 32px 32px;
+  border-radius: 3px;
+  width: 100%;
+}
+#submitpropertytitle{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+  box-sizing: inherit;
+  outline: none;
+  margin-top: 0;
+  color: #2D3954;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 36px;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+#ipn-subtitle{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-weight: 400;
+  text-align: left;
+  box-sizing: inherit;
+  outline: none;
+  font-size: 20px;
+  font-family: initial;
+  font-style: italic;
+}
+
+.dropbtn {
+  color: rgb(7, 7, 7);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #00ba74;
+  color: #fff;
+  min-width: 120px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(253, 252, 252);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {}
+ 
+#loggeduser{
+  color: #647392;
+}
