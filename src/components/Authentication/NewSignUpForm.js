@@ -49,7 +49,11 @@ function NewSignUpForm() {
 					console.log("Response is ",response.data)
 					if(response.data.success==1){
 						setSuccess(response.data.message)
-						history.push('/sellerprofile')
+						if(role==2){
+							history.push('/sellerprofile')
+						}else{
+							history.push('/')
+						}
 					}
 					
 				}).catch((error) => {

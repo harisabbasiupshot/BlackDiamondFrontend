@@ -2,7 +2,6 @@
   "name": "myfirstapp",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^1.8.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -30,6 +29,7 @@
     "react-google-login": "^5.2.2",
     "react-mui-multiselect-dropdown": "^1.0.2",
     "react-player": "^2.9.0",
+    "react-responsive-carousel": "^3.2.22",
     "react-rounded-image": "^2.0.13",
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",

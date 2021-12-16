@@ -530,9 +530,10 @@
   outline: none;
   vertical-align: middle;
   border-style: none;
+  height: 200px;
   margin: 32px 0 32px 32px;
   border-radius: 3px;
-  width: 100%;
+  width: 250px;
 }
 #submitpropertytitle{
   -webkit-text-size-adjust: 100%;
@@ -600,4 +601,10 @@
  
 #loggeduser{
   color: #647392;
+}
+#imgaddedlist{
+  background: #f9fafc;
+    border: 1px solid #ebedf5;
+    border-radius: 3px;
+    color: #646e77;
 }

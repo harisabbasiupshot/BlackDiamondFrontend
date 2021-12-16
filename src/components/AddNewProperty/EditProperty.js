@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react'
-import '../fullcss.css'
+import {useParams,withRouter, useHistory} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import '../fullcss.css'
 import { UserContext } from '../UserContext'
-function AddNewProperty() {
+function EditProperty() {
+    let params = useParams();
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
     const [propertytitle, setPropertytitle] = useState("")
@@ -21,7 +23,7 @@ function AddNewProperty() {
     const onImgChange = (event) => {
 
         console.log(event.target.files[0])
-        setImagegallery([...imagegallery, event.target.files[0]])
+        setImagegallery([...imagegallery,event.target.files[0]])
 
     }
     const handleDelete =(name)=>{
@@ -31,54 +33,86 @@ function AddNewProperty() {
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
         console.log(imagegallery)
-        var data2 = {
+        var data2 ={
             propertytitle: propertytitle,
             status: status,
             propertytype: propertytype,
-            price: price,
-            area: area,
-            OCorVC: OCorVC,
-            rentalproperty: rentalproperty,
-            description: description,
-            location: {
-                address: address,
-                city: city,
-                state: state,
-                zipcode: zipcode
+            price:price,
+            area:area,
+            OCorVC:OCorVC,
+            rentalproperty:rentalproperty,
+            description:description,
+            location:{
+                address:address,
+                city:city,
+                state:state,
+                zipcode:zipcode
             }
-
+            
         }
         console.log(data2)
     }
     useEffect(() => {
         console.log(valuecontext.loggeduser)
+        console.log(params.id)
+        
+        const defaultdata={
+            userid:8,
+            propertytitle:"Default title",
+            status:"For Rent",
+            propertytype:"Houses",
+            price:1200,
+            area:"1200SQft",
+            OCorVC:"Vacant",
+            rentalproperty:"Yes",
+            description:"Need to rent it",
+            location:{
+                address:"default address",
+                city:"Nevada",
+                state:"Nevadaa",
+                zipcode:46000
+            }
+        }
+        if(valuecontext.loggeduser.id==defaultdata.userid){
+            console.log("allow to edit page")
+        }else{
+            console.log("redirect")
+        }
+        console.log(defaultdata)
+        setPropertytitle(defaultdata.propertytitle)
+        setStatus(defaultdata.status)
+        setPropertytype(defaultdata.propertytype)
+        setPrice(defaultdata.price)
+        setArea(defaultdata.area)
+        setOCorVC(defaultdata.OCorVC)
+        setRentalproperty(defaultdata.rentalproperty)
+        setDescription(defaultdata.description)
+        setAddress(defaultdata.location.address)
+        setCity(defaultdata.location.city)
+        setState(defaultdata.location.state)
+        setZipcode(defaultdata.location.zipcode)
 
-    }, []);
+        
+      },[]);
     return (
         <div>
             <div class="page-title">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-
-                            <h2 id="submitpropertytitle">Submit Property</h2>
-                            <span id="ipn-subtitle">Just Submit Your Property</span>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							
+							<h2 id="submitpropertytitle">Submit Property</h2>
+							<span id="ipn-subtitle">Just Submit Your Property</span>
+							
+						</div>
+					</div>
+				</div>
+			</div>
             <section>
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
-
-                            {valuecontext.islogged ? null : <div class="alert alert-danger" role="alert">
-                                <p>Please, Sign In before you submit a property. If you don't have an account you can create one by <a href="/sign-up">Clicking Here</a></p>
-                            </div>}
-
-                        </div>
+                        
 
                         <div class="col-lg-12 col-md-12">
 
@@ -91,7 +125,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <label>Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
-                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} class="form-control" />
+                                                <input type="text" onChange={(e)=>{setPropertytitle(e.target.value)}} value={propertytitle} class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -116,27 +150,27 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Price</label>
-                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} class="form-control" placeholder="USD" />
+                                                <input type="text" onChange={(e)=>{setPrice(e.target.value)}} value={price} class="form-control" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Area</label>
-                                                <input onChange={(e) => { setArea(e.target.value) }} type="text" class="form-control" />
+                                                <input onChange={(e)=>{setArea(e.target.value)}} value={area} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Property</label><br />
-                                                <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
+                                                <input style={{ marginLeft: '2%' }} onChange={(e)=>{setOCorVC(e.target.value)}} type="radio" id="age1" name="age" value="Occupied" />
                                                 <label style={{ marginLeft: '2%' }} for="age1">Occupied</label>
-                                                <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant" />
+                                                <input style={{ marginLeft: '2%' }} onChange={(e)=>{setOCorVC(e.target.value)}} type="radio" id="age2" name="age" value="Vacant" />
                                                 <label style={{ marginLeft: '2%' }} for="age2">Vacant</label>
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Rental Property</label><br />
-                                                <input style={{ marginLeft: '2%' }} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP1" name="Rental" value="Yes" />
+                                                <input style={{ marginLeft: '2%' }} onChange={(e)=>{setRentalproperty(e.target.value)}} type="radio" id="RP1" name="Rental" value="Yes" />
                                                 <label style={{ marginLeft: '2%' }} for="RP1" >Yes</label>
-                                                <input style={{ marginLeft: '2%' }} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP2" name="Rental" value="No" />
+                                                <input style={{ marginLeft: '2%' }} onChange={(e)=>{setRentalproperty(e.target.value)}} type="radio" id="RP2" name="Rental" value="No" />
                                                 <label style={{ marginLeft: '2%' }} for="RP2">No</label>
                                             </div>
 
@@ -151,7 +185,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <div className="form-group">
-                                                    <input className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange} />
+                                                    <input className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange}  />
                                                 </div>
                                                 {imagegallery && <div id="imgaddedlist">
                                                     {imagegallery.map(img => (<div>
@@ -160,8 +194,8 @@ function AddNewProperty() {
                                                     </div>))}
 
                                                 </div>}
+                                                
                                             </div>
-
 
                                         </div>
                                     </div>
@@ -174,22 +208,22 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Address</label>
-                                                <input onChange={e => setAddress(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setAddress(e.target.value)} value={address} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>City</label>
-                                                <input onChange={e => setCity(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setCity(e.target.value)} value={city} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>State</label>
-                                                <input onChange={e => setState(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setState(e.target.value)} value={state} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Zip Code</label>
-                                                <input onChange={e => setZipcode(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setZipcode(e.target.value)} value={zipcode} type="text" class="form-control" />
                                             </div>
 
                                         </div>
@@ -203,22 +237,22 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <label>Description</label>
-                                                <textarea class="form-control h-120" onChange={(e) => { setDescription(e.target.value) }}></textarea>
+                                                <textarea class="form-control h-120" value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
                                             </div>
 
+                                            
 
+                                            
 
+                                            
 
-
-
-
-
+                                            
 
                                         </div>
                                     </div>
                                 </div>
 
-
+                                
 
                                 <div class="form-group col-lg-12 col-md-12">
                                     <button class="btn btn-theme" id="submitpropertybutton" onClick={e => { e.preventDefault(); handleSubmit() }} type="submit">Submit &amp; Preview</button>
@@ -235,4 +269,4 @@ function AddNewProperty() {
     )
 }
 
-export default AddNewProperty
+export default withRouter(EditProperty)

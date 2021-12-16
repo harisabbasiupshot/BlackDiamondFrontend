@@ -52,7 +52,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
           }}
         
         axios(options).then(response => {
-          
+          console.log(response.data)
           if(response.data.success==1){
             setIslogged(true)
             console.log(response.data.data.user)
@@ -62,7 +62,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
             history.push('/');
 
           }else{
-              setError(response.data.message)
+              setError(response.data.error)
           }
         })
         

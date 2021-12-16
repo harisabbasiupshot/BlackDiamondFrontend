@@ -15,6 +15,9 @@ import AddNewProperty from './AddNewProperty/AddNewProperty'
 import Home from './Home/Home'
 import Footer from './Footer/Footer'
 import SellerProfile from './SellerProfile/SellerProfile';
+import EditProperty from './AddNewProperty/EditProperty';
+import PropertyPage from './AddNewProperty/PropertyPage';
+import BuyerProfile from './BuyerProfile/BuyerProfile';
 /* 
 import Template from './Template';
 import OurServices from './OurServices';
@@ -109,9 +112,12 @@ function Routes(props) {
                           <NewSignUpForm />
                         </Route>
                         <Route path="/addnewproperty">
-                          <AddNewProperty />
+                          {loggeduser?loggeduser.role==2?<AddNewProperty />:<Redirect to="/" />:<Redirect to="/" />}
                         </Route>
-                        <Route path="/sellerprofile" component={SellerProfile}/>
+                        <Route path="/editproperty/:id" component={EditProperty}/>
+                        <Route path="/property/:id" component={PropertyPage}/>
+                        <Route path="/sellerprofile/:id" component={SellerProfile}/>
+                        <Route path="/buyerprofile/:id" component={BuyerProfile}/>
                         <Route path="/forgetpassword" component={ForgetPassword}/>
                         <Route path="/reset" component={ResetPassword}/>
                         <Route path="/settings" >

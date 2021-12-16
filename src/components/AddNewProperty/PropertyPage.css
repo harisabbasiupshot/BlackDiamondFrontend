@@ -1,0 +1,270 @@
+#mainpropertydiv{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    position: relative;
+    margin-top:2%;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    margin-left: 10%;
+    padding-left: 15px;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+}
+#property-name-info{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    padding: 2em;
+}
+#property-name{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    outline: none;
+    margin-top: 0;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+#property-price-info{-webkit-text-size-adjust: 100%;
+-webkit-tap-highlight-color: transparent;
+line-height: 1.5;
+color: #72809D;
+position: relative;
+left:5%;
+font-size: 16px;
+font-family: 'Muli',sans-serif;
+font-weight: 400;
+box-sizing: inherit;
+outline: none;
+margin-bottom: 2rem;}
+#property-price{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    outline: none;
+    margin-top: 0;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+#property-sqa{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    line-height: 1.8;
+    margin: 0 0 10px;
+}
+#block-wrap{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    display: block;
+    width: 80%;
+    background: #fff;
+    padding: 40px;
+    margin-left: 10%;
+    padding-top: 15px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    border: 1px solid #ebeef5;
+}
+#block-header{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    display: table;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e7eff9;
+}
+#block-title{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 16px;
+}
+#block-body{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    line-height: 1.7;
+    display: inline-block;
+    width: 100%;
+}
+#dw-proprty-info{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    box-sizing: inherit;
+    outline: none;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    
+}
+
+#propertyliitem{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    box-sizing: inherit;
+    outline: none;
+    display: block;
+    list-style: none;
+    position: relative;
+    margin: 6px 0;
+    flex: 0 0 25%;
+    max-width: 25%;
+    color: #00ba74;
+}
+#propertyliitemstrong{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    line-height: 1.7;
+    list-style: none;
+    box-sizing: inherit;
+    outline: none;
+    font-weight: bolder;
+    display: block;
+    color: #2a3c77;
+}
+#propertyusername{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 21px;
+    box-sizing: inherit;
+    outline: none;
+    touch-action: manipulation;
+    text-decoration: none;
+    background-color: transparent;
+    color: #2b4db9;
+}
+#statusbuttonPP{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 100px;
+    max-height: 40px;
+    padding: 4px 12px;
+    float: right;
+    border-radius: 2px;
+    background: #3ebd43;
+    color: #fff;
+
+}
+#editbuttonPP{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    height: 2%;
+    padding: 4px 12px;
+    cursor: pointer;
+    position: relative;
+    left:95%;
+    border-radius: 2px;
+    margin-left: 10px;
+    background: #3ebd43;
+    color: #fff;
+
+}
+#deletebuttonPP{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 12px;
+    height: 2%;
+    position: relative;
+    left:95%;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 10px;
+    background: #8b0101;
+    color: #fff;
+
+}
