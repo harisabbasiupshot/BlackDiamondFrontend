@@ -42,6 +42,7 @@ function EditProperty() {
             OCorVC:OCorVC,
             rentalproperty:rentalproperty,
             description:description,
+            imagegallery:imagegallery,
             location:{
                 address:address,
                 city:city,
@@ -64,6 +65,20 @@ function EditProperty() {
             price:1200,
             area:"1200SQft",
             OCorVC:"Vacant",
+            imagegallery:[
+                {lastModified: 1638435430650,
+                    lastModifiedDate: "Thu Dec 02 2021 13:57:10 GMT+0500 (Pakistan Standard Time)",
+                    name: "myprofilepicture.jpg",
+                    size: 61070,
+                    type: "image/jpeg",
+                    webkitRelativePath: ""},
+                {lastModified: 1639048557583,
+                    lastModifiedDate: "Thu Dec 09 2021 16:15:57 GMT+0500 (Pakistan Standard Time)",
+                    name: "helmet.jpg",
+                    size: 28731,
+                    type: "image/jpeg",
+                    webkitRelativePath: ""}
+            ],
             rentalproperty:"Yes",
             description:"Need to rent it",
             location:{
@@ -91,6 +106,7 @@ function EditProperty() {
         setCity(defaultdata.location.city)
         setState(defaultdata.location.state)
         setZipcode(defaultdata.location.zipcode)
+        setImagegallery(defaultdata.imagegallery)
 
         
       },[]);

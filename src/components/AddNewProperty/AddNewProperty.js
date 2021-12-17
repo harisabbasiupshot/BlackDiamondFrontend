@@ -39,6 +39,7 @@ function AddNewProperty() {
             area: area,
             OCorVC: OCorVC,
             rentalproperty: rentalproperty,
+            imagegallery:imagegallery,
             description: description,
             location: {
                 address: address,

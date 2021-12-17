@@ -533,7 +533,7 @@
   height: 200px;
   margin: 32px 0 32px 32px;
   border-radius: 3px;
-  width: 250px;
+  width: 240px;
 }
 #submitpropertytitle{
   -webkit-text-size-adjust: 100%;
@@ -607,4 +607,113 @@
     border: 1px solid #ebedf5;
     border-radius: 3px;
     color: #646e77;
+}
+#statusbuttonPP2{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 36px;
+  box-sizing: inherit;
+  outline: none;
+  font-size: 13px;
+  font-weight: 500;
+  min-width: 60px;
+  max-height: 40px;
+  margin-left: 2.5%;
+  padding: 4px 12px;
+  float: right;
+  border-radius: 2px;
+  background: #3ebd43;
+  color: #fff;
+
+}
+#bidsremaining{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  display: inline-block;
+  padding: 0;
+  height: 160px;
+  color: #fff;
+  border-radius: 4px;
+  width: 23%;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 3%;
+  overflow: hidden;
+  transition: .3s;
+  cursor: default;
+  background: linear-gradient(to left,rgba(255,255,255,0) 30%,rgba(255,255,255,0.1));
+  background-color: #ce024b;
+}
+#dashboard-stat-content{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  color: #fff;
+  cursor: default;
+  box-sizing: inherit;
+  outline: none;
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#dashboard-stat-icon{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  color: #fff;
+  cursor: default;
+  box-sizing: inherit;
+  outline: none;
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-40%);
+  opacity: .2;
+  font-size: 65px;
+  
+}
+#dashboard-stat-iconh4{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  cursor: default;
+  box-sizing: inherit;
+  outline: none;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 42px;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 1px;
+}
+#dashboard-stat-iconspan{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Muli',sans-serif;
+  color: #fff;
+  cursor: default;
+  box-sizing: inherit;
+  outline: none;
+  font-size: 18px;
+  margin-top: 4px;
+  line-height: 24px;
+  font-weight: 300;
+  display: inline-block;
+  
 }
