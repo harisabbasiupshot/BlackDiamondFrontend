@@ -4,8 +4,10 @@ import axios from 'axios'
 import '../fullcss.css'
 function NewLoginForm({setIslogged,setloggeduser}) {
     const [email, setEmail] = useState("Profile")
+    const [isemailerror, setIsemailerror] = useState(false)
     const [password, setPassword] = useState("")
     const [error, setError] = useState(null);
+    const [ispassworderror, setIspassworderror] = useState(false)
     const [success, setSuccess] = useState(null);
     let history = useHistory();
     function validateEmail(email) 
@@ -17,16 +19,26 @@ function NewLoginForm({setIslogged,setloggeduser}) {
         //i will authenticate user
         console.log("Email: ",email,"Password: ",password)
         if(validateEmail(email)){
+            setIsemailerror(false)
 
         }else{
             setError("Incorrect Email Format")
+            setIsemailerror(true)
+            if(password==""){
+                setIspassworderror(true)
+
+            }else{
+                setIspassworderror(false)
+            }
             return
         }
         if(password==""){
             setError("Empty Password")
+            setIspassworderror(true)
             return
 
         }else{
+            setIspassworderror(false)
             
         }
         
@@ -93,7 +105,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
                         <div class="form-group">
                             <label>Email</label>
                             <div class="input-with-icon">
-                                <input type="text" onChange={(e)=>{setEmail(e.target.value)}} class="form-control" placeholder="Email" />
+                                <input type="text" onChange={(e)=>{setEmail(e.target.value)}} style={{border:isemailerror?'1px solid red':null}} class="form-control" placeholder="Email" />
                                 <i class="ti-user"></i>
                             </div>
                         </div>
@@ -101,7 +113,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
                         <div class="form-group">
                             <label>Password</label>
                             <div class="input-with-icon">
-                                <input type="password" onChange={(e)=>{setPassword(e.target.value)}} class="form-control" placeholder="*******" />
+                                <input type="password" onChange={(e)=>{setPassword(e.target.value)}} style={{border:ispassworderror?'1px solid red':null}} class="form-control" placeholder="*******" />
                                 <i class="ti-unlock"></i>
                             </div>
                         </div>

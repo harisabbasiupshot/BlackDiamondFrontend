@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './PropertyPage.css'
-import { withRouter, useHistory } from 'react-router-dom';
+import {useParams,withRouter, useHistory} from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import WrappedMap2 from './WrappedMap2';
 function PropertyPage() {
     let history = useHistory();
+    let params = useParams();
 
     const editProperty = () => {
         history.push('/editproperty/123')
@@ -12,6 +14,12 @@ function PropertyPage() {
     const deleteProperty = () => {
         history.push('/')
     }
+    useEffect(() => {
+        console.log(params.id)
+        
+
+        
+      },[]);
 
     return (
         <div>
@@ -78,6 +86,19 @@ function PropertyPage() {
                             <p className="legend">Legend 3</p>
                         </div>
                     </Carousel>
+
+                </div>
+
+
+
+            </div>
+            <div id="block-wrap">
+
+                <div id="block-header">
+                    <h4 id="block-title">Map Location</h4>
+                </div>
+                <div id="block-body">
+                    <WrappedMap2 lat={43.96693300220585} lng={-79.12337894396873} id={params.id}/>
 
                 </div>
 

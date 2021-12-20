@@ -4,9 +4,13 @@ import axios from 'axios'
 import {  useHistory } from "react-router-dom";
 function NewSignUpForm() {
 	const [email, setEmail] = useState("")
+	const [isemailerror, setIsemailerror] = useState(false)
 	const [fullname, setFullname] = useState("")
+	const [isfullnameerror, setIsfullnameerror] = useState(false)
 	const [password, setPassword] = useState("")
+	const [ispassworderror, setIspassworderror] = useState(false)
 	const [phone, setPhone] = useState("")
+	const [isphoneerror, setIsphoneerror] = useState(false)
 	const [role, setRole] = useState(2)
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
@@ -38,6 +42,26 @@ function NewSignUpForm() {
 		data.set("role", role);
 		data.set("phone", phone);
 		if (fullname == "" || email == "" || phone == "" || password == "" || role == 0) {
+			if(email == ""){
+				setIsemailerror(true)
+			}else{
+				setIsemailerror(false)
+			}
+			if(fullname == ""){
+				setIsfullnameerror(true)
+			}else{
+				setIsfullnameerror(false)
+			}
+			if(phone == ""){
+				setIsphoneerror(true)
+			}else{
+				setIsphoneerror(false)
+			}
+			if(password == ""){
+				setIspassworderror(true)
+			}else{
+				setIspassworderror(false)
+			}
 			setError("One or more fields are empty")
 			return
 		} else { 
@@ -65,6 +89,7 @@ function NewSignUpForm() {
 			} else {
 				console.log(email + ": Email false")
 				setError("Wrong Email Format")
+				setIsemailerror(true)
 			}
 			//i will authenticate user
 
@@ -88,7 +113,7 @@ function NewSignUpForm() {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<div class="input-with-icon">
-										<input type="text" class="form-control" onChange={(e) => { setFullname(e.target.value) }} placeholder="Full Name" />
+										<input type="text" class="form-control" onChange={(e) => { setFullname(e.target.value) }} style={{border:isfullnameerror?'1px solid red':null}} placeholder="Full Name" />
 										<i class="ti-user"></i>
 									</div>
 								</div>
@@ -97,7 +122,7 @@ function NewSignUpForm() {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<div class="input-with-icon">
-										<input type="email" onChange={(e) => { setEmail(e.target.value) }} class="form-control" placeholder="Email" />
+										<input type="email" onChange={(e) => { setEmail(e.target.value) }} class="form-control" style={{border:isemailerror?'1px solid red':null}} placeholder="Email" />
 										<i class="ti-email"></i>
 									</div>
 								</div>
@@ -108,7 +133,7 @@ function NewSignUpForm() {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<div class="input-with-icon">
-										<input type="password" onChange={(e) => { setPassword(e.target.value) }} class="form-control" placeholder="*******" />
+										<input type="password" onChange={(e) => { setPassword(e.target.value) }} class="form-control" style={{border:ispassworderror?'1px solid red':null}} placeholder="*******" />
 										<i class="ti-unlock"></i>
 									</div>
 								</div>
@@ -117,7 +142,7 @@ function NewSignUpForm() {
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<div class="input-with-icon">
-										<input  onChange={(e) => { setPhone(e.target.value) }} class="form-control" placeholder="123 546 5847" />
+										<input  onChange={(e) => { setPhone(e.target.value) }} class="form-control" style={{border:isphoneerror?'1px solid red':null}} placeholder="123 546 5847" />
 										<i class="lni-phone-handset"></i>
 									</div>
 								</div>

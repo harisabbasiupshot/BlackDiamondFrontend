@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import '../fullcss.css'
 import { UserContext } from '../UserContext'
+import EditWrappedMap from './EditWrappedMap'
 function EditProperty() {
     let params = useParams();
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
+    const [imagegallery2, setImagegallery2] = useState([])
+    const [marker, setMarker] = useState(null)
     const [propertytitle, setPropertytitle] = useState("")
     const [status, setStatus] = useState("For Rent")
     const [propertytype, setPropertytype] = useState("Houses")
@@ -20,14 +23,35 @@ function EditProperty() {
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("")
-    const onImgChange = (event) => {
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file)
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          }
+          fileReader.onerror = (error) => {
+            reject(error);
+          }
+        })
+      }
+    const onImgChange = async(event) => {
 
         console.log(event.target.files[0])
         setImagegallery([...imagegallery,event.target.files[0]])
+        const base64 = await convertBase64(event.target.files[0])
+        console.log(base64)
+        
+        setImagegallery2([...imagegallery2, base64])
 
     }
-    const handleDelete =(name)=>{
+    
+    const handleDelete = (name) => {
         console.log(name)
+        var indexOfName = imagegallery.findIndex(i => i.name == name);
+        console.log(indexOfName)
+        const array1=imagegallery2.splice(indexOfName, 1);
+        console.log("updated array1",array1)
         setImagegallery(imagegallery.filter(item => item.name !== name))
     }
     const handleSubmit = async () => {
@@ -43,6 +67,9 @@ function EditProperty() {
             rentalproperty:rentalproperty,
             description:description,
             imagegallery:imagegallery,
+            imagegallery2:imagegallery2,
+            latitude:marker.lat,
+            longitude:marker.lng,
             location:{
                 address:address,
                 city:city,
@@ -64,21 +91,12 @@ function EditProperty() {
             propertytype:"Houses",
             price:1200,
             area:"1200SQft",
+            marker:{
+                lat:43.96693300220585,
+                lng:-79.12337894396873
+            },
             OCorVC:"Vacant",
-            imagegallery:[
-                {lastModified: 1638435430650,
-                    lastModifiedDate: "Thu Dec 02 2021 13:57:10 GMT+0500 (Pakistan Standard Time)",
-                    name: "myprofilepicture.jpg",
-                    size: 61070,
-                    type: "image/jpeg",
-                    webkitRelativePath: ""},
-                {lastModified: 1639048557583,
-                    lastModifiedDate: "Thu Dec 09 2021 16:15:57 GMT+0500 (Pakistan Standard Time)",
-                    name: "helmet.jpg",
-                    size: 28731,
-                    type: "image/jpeg",
-                    webkitRelativePath: ""}
-            ],
+            imagegallery:[],
             rentalproperty:"Yes",
             description:"Need to rent it",
             location:{
@@ -107,7 +125,7 @@ function EditProperty() {
         setState(defaultdata.location.state)
         setZipcode(defaultdata.location.zipcode)
         setImagegallery(defaultdata.imagegallery)
-
+        setMarker(defaultdata.marker)
         
       },[]);
     return (
@@ -171,7 +189,7 @@ function EditProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Area</label>
-                                                <input onChange={(e)=>{setArea(e.target.value)}} value={area} type="text" class="form-control" />
+                                                <input onChange={(e)=>{setArea(e.target.value)}} value={area} type="number" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -210,6 +228,10 @@ function EditProperty() {
                                                     </div>))}
 
                                                 </div>}
+                                                {imagegallery2 && <div style={{display:'flex'}}>{imagegallery2.map(img => (<div>
+                                                        <img src={img}></img>
+                                                    </div>))}
+                                                    </div>}
                                                 
                                             </div>
 
@@ -244,6 +266,13 @@ function EditProperty() {
 
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-submit">
+                                    <h3>Add Location</h3>
+                                    <div class="submit-section">
+                                        <EditWrappedMap lat={43.96693300220585} lng={-79.12337894396873}  id={params.id} marker={marker} setMarker={setMarker}/>
+                                    </div>
+
                                 </div>
 
                                 <div class="form-submit">

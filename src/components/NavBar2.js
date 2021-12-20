@@ -4,6 +4,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ArrowRight, PersonFill, ArrowUpRightSquareFill, UnlockFill, BoxArrowInRight, Search, } from 'react-bootstrap-icons';
 import './fullcss.css'
 import { useParams, withRouter, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 function NavBar2({ loggeduser, islogged,logout }) {
 
   const [activenavbar, setActivenavbar] = useState("Home");
@@ -24,6 +26,7 @@ function NavBar2({ loggeduser, islogged,logout }) {
     } else {
       setActivenavbar("noone")
     }
+    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
   }, [])
 
   return (
@@ -39,8 +42,8 @@ function NavBar2({ loggeduser, islogged,logout }) {
           <div class="nav-menus-wrapper" style={{ transitionProperty: 'none' }}>
             <ul class="nav-menu">
 
-              <li class={activenavbar == "Home" ? "active" : null}><a href="/">Home
-                <span class="submenu-indicator"></span>
+              <li class={activenavbar == "Home" ? "active" : null}><a href="/">Home 
+              <FontAwesomeIcon style={{paddingLeft:'3px'}} icon={faChevronDown} size="xs" />
               </a>
                 <ul class="nav-dropdown nav-submenu">
                   <li><a class="active" href="index.html">Home Layout 1</a></li>
@@ -55,7 +58,7 @@ function NavBar2({ loggeduser, islogged,logout }) {
                 </ul>
               </li>
 
-              <li class={activenavbar == "Listings" ? "active" : null}><a href="JavaScript:Void(0);">Listings<span class="submenu-indicator"></span></a>
+              <li class={activenavbar == "Listings" ? "active" : null}><a href="JavaScript:Void(0);">Listings<FontAwesomeIcon style={{paddingLeft:'3px'}} icon={faChevronDown} size="xs" /></a>
                 <ul class="nav-dropdown nav-submenu">
                   <li><a href="JavaScript:Void(0);">List Layout<span class="submenu-indicator"></span></a>
                     <ul class="nav-dropdown nav-submenu">
@@ -84,7 +87,7 @@ function NavBar2({ loggeduser, islogged,logout }) {
                 </ul>
               </li>
 
-              <li class={activenavbar == "Features" ? "active" : null}><a href="JavaScript:Void(0);">Features<span class="submenu-indicator"></span></a>
+              <li class={activenavbar == "Features" ? "active" : null}><a href="JavaScript:Void(0);">Features<FontAwesomeIcon style={{paddingLeft:'3px'}} icon={faChevronDown} size="xs" /></a>
                 <ul class="nav-dropdown nav-submenu">
                   <li><a href="JavaScript:Void(0);">Single Property<span class="submenu-indicator"></span></a>
                     <ul class="nav-dropdown nav-submenu">
@@ -119,7 +122,7 @@ function NavBar2({ loggeduser, islogged,logout }) {
                 </ul>
               </li>
 
-              <li class={activenavbar == "Pages" ? "active" : null}><a href="JavaScript:Void(0);">Pages<span class="submenu-indicator"></span></a>
+              <li class={activenavbar == "Pages" ? "active" : null}><a href="JavaScript:Void(0);">Pages<FontAwesomeIcon style={{paddingLeft:'3px'}} icon={faChevronDown} size="xs" /></a>
                 <ul class="nav-dropdown nav-submenu">
                   <li><a href="blog.html">Blogs Page</a></li>
                   <li><a href="blog-detail.html">Blog Detail</a></li>

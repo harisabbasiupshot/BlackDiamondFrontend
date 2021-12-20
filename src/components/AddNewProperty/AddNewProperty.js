@@ -3,9 +3,12 @@ import '../fullcss.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../UserContext'
+import WrappedMap from './WrappedMap'
+import { ImageGallery } from 'react-image-gallery'
 function AddNewProperty() {
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
+    const [imagegallery2, setImagegallery2] = useState([])
     const [propertytitle, setPropertytitle] = useState("")
     const [status, setStatus] = useState("For Rent")
     const [propertytype, setPropertytype] = useState("Houses")
@@ -18,19 +21,48 @@ function AddNewProperty() {
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("")
-    const onImgChange = (event) => {
+    const [marker, setMarker] = useState(null)
+    const [error, setError] = useState(null);
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+          fileReader.readAsDataURL(file)
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          }
+          fileReader.onerror = (error) => {
+            reject(error);
+          }
+        })
+      }
+    const onImgChange = async(event) => {
 
         console.log(event.target.files[0])
         setImagegallery([...imagegallery, event.target.files[0]])
+        const base64 = await convertBase64(event.target.files[0])
+        console.log(base64)
+        
+        setImagegallery2([...imagegallery2, base64])
 
     }
-    const handleDelete =(name)=>{
+    const handleDelete = (name) => {
         console.log(name)
+        var indexOfName = imagegallery.findIndex(i => i.name == name);
+        console.log(indexOfName)
+        const array1=imagegallery2.splice(indexOfName, 1);
+        console.log("updated array1",array1)
         setImagegallery(imagegallery.filter(item => item.name !== name))
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
-        console.log(imagegallery)
+        console.log("imagegallery1: ",imagegallery)
+        console.log("image gallery2: ",imagegallery2)
+        if(marker==null){
+            setError("Add Location please")
+            return
+        }else{
+            setError(null)
+        }
         var data2 = {
             propertytitle: propertytitle,
             status: status,
@@ -39,8 +71,12 @@ function AddNewProperty() {
             area: area,
             OCorVC: OCorVC,
             rentalproperty: rentalproperty,
-            imagegallery:imagegallery,
+            imagegallery: imagegallery,
+            imagegallery2: imagegallery2,
             description: description,
+            latitude:marker.lat,
+            longitude:marker.lng,
+            seller_id:valuecontext.loggeduser.id,
             location: {
                 address: address,
                 city: city,
@@ -55,6 +91,7 @@ function AddNewProperty() {
         console.log(valuecontext.loggeduser)
 
     }, []);
+
     return (
         <div>
             <div class="page-title">
@@ -117,12 +154,12 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Price</label>
-                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} class="form-control" placeholder="USD" />
+                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} type="number" class="form-control" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Area</label>
-                                                <input onChange={(e) => { setArea(e.target.value) }} type="text" class="form-control" />
+                                                <input onChange={(e) => { setArea(e.target.value) }} type="number" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -157,10 +194,15 @@ function AddNewProperty() {
                                                 {imagegallery && <div id="imgaddedlist">
                                                     {imagegallery.map(img => (<div>
                                                         <a>{img.name}</a>
-                                                        <FontAwesomeIcon style={{float:'right', marginTop:'7px', cursor:'pointer'}} onClick={() => handleDelete(img.name)} icon={faTrashAlt} color="red" size="xs" />
+                                                        <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(img.name)} icon={faTrashAlt} color="red" size="xs" />
                                                     </div>))}
+                                                    
 
                                                 </div>}
+                                                {imagegallery2 && <div style={{display:'flex'}}>{imagegallery2.map(img => (<div >
+                                                        <img src={img}></img>
+                                                    </div>))}
+                                                    </div>}
                                             </div>
 
 
@@ -196,6 +238,14 @@ function AddNewProperty() {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-submit">
+                                    <h3>Add Location</h3>
+                                    <div class="submit-section">
+                                        <WrappedMap marker={marker} setMarker={setMarker}/>
+                                    </div>
+
+                                </div>
+
 
                                 <div class="form-submit">
                                     <h3>Detailed Information</h3>
@@ -224,10 +274,11 @@ function AddNewProperty() {
                                 <div class="form-group col-lg-12 col-md-12">
                                     <button class="btn btn-theme" id="submitpropertybutton" onClick={e => { e.preventDefault(); handleSubmit() }} type="submit">Submit &amp; Preview</button>
                                 </div>
+                                {error? <div class="alert alert-danger" role="alert">{error}</div> : null}
 
                             </div>
                         </div>
-
+                        
                     </div>
                 </div>
 
