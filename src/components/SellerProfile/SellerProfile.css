@@ -1,0 +1,26 @@
+#sellernme{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+    box-sizing: inherit;
+    outline: none;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    margin: 10px 0 3px;
+    font-size: 19px;
+}
+#sellerlocationdetail{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    text-align: center;
+    box-sizing: inherit;
+    outline: none;
+}

@@ -81,6 +81,7 @@ function Routes(props) {
     following: following,
     favs: favs,
     updatefavs: updatefavs,
+    logout:logout,
     updatefollowing: updatefollowing,
     updatecart: updatecart,
     isadmin: isadmin,

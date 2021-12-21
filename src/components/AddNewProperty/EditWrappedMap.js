@@ -10,6 +10,12 @@ const options={
     zoomControl:true
 }
 function WrappedMap2({lat,lng,id, marker, setMarker}) {
+    useEffect(() => {
+        console.log("Edit map loaded",lat,lng)
+        
+
+        
+      },[]);
     
     const center ={
         lat: lat?lat:43.653225,
@@ -32,6 +38,8 @@ function WrappedMap2({lat,lng,id, marker, setMarker}) {
         })
 
     }
+    
+
     return (
         <div style={{marginRight:'5%'}}>
             <GoogleMap mapContainerStyle={mapContainerStyle} zoom={16} center={center} options={options} onClick={handleClick} >

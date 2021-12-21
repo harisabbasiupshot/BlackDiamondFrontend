@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import '../fullcss.css'
+import axios from 'axios'
+
 function BuyerProfile() {
 	let params = useParams();
+	const [buyerprofile, setBuyerprofile] = useState("")
+	const getProfile=(id)=>{
+		axios.get('http://127.0.0.1:8000/api/get-user?id='+id)
+            .then(response => {
+                console.log("Buyer Info", response.data)
+				setBuyerprofile(response.data.user)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+
+	}
 	useEffect(() => {
 		console.log("Buyer info id: ", params.id)
+		getProfile(params.id)
 
 	}, [])
 
@@ -21,7 +37,7 @@ function BuyerProfile() {
 						<div class="agency-content">
 							<div class="agency-name">
 								<div style={{ display: 'flex' }}>
-									<h4><a id="sellerprofilename">Haris Abbasi</a></h4>
+									<h4><a id="sellerprofilename">{buyerprofile.name}</a></h4>
 									<span id="statusbuttonPP2">Buyer</span>
 
 								</div>
@@ -30,8 +46,8 @@ function BuyerProfile() {
 
 
 							<ul class="agency-detail-info">
-								<li><i class="lni-phone-handset"></i>0337777777</li>
-								<li><i class="lni-envelope"></i><a href="#">harisbakhabarpk@gmail.com</a></li>
+								<li><i class="lni-phone-handset"></i>{buyerprofile.phone}</li>
+								<li><i class="lni-envelope"></i><a href="#">{buyerprofile.email}</a></li>
 							</ul>
 
 

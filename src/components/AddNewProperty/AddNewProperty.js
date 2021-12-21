@@ -5,6 +5,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../UserContext'
 import WrappedMap from './WrappedMap'
 import { ImageGallery } from 'react-image-gallery'
+import axios from 'axios'
 function AddNewProperty() {
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
@@ -12,6 +13,7 @@ function AddNewProperty() {
     const [propertytitle, setPropertytitle] = useState("")
     const [status, setStatus] = useState("For Rent")
     const [propertytype, setPropertytype] = useState("Houses")
+    const [propertytypes, setPropertytypes] = useState([])
     const [price, setPrice] = useState("")
     const [area, setArea] = useState("")
     const [OCorVC, setOCorVC] = useState("")
@@ -23,6 +25,7 @@ function AddNewProperty() {
     const [zipcode, setZipcode] = useState("")
     const [marker, setMarker] = useState(null)
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
@@ -63,32 +66,95 @@ function AddNewProperty() {
         }else{
             setError(null)
         }
+        var OCorVCid=0
+        var rentalpropertyid=0
+        var statusid=0
+        if(OCorVC=="Occupied"){
+            OCorVCid=1
+
+        }else{
+            OCorVCid=2
+        }
+        if(rentalproperty=="Yes"){
+            rentalpropertyid=1
+
+        }else{
+            rentalpropertyid=2
+
+        }
+        if(status=="For Rent"){
+            statusid=1
+
+        }else{
+            statusid=2
+        }
         var data2 = {
-            propertytitle: propertytitle,
-            status: status,
-            propertytype: propertytype,
+            name: propertytitle,
+            status: statusid,
+            property_type_id: 1,
             price: price,
             area: area,
-            OCorVC: OCorVC,
-            rentalproperty: rentalproperty,
+            property: OCorVCid,
+            rental: rentalpropertyid,
             imagegallery: imagegallery,
-            imagegallery2: imagegallery2,
-            description: description,
+            images: imagegallery2,
+            detail_information: description,
             latitude:marker.lat,
             longitude:marker.lng,
             seller_id:valuecontext.loggeduser.id,
-            location: {
-                address: address,
-                city: city,
-                state: state,
-                zipcode: zipcode
-            }
+            address:address,
+            city:city,
+            state:state,
+            zipcode:zipcode
+            
 
         }
         console.log(data2)
+        const URL = "http://127.0.0.1:8000/api/save-property";
+        
+        console.log("my data in front bs",data2)
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+              
+          }}
+        
+        axios(options).then(response => {
+          console.log(response.data)
+          if(response.data.success==1){
+            console.log(response.data)
+            setSuccess("Property Ad Posted Successfuly")
+            //history.push('/');
+          }else{
+              setError(response.data.error)
+          }
+        })
+        
+        
+        .catch(error => {
+            
+            console.log("Error is: ",error.response)
+        });
     }
     useEffect(() => {
         console.log(valuecontext.loggeduser)
+        axios.get('http://127.0.0.1:8000/api/property_types')
+            .then(response => {
+                console.log("API types", response.data)
+                setPropertytypes(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
 
     }, []);
 
@@ -143,12 +209,8 @@ function AddNewProperty() {
                                             <div class="form-group col-md-6">
                                                 <label>Property Type</label>
                                                 <select id="ptypes" onChange={e => setPropertytype(e.target.value)} value={propertytype} class="form-control">
-                                                    <option value="Houses">Houses</option>
-                                                    <option value="Apartment">Apartment</option>
-                                                    <option value="Villas">Villas</option>
-                                                    <option value="Commercial">Commercial</option>
-                                                    <option value="Offices">Offices</option>
-                                                    <option value="Garage">Garage</option>
+                                                    
+                                                    {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
                                             </div>
 
@@ -275,6 +337,7 @@ function AddNewProperty() {
                                     <button class="btn btn-theme" id="submitpropertybutton" onClick={e => { e.preventDefault(); handleSubmit() }} type="submit">Submit &amp; Preview</button>
                                 </div>
                                 {error? <div class="alert alert-danger" role="alert">{error}</div> : null}
+                                {success? <div class="alert alert-success" role="alert">{success}</div> : null}
 
                             </div>
                         </div>

@@ -144,7 +144,7 @@ function NavBar2({ loggeduser, islogged,logout }) {
                   <i class="fas fa-user-circle mr-1"></i>Signin</a>
               </li> : null}
               {loggeduser ?<div class="dropdown">
-              <a href={loggeduser.role==2?"/sellerprofile":"/buyerprofile/"+loggeduser.id} id="loggeduser">
+              <a href={loggeduser.role==2?"/sellerprofile/"+loggeduser.id:"/buyerprofile/"+loggeduser.id} id="loggeduser">
                   <i class="fas fa-user-circle mr-1" ></i>{loggeduser ? loggeduser.name : "Logged User"}</a>
                 <div class="dropdown-content">
                   <a href="" onClick={logout} >Logout</a>

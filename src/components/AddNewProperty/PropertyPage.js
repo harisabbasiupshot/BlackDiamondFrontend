@@ -1,21 +1,102 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import './PropertyPage.css'
 import {useParams,withRouter, useHistory} from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import axios from 'axios'
 import WrappedMap2 from './WrappedMap2';
+import { UserContext } from '../UserContext'
 function PropertyPage() {
     let history = useHistory();
     let params = useParams();
+    const valuecontext = useContext(UserContext);
+    const [imagegallery, setImagegallery] = useState([])
+    const [imagegallery2, setImagegallery2] = useState([])
+    const [marker, setMarker] = useState(null)
+    const [propertytitle, setPropertytitle] = useState("")
+    const [status, setStatus] = useState("For Rent")
+    const [propertytype, setPropertytype] = useState("")
+    const [price, setPrice] = useState("")
+    const [area, setArea] = useState("")
+    const [OCorVC, setOCorVC] = useState("")
+    const [rentalproperty, setRentalproperty] = useState("")
+    const [description, setDescription] = useState("")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [state, setState] = useState("")
+    const [zipcode, setZipcode] = useState("")
+    const [sellerinfo, setSellerinfo] = useState("")
 
     const editProperty = () => {
-        history.push('/editproperty/123')
+        history.push('/editproperty/'+params.id)
     }
     const deleteProperty = () => {
         history.push('/')
     }
+    const getUserInfo = (id) => {
+        axios.get('http://127.0.0.1:8000/api/get-user?id=' +id)
+            .then(response => {
+                console.log("Seller Info", response.data)
+                setSellerinfo(response.data.user)
+                
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+        
+    }
     useEffect(() => {
         console.log(params.id)
+        var defaultdata
+        axios.get('http://127.0.0.1:8000/api/get-single-property?id=' + params.id)
+            .then(response => {
+                console.log("Property Info", response.data)
+                
+                defaultdata = {
+                    userid: response.data.perperty.seller_id,
+                    propertytitle: response.data.perperty.name,
+                    status: response.data.perperty.status == 1 ? "For Rent" : "For Sale",
+                    propertytype: "Houses",
+                    price: response.data.perperty.price,
+                    area: response.data.perperty.area,
+                    marker: {
+                        lat: parseFloat(response.data.perperty.latitude),
+                        lng: parseFloat(response.data.perperty.longitude)
+                    },
+                    OCorVC: response.data.perperty.property == 1 ? "Occupied" : "Vacant",
+                    imagegallery: response.data.perperty.images,
+                    rentalproperty: response.data.perperty.rental == 1 ? "Yes" : "No",
+                    description: response.data.perperty.detail_information,
+                    location: {
+                        address: response.data.perperty.address,
+                        city: response.data.perperty.city,
+                        state: response.data.perperty.state,
+                        zipcode: response.data.perperty.zipcode
+                    }
+                }
+                setPropertytitle(defaultdata.propertytitle)
+                setStatus(defaultdata.status)
+                setPropertytype(defaultdata.propertytype)
+                setPrice(defaultdata.price)
+                setArea(defaultdata.area)
+                setOCorVC(defaultdata.OCorVC)
+                setRentalproperty(defaultdata.rentalproperty)
+                setDescription(defaultdata.description)
+                setAddress(defaultdata.location.address)
+                setCity(defaultdata.location.city)
+                setState(defaultdata.location.state)
+                setZipcode(defaultdata.location.zipcode)
+                setImagegallery(defaultdata.imagegallery)
+                setMarker(defaultdata.marker)
+                console.log("defaultdata",defaultdata)
+                getUserInfo(defaultdata.userid)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
         
 
         
@@ -28,17 +109,17 @@ function PropertyPage() {
 
                     <div id="property-name-info">
                         <div style={{ display: 'flex' }}>
-                            <h4 id="property-name">Green Realty Smart Apartment</h4>
-                            <span id="statusbuttonPP" >For Rental</span>
-                            <span id="editbuttonPP" href="/editproperty/12" onClick={editProperty}>Edit</span>
-                            <span id="deletebuttonPP" onClick={deleteProperty}>Delete</span>
+                            <h4 id="property-name">{propertytitle}</h4>
+                            <span id="statusbuttonPP" >{status}</span>
+                            {valuecontext.loggeduser?valuecontext.loggeduser.id==parseInt(sellerinfo.id)?<span id="editbuttonPP" href={"/editproperty/"+params.id} onClick={editProperty}>Edit</span>:null:null}
+                            {valuecontext.loggeduser?valuecontext.loggeduser.id==parseInt(sellerinfo.id)?<span id="deletebuttonPP" onClick={deleteProperty}>Delete</span>:null:null}
                         </div>
-                        <p id="property-desc">2 Bedrooms, Kitchen,and bathrooms included with balcony</p>
+                        <p id="property-desc">{description}</p>
                     </div>
 
                     <div id="property-price-info">
-                        <h4 id="property-price">$53264.00</h4>
-                        <p id="property-sqa">70,00<sub>m2</sub> (5485$/m2)</p>
+                        <h4 id="property-price">${price}</h4>
+                        <p id="property-sqa">{area}sqft</p>
                     </div>
 
 
@@ -54,14 +135,14 @@ function PropertyPage() {
 
                 <div id="block-body">
                     <ul id="dw-proprty-info">
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Rental Property</strong>Yes</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">OCorVC</strong>Occupied</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area</strong>570 sq ft</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Type</strong>Apartment</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Price</strong>$53264</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">City</strong>New York</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Address</strong>1600 Apartment</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">State</strong>California</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Rental Property</strong>{rentalproperty}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">OCorVC</strong>{OCorVC}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area</strong>{area}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Type</strong>{propertytype}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Price</strong>${price}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">City</strong>{city}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Address</strong>{address}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">State</strong>{state}</li>
                     </ul>
                 </div>
 
@@ -98,7 +179,7 @@ function PropertyPage() {
                     <h4 id="block-title">Map Location</h4>
                 </div>
                 <div id="block-body">
-                    <WrappedMap2 lat={43.96693300220585} lng={-79.12337894396873} id={params.id}/>
+                    {marker?<WrappedMap2 lat={marker.lat} lng={marker.lng} id={params.id}/>:null}
 
                 </div>
 
@@ -112,10 +193,10 @@ function PropertyPage() {
                 </div>
 
                 <div class="agent-title">
-                    <div class="agent-photo"><img src="assets/img/user-6.jpg" alt="" /></div>
+                    <div class="agent-photo"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="" /></div>
                     <div class="agent-details">
-                        <h4><a href="#" id="propertyusername">Shivangi Preet</a></h4>
-                        <span><i class="lni-phone-handset"></i>(91) 123 456 7895</span>
+                        <h4><a href={"/sellerprofile/"+sellerinfo.id} id="propertyusername">{sellerinfo.name}</a></h4>
+                        <span><i class="lni-phone-handset"></i>{sellerinfo.phone}</span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
