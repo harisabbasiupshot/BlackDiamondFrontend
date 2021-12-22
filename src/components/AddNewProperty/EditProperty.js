@@ -7,6 +7,7 @@ import { UserContext } from '../UserContext'
 import EditWrappedMap from './EditWrappedMap'
 import axios from 'axios'
 function EditProperty() {
+    let history = useHistory();
     let params = useParams();
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
@@ -42,21 +43,24 @@ function EditProperty() {
     const onImgChange = async (event) => {
 
         console.log(event.target.files[0])
-        setImagegallery([...imagegallery, event.target.files[0]])
         const base64 = await convertBase64(event.target.files[0])
         console.log(base64)
 
-        setImagegallery2([...imagegallery2, base64])
+        setImagegallery2([ base64])
 
     }
 
-    const handleDelete = (name) => {
-        console.log(name)
-        var indexOfName = imagegallery.findIndex(i => i.name == name);
-        console.log(indexOfName)
-        const array1 = imagegallery2.splice(indexOfName, 1);
+    const handleDelete = (index2) => {
+        console.log(index2)
+        var array1 = imagegallery2 
+        array1=array1.filter((_, index) => index != index2);
         console.log("updated array1", array1)
-        setImagegallery(imagegallery.filter(item => item.name !== name))
+        setImagegallery2(array1)
+    }
+    const onPTChange = (value) => {
+        console.log("PT CHange",value)
+        setPropertytype(value)
+
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
@@ -64,6 +68,7 @@ function EditProperty() {
         var OCorVCid=0
         var rentalpropertyid=0
         var statusid=0
+        var propertytypee=0
         if(OCorVC=="Occupied"){
             OCorVCid=1
 
@@ -83,11 +88,18 @@ function EditProperty() {
         }else{
             statusid=2
         }
+
+        if(propertytype=="house"){
+            propertytypee=1
+        }
+        if(propertytype=="shop"){
+            propertytypee=2
+        }
         var data2 = {
             id:params.id,
             name: propertytitle,
             status: statusid,
-            property_type_id: 1,
+            property_type_id: propertytypee==0?propertytype:propertytypee,
             price: price,
             area: area,
             property: OCorVCid,
@@ -126,7 +138,7 @@ function EditProperty() {
           if(response.data.success==1){
             console.log(response.data)
             setSuccess("Property Ad Edited Successfuly")
-            //history.push('/');
+            history.push('/property/'+response.data.perperty.id);
           }else{
               setError(response.data.error)
           }
@@ -150,36 +162,37 @@ function EditProperty() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-        var defaultdata = []
+            var defaultdata = []
         axios.get('http://127.0.0.1:8000/api/get-single-property?id=' + params.id)
             .then(response => {
                 console.log("Property Info", response.data)
-                console.log("Ids ", valuecontext.loggeduser.id,response.data.perperty.seller_id)
-                if (valuecontext.loggeduser.id == parseInt(response.data.perperty.seller_id)) {
+                console.log("Ids ", valuecontext.loggeduser.id,response.data.property.seller_id)
+                if (valuecontext.loggeduser.id == parseInt(response.data.property.seller_id)) {
                     console.log("allow to edit page")
                 } else {
                     console.log("redirect")
                 }
+                
                 defaultdata = {
-                    userid: response.data.perperty.seller_id,
-                    propertytitle: response.data.perperty.name,
-                    status: response.data.perperty.status == 1 ? "For Rent" : "For Sale",
-                    propertytype: "Houses",
-                    price: response.data.perperty.price,
-                    area: response.data.perperty.area,
+                    userid: response.data.property.seller_id,
+                    propertytitle: response.data.property.name,
+                    status: response.data.property.status == 1 ? "For Rent" : "For Sale",
+                    propertytype: response.data.property.propert_type_id,
+                    price: response.data.property.price,
+                    area: response.data.property.area,
                     marker: {
-                        lat: parseFloat(response.data.perperty.latitude),
-                        lng: parseFloat(response.data.perperty.longitude)
+                        lat: parseFloat(response.data.property.latitude),
+                        lng: parseFloat(response.data.property.longitude)
                     },
-                    OCorVC: response.data.perperty.property == 1 ? "Occupied" : "Vacant",
-                    imagegallery: response.data.perperty.images,
-                    rentalproperty: response.data.perperty.rental == 1 ? "Yes" : "No",
-                    description: response.data.perperty.detail_information,
+                    OCorVC: response.data.property.property == 1 ? "Occupied" : "Vacant",
+                    imagegallery: response.data.property.images,
+                    rentalproperty: response.data.property.rental == 1 ? "Yes" : "No",
+                    description: response.data.property.detail_information,
                     location: {
-                        address: response.data.perperty.address,
-                        city: response.data.perperty.city,
-                        state: response.data.perperty.state,
-                        zipcode: response.data.perperty.zipcode
+                        address: response.data.property.address,
+                        city: response.data.property.city,
+                        state: response.data.property.state,
+                        zipcode: response.data.property.zipcode
                     }
                 }
                 setPropertytitle(defaultdata.propertytitle)
@@ -195,6 +208,7 @@ function EditProperty() {
                 setState(defaultdata.location.state)
                 setZipcode(defaultdata.location.zipcode)
                 setImagegallery(defaultdata.imagegallery)
+                setImagegallery2(defaultdata.imagegallery)
                 setMarker(defaultdata.marker)
                 console.log("defaultdata",defaultdata)
             })
@@ -252,7 +266,7 @@ function EditProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Property Type</label>
-                                                <select id="ptypes" onChange={e => setPropertytype(e.target.value)} value={propertytype} class="form-control">
+                                                <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} class="form-control">
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
                                             </div>
@@ -296,15 +310,10 @@ function EditProperty() {
                                                 <div className="form-group">
                                                     <input className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange} />
                                                 </div>
-                                                {imagegallery && <div id="imgaddedlist">
-                                                    {imagegallery.map(img => (<div>
-                                                        <a>{img.name}</a>
-                                                        <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(img.name)} icon={faTrashAlt} color="red" size="xs" />
-                                                    </div>))}
-
-                                                </div>}
-                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map(img => (<div>
-                                                    <img src={img}></img>
+                                                
+                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map((img,index) => (<div>
+                                                    {img.path?<img src={"http://127.0.0.1:8000"+img.path?"http://127.0.0.1:8000"+img.path:img}></img>:<img src={img}></img>}
+                                                    <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(index)} icon={faTrashAlt} color="red" size="xs" />
                                                 </div>))}
                                                 </div>}
 

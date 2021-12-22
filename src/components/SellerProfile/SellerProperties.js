@@ -1,34 +1,41 @@
-import React,{useEffect,useState} from 'react'
+import React, { useState, useEffect,useContext } from 'react'
+import { useParams, withRouter, useHistory } from "react-router-dom";
 import axios from 'axios'
-function NewAllProperties() {
-	const [currentpage, setCurrentpage] = useState(1)
-	const [allproperties, setAllproperties] = useState([])
-	const changepage=(pagenumber)=>{
+
+function SellerProperties({sellerprofile}) {
+    const [currentpage, setCurrentpage] = useState(1)
+    const [sellerproperties, setSellerproperties] = useState([])
+    const changepage=(pagenumber)=>{
 		console.log("CHange page event called",pagenumber)
 	}
-	const getAllProperties=()=>{
-		axios.get('http://127.0.0.1:8000/api/get-all-properties')
+    const getProperties=()=>{
+        axios.get('http://127.0.0.1:8000/api/seller-properties',{
+            params: {
+                seller_id: 5
+              }
+        })
             .then(response => {
                 console.log("All Properties", response.data)
-				setAllproperties(response.data.prperties.reverse())
+				setSellerproperties(response.data.perperties.reverse())
             })
             .catch(function (error) {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
+    }
 
-	}
-	useEffect(() => {
-		getAllProperties()
+    useEffect(() => {
+		console.log("Seller info id: ", sellerprofile.id)
+		getProperties(sellerprofile.id)
 
 	}, [])
     return (
-            <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="col-lg-8 col-md-8 col-sm-12">
 							<div class="row">
 							
 								<div class="col-lg-12 col-md-12">
 									<div class="filter-fl">
-										<h4>Total Property Find is: <span class="theme-cl">{allproperties.length}</span></h4>
+										<h4>Total Property Find is: <span class="theme-cl">{sellerproperties.length}</span></h4>
 										<div class="btn-group custom-drop">
 											<button type="button" class="btn btn-order-by-filt light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												Short By<i class="ti-angle-down"></i>
@@ -45,7 +52,7 @@ function NewAllProperties() {
 							</div>
 							
 							<div class="row">
-							{allproperties.map(property=>(
+							{sellerproperties.map(property=>(
 								<div class="col-lg-6 col-md-6">
 								<div class="property-listing property-1">
 										
@@ -133,4 +140,4 @@ function NewAllProperties() {
     )
 }
 
-export default NewAllProperties
+export default SellerProperties

@@ -597,7 +597,7 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {}
+
  
 #loggeduser{
   color: #647392;
@@ -716,4 +716,8 @@
   font-weight: 300;
   display: inline-block;
   
+}
+#navmanage{
+  margin-top: 2.7%;
+  margin-left: 1.5%;
 }

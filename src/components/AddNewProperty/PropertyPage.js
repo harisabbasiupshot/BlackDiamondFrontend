@@ -26,12 +26,47 @@ function PropertyPage() {
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [sellerinfo, setSellerinfo] = useState("")
+    const [error, setError] = useState(null);
 
     const editProperty = () => {
         history.push('/editproperty/'+params.id)
     }
     const deleteProperty = () => {
-        history.push('/')
+        const URL = "http://127.0.0.1:8000/api/delete-property";
+        var data2 ={
+            id:params.id 
+        }
+        console.log("my data in front bs",data2)
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+              
+          }}
+        
+        axios(options).then(response => {
+          console.log(response.data)
+          if(response.data.success==1){
+            history.push('/');
+
+          }else{
+              setError(response.data.error)
+          }
+        })
+        
+        
+        .catch(error => {
+            
+            console.log("Error is: ",error.response)
+        });
+        
     }
     const getUserInfo = (id) => {
         axios.get('http://127.0.0.1:8000/api/get-user?id=' +id)
@@ -49,31 +84,39 @@ function PropertyPage() {
     }
     useEffect(() => {
         console.log(params.id)
+        var propertytypee
+        
+
         var defaultdata
         axios.get('http://127.0.0.1:8000/api/get-single-property?id=' + params.id)
             .then(response => {
                 console.log("Property Info", response.data)
-                
+                if(response.data.property.propert_type_id==1){
+                    propertytypee="house"
+                }
+                if(response.data.property.propert_type_id==2){
+                    propertytypee="shop"
+                }
                 defaultdata = {
-                    userid: response.data.perperty.seller_id,
-                    propertytitle: response.data.perperty.name,
-                    status: response.data.perperty.status == 1 ? "For Rent" : "For Sale",
-                    propertytype: "Houses",
-                    price: response.data.perperty.price,
-                    area: response.data.perperty.area,
+                    userid: response.data.property.seller_id,
+                    propertytitle: response.data.property.name,
+                    status: response.data.property.status == 1 ? "For Rent" : "For Sale",
+                    propertytype: propertytypee,
+                    price: response.data.property.price,
+                    area: response.data.property.area,
                     marker: {
-                        lat: parseFloat(response.data.perperty.latitude),
-                        lng: parseFloat(response.data.perperty.longitude)
+                        lat: parseFloat(response.data.property.latitude),
+                        lng: parseFloat(response.data.property.longitude)
                     },
-                    OCorVC: response.data.perperty.property == 1 ? "Occupied" : "Vacant",
-                    imagegallery: response.data.perperty.images,
-                    rentalproperty: response.data.perperty.rental == 1 ? "Yes" : "No",
-                    description: response.data.perperty.detail_information,
+                    OCorVC: response.data.property.property == 1 ? "Occupied" : "Vacant",
+                    imagegallery: response.data.property.images,
+                    rentalproperty: response.data.property.rental == 1 ? "Yes" : "No",
+                    description: response.data.property.detail_information,
                     location: {
-                        address: response.data.perperty.address,
-                        city: response.data.perperty.city,
-                        state: response.data.perperty.state,
-                        zipcode: response.data.perperty.zipcode
+                        address: response.data.property.address,
+                        city: response.data.property.city,
+                        state: response.data.property.state,
+                        zipcode: response.data.property.zipcode
                     }
                 }
                 setPropertytitle(defaultdata.propertytitle)
@@ -137,7 +180,7 @@ function PropertyPage() {
                     <ul id="dw-proprty-info">
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Rental Property</strong>{rentalproperty}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">OCorVC</strong>{OCorVC}</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area</strong>{area}</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area</strong>{area} SQ. FT</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Type</strong>{propertytype}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Price</strong>${price}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">City</strong>{city}</li>
@@ -152,23 +195,17 @@ function PropertyPage() {
                 <div id="block-header">
                     <h4 id="block-title">Gallery</h4>
                 </div>
-                <div id="block-body">
+                {imagegallery &&<div id="block-body">
                     <Carousel>
-                        <div>
-                            <img src="assets/img/p-1.jpg" />
-                            <p className="legend">Legend 1</p>
-                        </div>
-                        <div>
-                            <img src="assets/img/p-2.jpg" />
-                            <p className="legend">Legend 2</p>
-                        </div>
-                        <div>
-                            <img src="assets/img/p-3.jpg" />
-                            <p className="legend">Legend 3</p>
-                        </div>
+                    {imagegallery.map((img,index) => (<div>
+                            <img src={"http://127.0.0.1:8000"+img.path}/>
+                            <p className="legend">Legend {index+1}</p>
+                        </div>))}
+                        
+                        
                     </Carousel>
 
-                </div>
+                </div>}
 
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SellerProfileInfo() {
+function SellerProfileInfo({sellerprofile}) {
     return (
         <div class="col-lg-9 col-md-8">
 							
@@ -10,7 +10,7 @@ function SellerProfileInfo() {
 								</div>
 							</div>
 							
-							<div class="row">
+							{/* <div class="row">
 					
 								<div class="col-lg-4 col-md-6 col-sm-12">
 									<div class="dashboard-stat widget-1">
@@ -54,7 +54,7 @@ function SellerProfileInfo() {
 									</div>	
 								</div>
 
-							</div>
+							</div> */}
 							
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
@@ -151,55 +151,31 @@ function SellerProfileInfo() {
 										<div class="form-row">
 										
 											<div class="form-group col-md-6">
-												<label>Your Name</label>
-												<input type="text" class="form-control" value="Shaurya Preet"/>
+												<label>Name</label><br/>
+												<span id="sellerprofilelocation">{sellerprofile.name}</span>
 											</div>
 											
 											<div class="form-group col-md-6">
-												<label>Email</label>
-												<input type="email" class="form-control" value="preet77@gmail.com"/>
+												<label>Email</label><br/>
+												<span id="sellerprofilelocation">{sellerprofile.email}</span>
 											</div>
+											
+											
 											
 											<div class="form-group col-md-6">
-												<label>Your Title</label>
-												<input type="text" class="form-control" value="Web Designer"/>
+												<label>Phone</label><br/>
+												<span id="sellerprofilelocation">{sellerprofile.phone}</span>
 											</div>
 											
-											<div class="form-group col-md-6">
-												<label>Phone</label>
-												<input type="text" class="form-control" value="123 456 5847"/>
-											</div>
 											
-											<div class="form-group col-md-6">
-												<label>Address</label>
-												<input type="text" class="form-control" value="522, Arizona, Canada"/>
-											</div>
 											
-											<div class="form-group col-md-6">
-												<label>City</label>
-												<input type="text" class="form-control" value="Montquebe"/>
-											</div>
 											
-											<div class="form-group col-md-6">
-												<label>State</label>
-												<input type="text" class="form-control" value="Canada"/>
-											</div>
-											
-											<div class="form-group col-md-6">
-												<label>Zip</label>
-												<input type="text" class="form-control" value="160052"/>
-											</div>
-											
-											<div class="form-group col-md-12">
-												<label>About</label>
-												<textarea class="form-control">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
-											</div>
 											
 										</div>
 									</div>
 								</div>
 								
-								<div class="form-submit">	
+								{/* <div class="form-submit">	
 									<h4>Social Accounts</h4>
 									<div class="submit-section">
 										<div class="form-row">
@@ -230,7 +206,7 @@ function SellerProfileInfo() {
 											
 										</div>
 									</div>
-								</div>
+								</div> */}
 								
 							</div>
 						</div>

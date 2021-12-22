@@ -6,13 +6,16 @@ import { UserContext } from '../UserContext'
 import WrappedMap from './WrappedMap'
 import { ImageGallery } from 'react-image-gallery'
 import axios from 'axios'
+import {useParams,withRouter, useHistory} from "react-router-dom";
+
 function AddNewProperty() {
+    let history = useHistory();
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
     const [imagegallery2, setImagegallery2] = useState([])
     const [propertytitle, setPropertytitle] = useState("")
     const [status, setStatus] = useState("For Rent")
-    const [propertytype, setPropertytype] = useState("Houses")
+    const [propertytype, setPropertytype] = useState(1)
     const [propertytypes, setPropertytypes] = useState([])
     const [price, setPrice] = useState("")
     const [area, setArea] = useState("")
@@ -48,6 +51,11 @@ function AddNewProperty() {
         setImagegallery2([...imagegallery2, base64])
 
     }
+    const onPTChange = (value) => {
+        console.log("PT CHange",value)
+        setPropertytype(value)
+
+    }
     const handleDelete = (name) => {
         console.log(name)
         var indexOfName = imagegallery.findIndex(i => i.name == name);
@@ -60,6 +68,7 @@ function AddNewProperty() {
         console.log(valuecontext.islogged)
         console.log("imagegallery1: ",imagegallery)
         console.log("image gallery2: ",imagegallery2)
+        console.log("propertytypeid after submit: ",propertytype)
         if(marker==null){
             setError("Add Location please")
             return
@@ -91,7 +100,7 @@ function AddNewProperty() {
         var data2 = {
             name: propertytitle,
             status: statusid,
-            property_type_id: 1,
+            property_type_id: propertytype,
             price: price,
             area: area,
             property: OCorVCid,
@@ -132,7 +141,7 @@ function AddNewProperty() {
           if(response.data.success==1){
             console.log(response.data)
             setSuccess("Property Ad Posted Successfuly")
-            //history.push('/');
+            history.push('/property/'+response.data.perperty.id);
           }else{
               setError(response.data.error)
           }
@@ -208,7 +217,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Property Type</label>
-                                                <select id="ptypes" onChange={e => setPropertytype(e.target.value)} value={propertytype} class="form-control">
+                                                <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} class="form-control">
                                                     
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
@@ -221,7 +230,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Area</label>
-                                                <input onChange={(e) => { setArea(e.target.value) }} type="number" class="form-control" />
+                                                <input onChange={(e) => { setArea(e.target.value) }} type="number" class="form-control" placeholder="SQ. FT" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -265,6 +274,7 @@ function AddNewProperty() {
                                                         <img src={img}></img>
                                                     </div>))}
                                                     </div>}
+                                                    
                                             </div>
 
 

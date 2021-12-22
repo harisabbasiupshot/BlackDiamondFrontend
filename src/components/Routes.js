@@ -18,6 +18,7 @@ import SellerProfile from './SellerProfile/SellerProfile';
 import EditProperty from './AddNewProperty/EditProperty';
 import PropertyPage from './AddNewProperty/PropertyPage';
 import BuyerProfile from './BuyerProfile/BuyerProfile';
+import NavbarTest from './NavbarTest';
 /* 
 import Template from './Template';
 import OurServices from './OurServices';
@@ -93,7 +94,8 @@ function Routes(props) {
                 {/* <NabBar2 credits={credits} type={type} islogged={islogged} setIsadmin={setIsadmin} isadmin={isadmin} user3={user3} user2={user2} logout={logout} userid={userid} />
                 <Navbar3 credits={credits} type={type} islogged={islogged} setIsadmin={setIsadmin} isadmin={isadmin} user3={user3} user2={user2} logout={logout} userid={userid} /> */}
                 
-                <NabBar2 loggeduser={loggeduser} islogged={islogged}  logout={logout}/>
+                {/* <NabBar2 loggeduser={loggeduser} islogged={islogged}  logout={logout}/> */}
+                <NavbarTest loggeduser={loggeduser} islogged={islogged}  logout={logout}/>
                 <br></br>
                 <br></br>
                   

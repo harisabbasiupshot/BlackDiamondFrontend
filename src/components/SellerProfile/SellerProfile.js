@@ -3,16 +3,35 @@ import { useParams, withRouter, useHistory } from "react-router-dom";
 import './SellerProfile.css'
 import { UserContext } from '../UserContext'
 import SellerProfileInfo from './SellerProfileInfo';
+import SellerProperties from './SellerProperties';
+import axios from 'axios'
 function SellerProfile() {
 	let params = useParams();
 	const valuecontext = useContext(UserContext);
 	const [show, setShow] = useState("My Profile")
+	const [sellerprofile, setSellerprofile] = useState([])
+	const getProfile=(id)=>{
+		axios.get('http://127.0.0.1:8000/api/get-user?id='+id)
+            .then(response => {
+                console.log("Seller Info", response.data)
+				setSellerprofile(response.data.user)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+
+	}
 	useEffect(() => {
 		console.log("Seller info id: ", params.id)
+		getProfile(params.id)
 
 	}, [])
 	const logout=()=>{
 		valuecontext.logout()
+	}
+	const setShowWich=(name)=>{
+		setShow(name)
 	}
 	return (
 		<div class="container-fluid">
@@ -21,23 +40,27 @@ function SellerProfile() {
 							<div class="dashboard-navbar">
 								
 								<div class="d-user-avater">
-									<img src="assets/img/user-3.jpg" class="img-fluid avater" alt=""/>
-									<h4 id="sellernme">Adam Harshvardhan</h4>
-									<span id="sellerlocationdetail">Canada USA</span>
+									<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="img-fluid avater" alt=""/>
+									<h4 id="sellernme">{sellerprofile.name}</h4>
+									<span id="statusbuttonSP">Seller</span><br/>
+									<span id="sellerlocationdetail">Canada USA</span><br/>
+									<span id="sellerlocationdetail"><i class="lni-phone-handset"></i>{sellerprofile.phone}</span><br/>
+									
 								</div>
 								
 								<div class="d-navigation">
 									<ul>
-										<li class="active"><a href="dashboard.html"><i class="ti-user"></i>My Profile</a></li>
-										<li><a href="my-property.html"><i class="ti-layers"></i>My Properties</a></li>
-										<li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>All Bids</a></li>
-										<li onClick={()=>logout()}><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+										<li onClick={()=>setShow("My Profile")} id="dashboardoption" class={show=="My Profile"?"active":null}><a ><i class="ti-user"></i>My Profile</a></li>
+										<li onClick={()=>setShow("My Properties")} id="dashboardoption" class={show=="My Properties"?"active":null}><a ><i class="ti-layers"></i>My Properties</a></li>
+										<li onClick={()=>setShow("All Bids")} id="dashboardoption" class={show=="All Bids"?"active":null}><a ><i class="ti-pencil-alt"></i>All Bids</a></li>
+										{valuecontext.loggeduser?valuecontext.loggeduser.id==sellerprofile.id?<li onClick={()=>logout()} id="dashboardoption"><a ><i class="ti-power-off"></i>Log Out</a></li>:null:null}
 									</ul>
 								</div>
 								
 							</div>
 						</div>
-						{show=="My Profile"?<SellerProfileInfo/>:null}
+						{show=="My Profile"?<SellerProfileInfo sellerprofile={sellerprofile}/>:null}
+						{show=="My Properties"?<SellerProperties sellerprofile={sellerprofile}/>:null}
 
 			</div>
 		</div>

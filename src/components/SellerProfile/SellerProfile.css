@@ -24,3 +24,35 @@
     box-sizing: inherit;
     outline: none;
 }
+#statusbuttonSP{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 60px;
+    max-height: 40px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    background: #3ebd43;
+    color: #fff;
+  
+  }
+  #dashboardoption{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    box-sizing: inherit;
+    outline: none;
+    cursor: pointer;
+    list-style: none;
+    padding: 8px 0;
+  }
