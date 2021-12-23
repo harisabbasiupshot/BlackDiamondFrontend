@@ -5,18 +5,14 @@ const mapContainerStyle={
     width:'80vw',
     height:'100vh'
 }
-const center ={
-    lat:43.653225,
-    lng:-79.383186
-}
+
 const options={
     zoomControl:true
 }
-function WrappedMap({marker,setMarker}) {
-    const location = {
-        address: '1600 Amphitheatre Parkway, Mountain View, california.',
-        lat: 37.42216,
-        lng: -122.08427,
+function WrappedMap({marker,setMarker,defaultlatitude,defaultlongitude}) {
+    const center ={
+        lat:defaultlatitude?defaultlatitude:43.653225,
+        lng:defaultlongitude?defaultlongitude:-79.383186
     }
     
     const {isLoaded,loadError}=useLoadScript({

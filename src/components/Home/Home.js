@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import NewAllProperties from './NewAllProperties';
 import NewSearchFilter from './NewSearchFilter';
 function Home() {
+    const [allproperties, setAllproperties] = useState([])
     return (
             <section class="bg-light">
 			
@@ -14,8 +15,8 @@ function Home() {
 						</div>
 			</div>
             <div class="row">
-                <NewAllProperties/>
-                <NewSearchFilter />
+                <NewAllProperties allproperties={allproperties} setAllproperties={setAllproperties}/>
+                <NewSearchFilter setAllproperties={setAllproperties}/>
 
 
             </div>

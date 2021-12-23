@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-function NewAllProperties() {
+function NewAllProperties({allproperties,setAllproperties}) {
 	const [currentpage, setCurrentpage] = useState(1)
-	const [allproperties, setAllproperties] = useState([])
+	
 	const changepage=(pagenumber)=>{
 		console.log("CHange page event called",pagenumber)
 	}
@@ -56,13 +56,7 @@ function NewAllProperties() {
 										<div class="listing-like-top">
 											<i class="ti-heart"></i>
 										</div>
-										<div class="listing-rating">
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star"></i>
-										</div>
+										
 										<span class="property-type">{property.status==2?"For Sale":"For Rent"}</span>
 									</div>
 									
@@ -105,7 +99,7 @@ function NewAllProperties() {
 								
 							</div>
 							
-							<div class="row">
+							<div class="row" style={{marginLeft:'24.5%'}}>
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<ul class="pagination p-center">
 										<li id="previousitem">

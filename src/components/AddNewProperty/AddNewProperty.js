@@ -6,7 +6,7 @@ import { UserContext } from '../UserContext'
 import WrappedMap from './WrappedMap'
 import { ImageGallery } from 'react-image-gallery'
 import axios from 'axios'
-import {useParams,withRouter, useHistory} from "react-router-dom";
+import { useParams, withRouter, useHistory } from "react-router-dom";
 
 function AddNewProperty() {
     let history = useHistory();
@@ -27,32 +27,34 @@ function AddNewProperty() {
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [marker, setMarker] = useState(null)
+    const [defaultlatitude, setDefaultlatitude] = useState(null)
+    const [defaultlongitude, setDefaultlongitude] = useState(null)
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.readAsDataURL(file)
-          fileReader.onload = () => {
-            resolve(fileReader.result);
-          }
-          fileReader.onerror = (error) => {
-            reject(error);
-          }
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file)
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            }
+            fileReader.onerror = (error) => {
+                reject(error);
+            }
         })
-      }
-    const onImgChange = async(event) => {
+    }
+    const onImgChange = async (event) => {
 
         console.log(event.target.files[0])
         setImagegallery([...imagegallery, event.target.files[0]])
         const base64 = await convertBase64(event.target.files[0])
         console.log(base64)
-        
+
         setImagegallery2([...imagegallery2, base64])
 
     }
     const onPTChange = (value) => {
-        console.log("PT CHange",value)
+        console.log("PT CHange", value)
         setPropertytype(value)
 
     }
@@ -60,42 +62,42 @@ function AddNewProperty() {
         console.log(name)
         var indexOfName = imagegallery.findIndex(i => i.name == name);
         console.log(indexOfName)
-        const array1=imagegallery2.splice(indexOfName, 1);
-        console.log("updated array1",array1)
+        const array1 = imagegallery2.splice(indexOfName, 1);
+        console.log("updated array1", array1)
         setImagegallery(imagegallery.filter(item => item.name !== name))
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
-        console.log("imagegallery1: ",imagegallery)
-        console.log("image gallery2: ",imagegallery2)
-        console.log("propertytypeid after submit: ",propertytype)
-        if(marker==null){
+        console.log("imagegallery1: ", imagegallery)
+        console.log("image gallery2: ", imagegallery2)
+        console.log("propertytypeid after submit: ", propertytype)
+        if (marker == null) {
             setError("Add Location please")
             return
-        }else{
+        } else {
             setError(null)
         }
-        var OCorVCid=0
-        var rentalpropertyid=0
-        var statusid=0
-        if(OCorVC=="Occupied"){
-            OCorVCid=1
+        var OCorVCid = 0
+        var rentalpropertyid = 0
+        var statusid = 0
+        if (OCorVC == "Occupied") {
+            OCorVCid = 1
 
-        }else{
-            OCorVCid=2
+        } else {
+            OCorVCid = 2
         }
-        if(rentalproperty=="Yes"){
-            rentalpropertyid=1
+        if (rentalproperty == "Yes") {
+            rentalpropertyid = 1
 
-        }else{
-            rentalpropertyid=2
+        } else {
+            rentalpropertyid = 2
 
         }
-        if(status=="For Rent"){
-            statusid=1
+        if (status == "For Rent") {
+            statusid = 1
 
-        }else{
-            statusid=2
+        } else {
+            statusid = 2
         }
         var data2 = {
             name: propertytitle,
@@ -108,50 +110,51 @@ function AddNewProperty() {
             imagegallery: imagegallery,
             images: imagegallery2,
             detail_information: description,
-            latitude:marker.lat,
-            longitude:marker.lng,
-            seller_id:valuecontext.loggeduser.id,
-            address:address,
-            city:city,
-            state:state,
-            zipcode:zipcode
-            
+            latitude: marker.lat,
+            longitude: marker.lng,
+            seller_id: valuecontext.loggeduser.id,
+            address: address,
+            city: city,
+            state: state,
+            zipcode: zipcode
+
 
         }
         console.log(data2)
         const URL = "http://127.0.0.1:8000/api/save-property";
-        
-        console.log("my data in front bs",data2)
+
+        console.log("my data in front bs", data2)
         const options = {
             method: 'post',
             url: URL,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-              },
+            },
             data: data2,
 
             validateStatus: (status) => {
                 return true; // I'm always returning true, you may want to do it depending on the status received
-              
-          }}
-        
+
+            }
+        }
+
         axios(options).then(response => {
-          console.log(response.data)
-          if(response.data.success==1){
             console.log(response.data)
-            setSuccess("Property Ad Posted Successfuly")
-            history.push('/property/'+response.data.perperty.id);
-          }else{
-              setError(response.data.error)
-          }
+            if (response.data.success == 1) {
+                console.log(response.data)
+                setSuccess("Property Ad Posted Successfuly")
+                history.push('/property/' + response.data.perperty.id);
+            } else {
+                setError(response.data.error)
+            }
         })
-        
-        
-        .catch(error => {
-            
-            console.log("Error is: ",error.response)
-        });
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
     }
     useEffect(() => {
         console.log(valuecontext.loggeduser)
@@ -164,7 +167,13 @@ function AddNewProperty() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            setDefaultlatitude(position.coords.latitude)
+            setDefaultlongitude(position.coords.longitude) 
+            
+        });
     }, []);
 
     return (
@@ -218,7 +227,7 @@ function AddNewProperty() {
                                             <div class="form-group col-md-6">
                                                 <label>Property Type</label>
                                                 <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} class="form-control">
-                                                    
+
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
                                             </div>
@@ -267,14 +276,14 @@ function AddNewProperty() {
                                                         <a>{img.name}</a>
                                                         <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(img.name)} icon={faTrashAlt} color="red" size="xs" />
                                                     </div>))}
-                                                    
+
 
                                                 </div>}
-                                                {imagegallery2 && <div style={{display:'flex'}}>{imagegallery2.map(img => (<div >
-                                                        <img src={img}></img>
-                                                    </div>))}
-                                                    </div>}
-                                                    
+                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map(img => (<div >
+                                                    <img src={img}></img>
+                                                </div>))}
+                                                </div>}
+
                                             </div>
 
 
@@ -313,7 +322,7 @@ function AddNewProperty() {
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
                                     <div class="submit-section">
-                                        <WrappedMap marker={marker} setMarker={setMarker}/>
+                                        <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} />
                                     </div>
 
                                 </div>
@@ -346,12 +355,12 @@ function AddNewProperty() {
                                 <div class="form-group col-lg-12 col-md-12">
                                     <button class="btn btn-theme" id="submitpropertybutton" onClick={e => { e.preventDefault(); handleSubmit() }} type="submit">Submit &amp; Preview</button>
                                 </div>
-                                {error? <div class="alert alert-danger" role="alert">{error}</div> : null}
-                                {success? <div class="alert alert-success" role="alert">{success}</div> : null}
+                                {error ? <div class="alert alert-danger" role="alert">{error}</div> : null}
+                                {success ? <div class="alert alert-success" role="alert">{success}</div> : null}
 
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
 

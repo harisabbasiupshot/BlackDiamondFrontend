@@ -63,13 +63,7 @@ function SellerProperties({sellerprofile}) {
 										<div class="listing-like-top">
 											<i class="ti-heart"></i>
 										</div>
-										<div class="listing-rating">
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star filled"></i>
-											<i class="ti-star"></i>
-										</div>
+										
 										<span class="property-type">{property.status==2?"For Sale":"For Rent"}</span>
 									</div>
 									
@@ -112,7 +106,7 @@ function SellerProperties({sellerprofile}) {
 								
 							</div>
 							
-							<div class="row">
+							<div class="row" style={{marginLeft:'30%'}}>
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<ul class="pagination p-center">
 										<li id="previousitem">

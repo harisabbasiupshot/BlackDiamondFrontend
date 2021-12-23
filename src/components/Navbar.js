@@ -6,7 +6,7 @@ import './fullcss.css'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-function NavbarTest({ loggeduser, islogged, logout }) {
+function Navbar({ loggeduser, islogged, logout }) {
 
     const [activenavbar, setActivenavbar] = useState("Home");
     const [isOpen2, setIsOpen2] = useState(false);
@@ -135,4 +135,4 @@ function NavbarTest({ loggeduser, islogged, logout }) {
     )
 }
 
-export default withRouter(NavbarTest)
+export default withRouter(Navbar)
