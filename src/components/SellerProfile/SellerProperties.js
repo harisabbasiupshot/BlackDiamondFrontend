@@ -54,7 +54,7 @@ function SellerProperties({sellerprofile}) {
 							<div class="row">
 							{sellerproperties.map(property=>(
 								<div class="col-lg-6 col-md-6">
-								<div class="property-listing property-1">
+								<div class="property-listing property-1" >
 										
 									<div class="listing-img-wrapper">
 										<a href={"/property/"+property.id}>

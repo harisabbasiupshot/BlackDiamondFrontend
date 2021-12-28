@@ -124,7 +124,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                     <a href="" onClick={logout} >Logout</a>
                                 </div>
                             </div> : null}
-                            <li class="add-listing theme-bg" href="/addnewproperty" style={{ marginLeft: '5px' }} id="navaddbutton">
+                            <li class="add-listing theme-bg" href="/addnewproperty" style={{ marginLeft: loggeduser ?'16px':'3px' }} id="navaddbutton">
                                 <a href="/addnewproperty">Add Property</a>
                             </li>
                         </ul>

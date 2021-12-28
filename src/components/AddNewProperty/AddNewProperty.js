@@ -7,6 +7,7 @@ import WrappedMap from './WrappedMap'
 import { ImageGallery } from 'react-image-gallery'
 import axios from 'axios'
 import { useParams, withRouter, useHistory } from "react-router-dom";
+import TestPlaces from './TestPlaces'
 
 function AddNewProperty() {
     let history = useHistory();
@@ -29,6 +30,16 @@ function AddNewProperty() {
     const [marker, setMarker] = useState(null)
     const [defaultlatitude, setDefaultlatitude] = useState(null)
     const [defaultlongitude, setDefaultlongitude] = useState(null)
+    const [isemailerror, setIsemailerror] = useState(false)
+    const [ispropertytitleerror, setIspropertytitleerror] = useState(false)
+    const [ispriceerror, setIspriceerror] = useState(false)
+    const [isareaerror, setIsareaerror] = useState(false)
+    const [isgalleryerror, setIsgalleryerror] = useState(false)
+    const [isaddresserror, setIsaddresserror] = useState(false)
+    const [iscityerror, setIscityerror] = useState(false)
+    const [isstateerror, setIsstateerror] = useState(false)
+    const [iszipcodeerror, setIszipcodeerror] = useState(false)
+    const [isdescriptionerror, setIsdescriptionerror] = useState(false)
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const convertBase64 = (file) => {
@@ -58,19 +69,79 @@ function AddNewProperty() {
         setPropertytype(value)
 
     }
+    const getCurrentLocation = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+            setDefaultlatitude(position.coords.latitude)
+            setDefaultlongitude(position.coords.longitude) 
+        })
+
+    }
     const handleDelete = (name) => {
         console.log(name)
         var indexOfName = imagegallery.findIndex(i => i.name == name);
         console.log(indexOfName)
-        const array1 = imagegallery2.splice(indexOfName, 1);
+        const array1 = imagegallery2.filter((_, index) => index != indexOfName)
         console.log("updated array1", array1)
         setImagegallery(imagegallery.filter(item => item.name !== name))
+        setImagegallery2(array1)
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
         console.log("imagegallery1: ", imagegallery)
         console.log("image gallery2: ", imagegallery2)
         console.log("propertytypeid after submit: ", propertytype)
+        if (propertytitle == "" || price == "" || area == "" || description == "" || address == "" || state == "" || zipcode == "" || city == "" || imagegallery2 == []) {
+            if (propertytitle == "") {
+                setIspropertytitleerror(true)
+            } else {
+                setIspropertytitleerror(false)
+            }
+            if (price == "") {
+                setIspriceerror(true)
+            } else {
+                setIspriceerror(false)
+            }
+            if (area == "") {
+                setIsareaerror(true)
+            } else {
+                setIsareaerror(false)
+            }
+            if (description == "") {
+                setIsdescriptionerror(true)
+            } else {
+                setIsdescriptionerror(false)
+            }
+            if (address == "") {
+                setIsaddresserror(true)
+            } else {
+                setIsaddresserror(false)
+            }
+            if (state == "") {
+                setIsstateerror(true)
+            } else {
+                setIsstateerror(false)
+            }
+            if (zipcode == "") {
+                setIszipcodeerror(true)
+            } else {
+                setIszipcodeerror(false)
+            }
+            if (city == "") {
+                setIscityerror(true)
+            } else {
+                setIscityerror(false)
+            }
+            if (imagegallery2 == []) {
+                setIsgalleryerror(true)
+            } else {
+                setIsgalleryerror(false)
+            }
+            setError("Kindly Fillout Required Information")
+            return
+        }
+
         if (marker == null) {
             setError("Add Location please")
             return
@@ -167,13 +238,13 @@ function AddNewProperty() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-        navigator.geolocation.getCurrentPosition(function (position) {
+        /* navigator.geolocation.getCurrentPosition(function (position) {
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
             setDefaultlatitude(position.coords.latitude)
             setDefaultlongitude(position.coords.longitude) 
             
-        });
+        }); */
     }, []);
 
     return (
@@ -213,12 +284,12 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <label>Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
-                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} class="form-control" />
+                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null }} class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Status</label>
-                                                <select id="status" onChange={e => setStatus(e.target.value)} value={status} class="form-control">
+                                                <select id="status" onChange={e => setStatus(e.target.value)} value={status} style={{ border: isemailerror ? '1px solid red' : null }} class="form-control">
                                                     <option value="For Rent">For Rent</option>
                                                     <option value="For Sale">For Sale</option>
                                                 </select>
@@ -226,7 +297,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Property Type</label>
-                                                <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} class="form-control">
+                                                <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} style={{ border: isemailerror ? '1px solid red' : null }} class="form-control">
 
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
@@ -234,12 +305,12 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Price</label>
-                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} type="number" class="form-control" placeholder="USD" />
+                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} style={{ border: ispriceerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Area</label>
-                                                <input onChange={(e) => { setArea(e.target.value) }} type="number" class="form-control" placeholder="SQ. FT" />
+                                                <input onChange={(e) => { setArea(e.target.value) }} style={{ border: isareaerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="SQ. FT" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -269,7 +340,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <div className="form-group">
-                                                    <input className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange} />
+                                                    <input style={{ border: isgalleryerror ? '1px solid red' : null }} className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange} />
                                                 </div>
                                                 {imagegallery && <div id="imgaddedlist">
                                                     {imagegallery.map(img => (<div>
@@ -279,8 +350,8 @@ function AddNewProperty() {
 
 
                                                 </div>}
-                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map(img => (<div >
-                                                    <img src={img}></img>
+                                                {imagegallery2 && <div style={{ display: 'flex', maxWidth: '100%' }}>{imagegallery2.map(img => (<div >
+                                                    <img src={img} width={500} height={333}></img>
                                                 </div>))}
                                                 </div>}
 
@@ -298,22 +369,22 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Address</label>
-                                                <input onChange={e => setAddress(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setAddress(e.target.value)} style={{ border: isaddresserror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>City</label>
-                                                <input onChange={e => setCity(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setCity(e.target.value)} style={{ border: iscityerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>State</label>
-                                                <input onChange={e => setState(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setState(e.target.value)} style={{ border: isstateerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Zip Code</label>
-                                                <input onChange={e => setZipcode(e.target.value)} type="text" class="form-control" />
+                                                <input onChange={e => setZipcode(e.target.value)} style={{ border: iszipcodeerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                         </div>
@@ -321,9 +392,14 @@ function AddNewProperty() {
                                 </div>
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
-                                    <div class="submit-section">
-                                        <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} />
+                                    <TestPlaces setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
+                                    <h3 style={{ marginLeft: '47%', marginTop:'3%' }}>Or</h3>
+                                    <div id="getresbutton" onClick={() => getCurrentLocation()}>
+                                        <a id="getrestext">Get Current Location</a>
                                     </div>
+                                    {defaultlatitude&&defaultlongitude?<div class="submit-section">
+                                        <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} />
+                                    </div>:null}
 
                                 </div>
 
@@ -335,7 +411,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <label>Description</label>
-                                                <textarea class="form-control h-120" onChange={(e) => { setDescription(e.target.value) }}></textarea>
+                                                <textarea class="form-control h-120" style={{ border: isdescriptionerror ? '1px solid red' : null }} onChange={(e) => { setDescription(e.target.value) }}></textarea>
                                             </div>
 
 

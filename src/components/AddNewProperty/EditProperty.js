@@ -46,16 +46,16 @@ function EditProperty() {
         const base64 = await convertBase64(event.target.files[0])
         console.log(base64)
 
-        setImagegallery2([ base64])
+        setImagegallery([...imagegallery, base64])
 
     }
 
     const handleDelete = (index2) => {
         console.log(index2)
-        var array1 = imagegallery2 
+        var array1 = imagegallery
         array1=array1.filter((_, index) => index != index2);
         console.log("updated array1", array1)
-        setImagegallery2(array1)
+        setImagegallery(array1)
     }
     const onPTChange = (value) => {
         console.log("PT CHange",value)
@@ -64,7 +64,6 @@ function EditProperty() {
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
-        console.log(imagegallery)
         var OCorVCid=0
         var rentalpropertyid=0
         var statusid=0
@@ -104,8 +103,7 @@ function EditProperty() {
             area: area,
             property: OCorVCid,
             rental: rentalpropertyid,
-            imagegallery: imagegallery,
-            images: imagegallery2,
+            images: imagegallery,
             detail_information: description,
             latitude:marker.lat,
             longitude:marker.lng,
@@ -207,7 +205,6 @@ function EditProperty() {
                 setCity(defaultdata.location.city)
                 setState(defaultdata.location.state)
                 setZipcode(defaultdata.location.zipcode)
-                setImagegallery(defaultdata.imagegallery)
                 setImagegallery2(defaultdata.imagegallery)
                 setMarker(defaultdata.marker)
                 console.log("defaultdata",defaultdata)
@@ -312,7 +309,13 @@ function EditProperty() {
                                                 </div>
                                                 
                                                 {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map((img,index) => (<div>
-                                                    {img.path?<img src={"http://127.0.0.1:8000"+img.path?"http://127.0.0.1:8000"+img.path:img}></img>:<img src={img}></img>}
+                                                    {img.path?<img src={"http://127.0.0.1:8000"+img.path?"http://127.0.0.1:8000"+img.path:img} width={500} height={333}></img>:null}
+                                                    
+                                                    <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(index)} icon={faTrashAlt} color="red" size="xs" />
+                                                </div>))}
+                                                </div>}
+                                                {imagegallery && <div style={{ display: 'flex', maxWidth:'100%' }}>{imagegallery.map((img,index) => (<div >
+                                                    <img src={img} width={500} height={333}></img>
                                                     <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(index)} icon={faTrashAlt} color="red" size="xs" />
                                                 </div>))}
                                                 </div>}

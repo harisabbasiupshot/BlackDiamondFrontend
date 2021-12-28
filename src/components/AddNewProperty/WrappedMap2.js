@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { GoogleMap, useJsApiLoader, useLoadScript,Marker,InfoWindow } from '@react-google-maps/api';
 const libraries=['places']
 const mapContainerStyle={
-    width:'80vw',
+    width:'73vw',
     height:'100vh'
 }
 

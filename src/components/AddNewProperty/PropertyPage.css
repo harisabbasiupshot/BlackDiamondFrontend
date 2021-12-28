@@ -223,6 +223,7 @@ margin-bottom: 2rem;}
     float: right;
     border-radius: 2px;
     background: #3ebd43;
+    margin-left: 2%;
     color: #fff;
 
 }
@@ -236,15 +237,14 @@ margin-bottom: 2rem;}
     outline: none;
     font-size: 13px;
     font-weight: 500;
-    height: 2%;
+    height: 20%;
     padding: 4px 12px;
     cursor: pointer;
-    position: relative;
-    left:95%;
+    position: absolute;
+    left: 168%;
     border-radius: 2px;
-    margin-left: 10px;
     background: #3ebd43;
-    color: #fff;
+    color: rgb(250, 249, 249);
 
 }
 #deletebuttonPP{
@@ -258,13 +258,32 @@ margin-bottom: 2rem;}
     font-size: 13px;
     font-weight: 500;
     padding: 4px 12px;
-    height: 2%;
-    position: relative;
-    left:95%;
+    height: 20%;
     cursor: pointer;
+    position: absolute;
+    left: 180%;
     border-radius: 2px;
-    margin-left: 10px;
     background: #8b0101;
+    color: #fff;
+
+}
+#showbidbuttonPP{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 12px;
+    height: 20%;
+    cursor: pointer;
+    position: absolute;
+    left: 175%;
+    border-radius: 2px;
+    background: #3ebd43;
     color: #fff;
 
 }
