@@ -350,8 +350,9 @@ function AddNewProperty() {
 
 
                                                 </div>}
-                                                {imagegallery2 && <div style={{ display: 'flex', maxWidth: '100%' }}>{imagegallery2.map(img => (<div >
+                                                {imagegallery2 && <div style={{ display: 'flex', maxWidth: '100%' }}>{imagegallery2.map((img,index) => (<div >
                                                     <img src={img} width={500} height={333}></img>
+                                                    
                                                 </div>))}
                                                 </div>}
 
@@ -397,14 +398,14 @@ function AddNewProperty() {
                                     <div id="getresbutton" onClick={() => getCurrentLocation()}>
                                         <a id="getrestext">Get Current Location</a>
                                     </div>
-                                    {defaultlatitude&&defaultlongitude?<div class="submit-section">
-                                        <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} />
+                                    {defaultlatitude&&defaultlongitude?<div class="submit-section" style={{marginTop:'1%'}}>
+                                        <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
                                     </div>:null}
 
                                 </div>
 
 
-                                <div class="form-submit">
+                                <div class="form-submit" style={{marginTop:'20px'}}>
                                     <h3>Detailed Information</h3>
                                     <div class="submit-section">
                                         <div class="form-row">

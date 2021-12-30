@@ -38,6 +38,13 @@ function PropertyPage() {
     const editProperty = () => {
         history.push('/editproperty/' + params.id)
     }
+    const handleBidSubmit = async () => {
+        console.log("Bid Title: ",bidtitle)
+        console.log("Bid Description: ",biddescription)
+        console.log("User_id: ",valuecontext.loggeduser.id)
+        console.log("Property_id:: ",params.id)
+
+    }
     const deleteProperty = () => {
         const URL = "http://127.0.0.1:8000/api/delete-property";
         var data2 = {
@@ -154,7 +161,7 @@ function PropertyPage() {
 
 
 
-    }, []);
+    }, []); 
 
     return (
         <div>
@@ -164,13 +171,13 @@ function PropertyPage() {
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
                     <label>Bid Title<a href="#" class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
-                    <input type="text"  class="form-control" />
+                    <input type="text"  class="form-control" onChange={e => setBidtitle(e.target.value)}/>
                     <label>Offer Description<a href="#" class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
-                    <textarea type="text"  class="form-control" />
+                    <textarea type="text"  class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose} >Close</Button>
-                    <Button variant="primary" style={{backgroundColor:"#3ebd43"}}>Bid</Button>
+                    <Button variant="primary" style={{backgroundColor:"#3ebd43"}} onClick={handleBidSubmit}>Bid</Button>
                 </Modal.Footer>
             </Modal>
             <div id="mainpropertydiv">

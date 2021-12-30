@@ -53,66 +53,89 @@ function EditProperty() {
     const handleDelete = (index2) => {
         console.log(index2)
         var array1 = imagegallery
-        array1=array1.filter((_, index) => index != index2);
+        array1 = array1.filter((_, index) => index != index2);
         console.log("updated array1", array1)
         setImagegallery(array1)
+
+    }
+    const handleDelete2 = (index2, id) => {
+        console.log(index2, id)
+        var array1 = imagegallery2
+        array1 = array1.filter((_, index) => index != index2);
+        console.log("updated array1", array1)
+        setImagegallery2(array1)
+        axios.post('http://127.0.0.1:8000/api/delete-image', {
+            params: {
+                id: id
+            }
+        })
+            .then(response => {
+                console.log("Response After Delete", response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+
+
+
     }
     const onPTChange = (value) => {
-        console.log("PT CHange",value)
+        console.log("PT CHange", value)
         setPropertytype(value)
 
     }
     const handleSubmit = async () => {
         console.log(valuecontext.islogged)
-        var OCorVCid=0
-        var rentalpropertyid=0
-        var statusid=0
-        var propertytypee=0
-        if(OCorVC=="Occupied"){
-            OCorVCid=1
+        var OCorVCid = 0
+        var rentalpropertyid = 0
+        var statusid = 0
+        var propertytypee = 0
+        if (OCorVC == "Occupied") {
+            OCorVCid = 1
 
-        }else{
-            OCorVCid=2
+        } else {
+            OCorVCid = 2
         }
-        if(rentalproperty=="Yes"){
-            rentalpropertyid=1
+        if (rentalproperty == "Yes") {
+            rentalpropertyid = 1
 
-        }else{
-            rentalpropertyid=2
+        } else {
+            rentalpropertyid = 2
 
         }
-        if(status=="For Rent"){
-            statusid=1
+        if (status == "For Rent") {
+            statusid = 1
 
-        }else{
-            statusid=2
+        } else {
+            statusid = 2
         }
 
-        if(propertytype=="house"){
-            propertytypee=1
+        if (propertytype == "house") {
+            propertytypee = 1
         }
-        if(propertytype=="shop"){
-            propertytypee=2
+        if (propertytype == "shop") {
+            propertytypee = 2
         }
         var data2 = {
-            id:params.id,
+            id: params.id,
             name: propertytitle,
             status: statusid,
-            property_type_id: propertytypee==0?propertytype:propertytypee,
+            property_type_id: propertytypee == 0 ? propertytype : propertytypee,
             price: price,
             area: area,
             property: OCorVCid,
             rental: rentalpropertyid,
             images: imagegallery,
             detail_information: description,
-            latitude:marker.lat,
-            longitude:marker.lng,
-            seller_id:valuecontext.loggeduser.id,
-            address:address,
-            city:city,
-            state:state,
-            zipcode:zipcode
-            
+            latitude: marker.lat,
+            longitude: marker.lng,
+            seller_id: valuecontext.loggeduser.id,
+            address: address,
+            city: city,
+            state: state,
+            zipcode: zipcode
+
 
         }
         console.log(data2)
@@ -123,30 +146,31 @@ function EditProperty() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-              },
+            },
             data: data2,
 
             validateStatus: (status) => {
                 return true; // I'm always returning true, you may want to do it depending on the status received
-              
-          }}
-        
+
+            }
+        }
+
         axios(options).then(response => {
-          console.log(response.data)
-          if(response.data.success==1){
             console.log(response.data)
-            setSuccess("Property Ad Edited Successfuly")
-            history.push('/property/'+response.data.perperty.id);
-          }else{
-              setError(response.data.error)
-          }
+            if (response.data.success == 1) {
+                console.log(response.data)
+                setSuccess("Property Ad Edited Successfuly")
+                history.push('/property/' + response.data.perperty.id);
+            } else {
+                setError(response.data.error)
+            }
         })
-        
-        
-        .catch(error => {
-            
-            console.log("Error is: ",error.response)
-        });
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
     }
     useEffect(() => {
         console.log(valuecontext.loggeduser)
@@ -160,17 +184,17 @@ function EditProperty() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-            var defaultdata = []
+        var defaultdata = []
         axios.get('http://127.0.0.1:8000/api/get-single-property?id=' + params.id)
             .then(response => {
                 console.log("Property Info", response.data)
-                console.log("Ids ", valuecontext.loggeduser.id,response.data.property.seller_id)
+                console.log("Ids ", valuecontext.loggeduser.id, response.data.property.seller_id)
                 if (valuecontext.loggeduser.id == parseInt(response.data.property.seller_id)) {
                     console.log("allow to edit page")
                 } else {
                     console.log("redirect")
                 }
-                
+
                 defaultdata = {
                     userid: response.data.property.seller_id,
                     propertytitle: response.data.property.name,
@@ -207,15 +231,15 @@ function EditProperty() {
                 setZipcode(defaultdata.location.zipcode)
                 setImagegallery2(defaultdata.imagegallery)
                 setMarker(defaultdata.marker)
-                console.log("defaultdata",defaultdata)
+                console.log("defaultdata", defaultdata)
             })
             .catch(function (error) {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
 
-        
-        
+
+
 
 
     }, []);
@@ -280,17 +304,17 @@ function EditProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label>Property</label><br />
-                                                <input style={{ marginLeft: '2%' }} checked={OCorVC=="Occupied"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
+                                                <input style={{ marginLeft: '2%' }} checked={OCorVC == "Occupied"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
                                                 <label style={{ marginLeft: '2%' }} for="age1">Occupied</label>
-                                                <input style={{ marginLeft: '2%' }} checked={OCorVC=="Vacant"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant"  />
+                                                <input style={{ marginLeft: '2%' }} checked={OCorVC == "Vacant"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant" />
                                                 <label style={{ marginLeft: '2%' }} for="age2">Vacant</label>
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label>Rental Property</label><br />
-                                                <input style={{ marginLeft: '2%' }} checked={rentalproperty=="Yes"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP1" name="Rental" value="Yes" />
+                                                <input style={{ marginLeft: '2%' }} checked={rentalproperty == "Yes"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP1" name="Rental" value="Yes" />
                                                 <label style={{ marginLeft: '2%' }} for="RP1" >Yes</label>
-                                                <input style={{ marginLeft: '2%' }} checked={rentalproperty=="No"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP2" name="Rental" value="No" />
+                                                <input style={{ marginLeft: '2%' }} checked={rentalproperty == "No"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP2" name="Rental" value="No" />
                                                 <label style={{ marginLeft: '2%' }} for="RP2">No</label>
                                             </div>
 
@@ -307,18 +331,19 @@ function EditProperty() {
                                                 <div className="form-group">
                                                     <input className="form-control form-control-lg mb-3" type="file" multiple name="imagesArray" onChange={onImgChange} />
                                                 </div>
-                                                
-                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map((img,index) => (<div>
-                                                    {img.path?<img src={"http://127.0.0.1:8000"+img.path?"http://127.0.0.1:8000"+img.path:img} width={500} height={333}></img>:null}
-                                                    
-                                                    <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(index)} icon={faTrashAlt} color="red" size="xs" />
+                                                <div style={{ display: 'flex' }}>
+                                                {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map((img, index) => (<div>
+                                                    {img.path ? <img src={"http://127.0.0.1:8000" + img.path ? "http://127.0.0.1:8000" + img.path : img} width={500} height={333}></img> : null}
+
+                                                    <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete2(index, img.id)} icon={faTrashAlt} color="red" size="xs" />
                                                 </div>))}
                                                 </div>}
-                                                {imagegallery && <div style={{ display: 'flex', maxWidth:'100%' }}>{imagegallery.map((img,index) => (<div >
+                                                {imagegallery && <div style={{ display: 'flex', maxWidth: '100%' }}>{imagegallery.map((img, index) => (<div >
                                                     <img src={img} width={500} height={333}></img>
                                                     <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete(index)} icon={faTrashAlt} color="red" size="xs" />
                                                 </div>))}
                                                 </div>}
+                                                </div>
 
                                             </div>
 
@@ -357,7 +382,7 @@ function EditProperty() {
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
                                     <div class="submit-section">
-                                        {marker?<EditWrappedMap lat={marker.lat} lng={marker.lng} id={params.id} marker={marker} setMarker={setMarker} />:null}
+                                        {marker ? <EditWrappedMap lat={marker.lat} lng={marker.lng} id={params.id} marker={marker} setMarker={setMarker} /> : null}
                                     </div>
 
                                 </div>
@@ -389,8 +414,8 @@ function EditProperty() {
                                 <div class="form-group col-lg-12 col-md-12">
                                     <button class="btn btn-theme" id="submitpropertybutton" onClick={e => { e.preventDefault(); handleSubmit() }} type="submit">Submit &amp; Preview</button>
                                 </div>
-                                {error? <div class="alert alert-danger" role="alert">{error}</div> : null}
-                                {success? <div class="alert alert-success" role="alert">{success}</div> : null}
+                                {error ? <div class="alert alert-danger" role="alert">{error}</div> : null}
+                                {success ? <div class="alert alert-success" role="alert">{success}</div> : null}
 
                             </div>
                         </div>

@@ -730,10 +730,9 @@
   width: 205px;
   height: 76px;
   /* Gray 6 */
-  background: #ffffff;
+  background: #00ba74;
   margin-left: 39.5%;
   /* Shadow Group */
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12), 0px 18px 88px -4px rgba(24, 39, 75, 0.14);
   border-radius: 50px;
   cursor: pointer;
 }
@@ -751,10 +750,14 @@
   display: flex;
   align-items: center;
   /* Gray 1 */
-  color: #333333;
+  color: #fdfbfb;
   /* Inside Auto Layout */
   flex: none;
   order: 0;
   flex-grow: 0;
   margin: 0px 10px;
+}
+#searchcityid::placeholder {
+  color: #fdfbfb;
+  opacity: 1;
 }

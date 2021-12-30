@@ -111,26 +111,9 @@ function NewSearchFilter({ setAllproperties }) {
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <input type="text" class="form-control" style={{ border: minimum ? '1px solid #00ba74' : null }} value={minimum} onChange={(e) => { setMinimum(e.target.value) }} placeholder="Minimum" />
-                                    <i class="ti-money"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <input type="text" class="form-control" style={{ border: maximum ? '1px solid #00ba74' : null }} value={maximum} onChange={(e) => { setMaximum(e.target.value) }} placeholder="Maximum" />
-                                    <i class="ti-money"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group" style={{ marginTop: '50px' }}>
-                        <div class="input-with-icon">
+                    
+                    <div class="form-group" style={{ marginTop: '50px',  }}>
+                        <div class="input-with-icon" style={{width:'90%',marginLeft:'20px'}}>
                             <Range
                                 marks={{
                                     0: `$ 0`,
