@@ -112,7 +112,7 @@ function Routes(props) {
                           <NewLoginForm setIslogged={setIslogged} setloggeduser={setloggeduser} />
                         </Route>
                         <Route path="/sign-up">
-                          <NewSignUpForm />
+                        {loggeduser?<Redirect to="/" />:<NewSignUpForm />}
                         </Route>
                         <Route path="/addnewproperty">
                           {loggeduser?loggeduser.role==2?<AddNewProperty />:<Redirect to="/" />:<Redirect to="/" />}

@@ -56,3 +56,32 @@
     list-style: none;
     padding: 8px 0;
   }
+  #myaccountseller{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 21px;
+  }
+  #normalwordsinsellerinfo{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: inherit;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 15px;
+
+  }

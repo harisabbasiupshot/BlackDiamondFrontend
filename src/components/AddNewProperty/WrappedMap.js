@@ -43,7 +43,7 @@ function WrappedMap({ marker, setMarker, defaultlatitude, defaultlongitude,setDe
     
     return (
         <div style={{ marginRight: '5%' }}>
-            <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center} options={options} onClick={handleClick}>
+            <GoogleMap mapContainerStyle={mapContainerStyle} zoom={14} center={center} options={options} onClick={handleClick}>
                 {marker ? <Marker key={marker.time.toISOString()} position={{ lat: marker.lat, lng: marker.lng }} /> : null}
             </GoogleMap>
         </div>

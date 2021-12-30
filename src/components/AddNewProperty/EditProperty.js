@@ -64,11 +64,7 @@ function EditProperty() {
         array1 = array1.filter((_, index) => index != index2);
         console.log("updated array1", array1)
         setImagegallery2(array1)
-        axios.post('http://127.0.0.1:8000/api/delete-image', {
-            params: {
-                id: id
-            }
-        })
+        axios.post('http://127.0.0.1:8000/api/delete-image?id='+id)
             .then(response => {
                 console.log("Response After Delete", response.data)
             })

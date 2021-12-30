@@ -40,6 +40,7 @@ function AddNewProperty() {
     const [isstateerror, setIsstateerror] = useState(false)
     const [iszipcodeerror, setIszipcodeerror] = useState(false)
     const [isdescriptionerror, setIsdescriptionerror] = useState(false)
+    const [isOCorVCerror, setIsOCorVCerror] = useState(false)
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const convertBase64 = (file) => {
@@ -92,11 +93,16 @@ function AddNewProperty() {
         console.log("imagegallery1: ", imagegallery)
         console.log("image gallery2: ", imagegallery2)
         console.log("propertytypeid after submit: ", propertytype)
-        if (propertytitle == "" || price == "" || area == "" || description == "" || address == "" || state == "" || zipcode == "" || city == "" || imagegallery2 == []) {
+        if (propertytitle == "" || price == "" || OCorVC == "" || area == "" || description == "" || address == "" || state == "" || zipcode == "" || city == "" || imagegallery2 == []) {
             if (propertytitle == "") {
                 setIspropertytitleerror(true)
             } else {
                 setIspropertytitleerror(false)
+            }
+            if (OCorVC == "") {
+                setOCorVC(true)
+            } else {
+                setOCorVC(false)
             }
             if (price == "") {
                 setIspriceerror(true)
@@ -313,12 +319,14 @@ function AddNewProperty() {
                                                 <input onChange={(e) => { setArea(e.target.value) }} style={{ border: isareaerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="SQ. FT" />
                                             </div>
 
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-6" >
                                                 <label>Property</label><br />
+                                                <div >
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
                                                 <label style={{ marginLeft: '2%' }} for="age1">Occupied</label>
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant" />
                                                 <label style={{ marginLeft: '2%' }} for="age2">Vacant</label>
+                                                </div>
                                             </div>
 
                                             <div class="form-group col-md-6">

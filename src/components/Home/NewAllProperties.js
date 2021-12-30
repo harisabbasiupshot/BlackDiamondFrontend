@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import '../fullcss.css'
 function NewAllProperties({allproperties,setAllproperties}) {
 	const [currentpage, setCurrentpage] = useState(1)
 	
@@ -49,9 +50,9 @@ function NewAllProperties({allproperties,setAllproperties}) {
 								<div class="col-lg-6 col-md-6">
 								<div class="property-listing property-1">
 										
-									<div class="listing-img-wrapper">
+									<div class="listing-img-wrapper" >
 										<a href={"/property/"+property.id}>
-											<img src={"http://127.0.0.1:8000"+property.images[0].path} class="img-fluid mx-auto" alt=""/>
+											<img src={"http://127.0.0.1:8000"+property.images[0].path} class="img-fluid mx-auto" style={{minHeight:'250px'}} alt=""/>
 										</a>
 										<div class="listing-like-top">
 											<i class="ti-heart"></i>
@@ -108,11 +109,11 @@ function NewAllProperties({allproperties,setAllproperties}) {
 											<span class="sr-only">Previous</span>
 										  </a>
 										</li>
-										<li class="page-item active" onClick={()=>changepage(1)}><a class="page-link" >1</a></li>
-										<li class="page-item" onClick={()=>changepage(2)}><a class="page-link" >2</a></li>
-										<li class="page-item" onClick={()=>changepage(3)}><a class="page-link" >3</a></li>
-										<li class="page-item"><a class="page-link" >...</a></li>
-										<li class="page-item" onClick={()=>changepage(18)}><a class="page-link" >18</a></li>
+										<li id="activepaginationli" onClick={()=>changepage(1)}><a id="activepagination" >1</a></li>
+										<li id="normalpaginationli"  onClick={()=>changepage(2)}><a id="normalpagination" >2</a></li>
+										<li id="normalpaginationli" onClick={()=>changepage(3)}><a id="normalpagination" >3</a></li>
+										<li id="normalpaginationli"><a id="normalpagination">...</a></li>
+										<li id="normalpaginationli" onClick={()=>changepage(18)}><a id="normalpagination" >18</a></li>
 										<li class="page-item">
 										  <a class="page-link" href="#" aria-label="Next">
 											<span class="ti-arrow-right"></span>

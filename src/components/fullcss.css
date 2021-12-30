@@ -761,3 +761,98 @@
   color: #fdfbfb;
   opacity: 1;
 }
+#normalpagination{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  display: block;
+  position: relative;
+  float: left;
+  padding: 0;
+  margin: 5px;
+  color: #5a6f7c;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 2px;
+  width: 37px;
+  height: 37px;
+  text-align: center;
+  line-height: 37px;
+  border: 1px solid #eaeff5;
+  box-shadow: 0 2px 10px 0 #d8dde6;
+}
+#normalpaginationli{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  display: inline;
+}
+#activepaginationli{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  display: inline;
+}
+#activepagination{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  list-style: none;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  display: block;
+  position: relative;
+  float: left;
+  padding: 0;
+  margin: 5px;
+  text-decoration: none;
+  border-radius: 2px;
+  width: 37px;
+  height: 37px;
+  text-align: center;
+  line-height: 37px;
+  border: 1px solid #eaeff5;
+  box-shadow: 0 2px 10px 0 #d8dde6;
+  cursor: pointer;
+  z-index: 2;
+  color: #fff;
+  background: #00ba74;
+  border-color: #00ba74;
+}
+#WannaSignUpSection{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  display: block;
+  padding: 50px 0;
+  background: #00ba74;
+}

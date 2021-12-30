@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './SellerProfile.css'
 function SellerProfileInfo({sellerprofile}) {
     return (
         <div class="col-lg-9 col-md-8">
@@ -57,24 +57,24 @@ function SellerProfileInfo({sellerprofile}) {
 							<div class="dashboard-wraper">
 							
 								<div class="form-submit">	
-									<h4>My Account</h4>
+									<h4 id="myaccountseller">My Account</h4>
 									<div class="submit-section">
 										<div class="form-row">
 										
 											<div class="form-group col-md-6">
-												<label>Name</label><br/>
+												<label id="normalwordsinsellerinfo">Name</label><br/>
 												<span id="sellerprofilelocation">{sellerprofile.name}</span>
 											</div>
 											
 											<div class="form-group col-md-6">
-												<label>Email</label><br/>
+												<label id="normalwordsinsellerinfo">Email</label><br/>
 												<span id="sellerprofilelocation">{sellerprofile.email}</span>
 											</div>
 											
 											
 											
 											<div class="form-group col-md-6">
-												<label>Phone</label><br/>
+												<label id="normalwordsinsellerinfo">Phone</label><br/>
 												<span id="sellerprofilelocation">{sellerprofile.phone}</span>
 											</div>
 											

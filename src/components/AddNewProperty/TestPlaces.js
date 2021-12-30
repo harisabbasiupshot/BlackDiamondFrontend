@@ -42,13 +42,13 @@ function TestPlaces({setDefaultlatitude, setDefaultlongitude}) {
                 className: 'location-search-input',
               })}
             />
-            <div className="autocomplete-dropdown-container">
+            <div className="autocomplete-dropdown-container" style={{borderRadius:'5px'}}>
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const inputstyle = {
                   backgroundColor: suggestion.active ? '#2D3954' : "#00ba74",
-                  
-                  color: "white"
+                  color: "white",
+                  padding:'5px'
                 }
                 const className = suggestion.active
                   ? 'suggestion-item--active'

@@ -33,16 +33,18 @@ function PropertyPage() {
     const [error, setError] = useState(null);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    const [show2, setShow2] = useState(false);
+    const handleClose2 = () => setShow2(false);
     const handleShow = () => setShow(true);
 
     const editProperty = () => {
         history.push('/editproperty/' + params.id)
     }
     const handleBidSubmit = async () => {
-        console.log("Bid Title: ",bidtitle)
-        console.log("Bid Description: ",biddescription)
-        console.log("User_id: ",valuecontext.loggeduser.id)
-        console.log("Property_id:: ",params.id)
+        console.log("Bid Title: ", bidtitle)
+        console.log("Bid Description: ", biddescription)
+        console.log("User_id: ", valuecontext.loggeduser.id)
+        console.log("Property_id:: ", params.id)
 
     }
     const deleteProperty = () => {
@@ -99,6 +101,9 @@ function PropertyPage() {
     }
     const showbidProperty = () => {
         setShow(true)
+    }
+    const showdeleteProperty = () => {
+        setShow2(true)
     }
     useEffect(() => {
         console.log(params.id)
@@ -158,37 +163,59 @@ function PropertyPage() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
+        axios.get('http://127.0.0.1:8000/api/get-bids', {
+            params: {
+                id: 25
+            }
+        })
+            .then(response => {
+                console.log("Bids On Property", response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
 
 
 
-    }, []); 
+    }, []);
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal show={show} onHide={handleClose} dialogClassName={"CSRModal"} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title style={{ textAlign: 'center' }}>Bid Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
                     <label>Bid Title<a href="#" class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
-                    <input type="text"  class="form-control" onChange={e => setBidtitle(e.target.value)}/>
+                    <input type="text" class="form-control" onChange={e => setBidtitle(e.target.value)} />
                     <label>Offer Description<a href="#" class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
-                    <textarea type="text"  class="form-control" onChange={e => setBiddescription(e.target.value)} />
+                    <textarea type="text" class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose} >Close</Button>
-                    <Button variant="primary" style={{backgroundColor:"#3ebd43"}} onClick={handleBidSubmit}>Bid</Button>
+                    <Button variant="secondary" onClick={handleClose} style={{ backgroundColor: "#9c0306" }} >Cancel</Button>
+                    <Button variant="primary" style={{ backgroundColor: "#3ebd43" }} onClick={handleBidSubmit}>Bid</Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={show2} onHide={handleClose2} dialogClassName={"CSRModal"} animation={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title style={{ textAlign: 'center' }}>Are You Sure You Want To Delete?</Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <Button variant="primary" style={{ backgroundColor: "#3ebd43" }} onClick={handleClose2} >No</Button>
+                    <Button variant="secondary"  style={{ backgroundColor: "#9c0306" }} onClick={deleteProperty}>Yes</Button>
+
                 </Modal.Footer>
             </Modal>
             <div id="mainpropertydiv">
                 <div id="single-advance-caption">
 
-                    <div id="property-name-info" style={{marginLeft:'-9px'}}>
+                    <div id="property-name-info" style={{ marginLeft: '-9px' }}>
                         <div style={{ display: 'flex' }}>
                             <h4 id="property-name">{propertytitle}</h4>
                             <span id="statusbuttonPP" >{status}</span>
                             {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="editbuttonPP" href={"/editproperty/" + params.id} onClick={editProperty}>Edit</span> : null : null}
-                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="deletebuttonPP" onClick={deleteProperty}>Delete</span> : null : null}
+                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="deletebuttonPP" onClick={showdeleteProperty}>Delete</span> : null : null}
                             {valuecontext.loggeduser ? valuecontext.loggeduser.role == 3 ? <span id="showbidbuttonPP" onClick={showbidProperty}>BidProperty</span> : null : null}
                         </div>
                         <p id="property-desc">{description}</p>
