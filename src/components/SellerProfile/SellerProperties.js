@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import axios from 'axios'
-
 function SellerProperties({ sellerprofile }) {
 	const [currentpage, setCurrentpage] = useState(1)
 	const [sellerproperties, setSellerproperties] = useState([])
@@ -9,11 +8,7 @@ function SellerProperties({ sellerprofile }) {
 		console.log("CHange page event called", pagenumber)
 	}
 	const getProperties = () => {
-		axios.get('http://127.0.0.1:8000/api/seller-properties', {
-			params: {
-				seller_id: 5
-			}
-		})
+		axios.get('http://127.0.0.1:8000/api/seller-properties?seller_id='+sellerprofile.id)
 			.then(response => {
 				console.log("All Properties", response.data)
 				setSellerproperties(response.data.perperties.reverse())

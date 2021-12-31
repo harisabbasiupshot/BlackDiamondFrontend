@@ -28,13 +28,13 @@ import BestAgent from './BestAgent'; */
 const data = JSON.parse(localStorage.getItem('data'))
 console.log("Local Storage: ",data)
 function Routes(props) {
-  const [loggeduser, setloggeduser] = useState(data?data.data.user:null);
+  const [loggeduser, setloggeduser] = useState(data?data.user:null);
   const [isadmin, setIsadmin] = useState(false);
   const [favs, setFavs] = useState([]);
   const [cart, setCart] = useState(null);
   const [following, setFollowing] = useState([]);
   const [islogged, setIslogged] = useState(data?true:false);
-  const [type, setType] = useState(data?data.data.user.role:null);
+  const [type, setType] = useState(data?data.user.role:null);
   let history = useHistory();
   const [test, setTest]= useState(null)
   const updatefavs=(upfavs)=>{ 
@@ -112,7 +112,7 @@ function Routes(props) {
                           <NewLoginForm setIslogged={setIslogged} setloggeduser={setloggeduser} />
                         </Route>
                         <Route path="/sign-up">
-                        {loggeduser?<Redirect to="/" />:<NewSignUpForm />}
+                        {loggeduser?<Redirect to="/" />:<NewSignUpForm setIslogged={setIslogged} setloggeduser={setloggeduser} />}
                         </Route>
                         <Route path="/addnewproperty">
                           {loggeduser?loggeduser.role==2?<AddNewProperty />:<Redirect to="/" />:<Redirect to="/" />}

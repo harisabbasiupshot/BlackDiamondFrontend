@@ -98,7 +98,7 @@ function NewSearchFilter({ setAllproperties }) {
 
                     <div class="form-group">
                         <div class="input-with-icon">
-                            <input type="text" class="form-control" value={searchParam} style={{ border: searchParam != "" ? '1px solid #00ba74' : null }} onChange={(e) => { setSearchParam(e.target.value) }} placeholder="Search By Name And Description" />
+                            <input type="text" class="form-control" value={searchParam} style={{ border: searchParam != "" ? '1px solid #00ba74' : null }} onChange={(e) => { setSearchParam(e.target.value) }} placeholder="Search By Title And Description" />
                             <i class="ti-search"></i>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ function NewSearchFilter({ setAllproperties }) {
                     <div class="form-group">
                         <div class="input-with-icon">
                             {/* <input type="text" class="form-control" placeholder="Location" /> */}
-                            <button class="form-control" style={{ border: latitude && longitude ? '1px solid #00ba74' : null, textAlign: "left", color: '#495057' }} onClick={getUserLocation}>Add Location</button>
+                            <button class="form-control" id="buttoncolor" style={{ border: latitude && longitude ? '1px solid #00ba74' : null, textAlign: "left" }} onClick={getUserLocation}>Get My Location</button>
                             <i class="ti-location-pin"></i>
                         </div>
                     </div>

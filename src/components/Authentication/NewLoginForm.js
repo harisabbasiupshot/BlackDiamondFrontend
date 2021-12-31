@@ -70,7 +70,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
             console.log(response.data.data.user)
             setloggeduser(response.data.data.user)
             setSuccess("You are logged In")
-            localStorage.setItem('data', JSON.stringify(response.data))
+            localStorage.setItem('data', JSON.stringify(response.data.data))
             history.push('/');
 
           }else{

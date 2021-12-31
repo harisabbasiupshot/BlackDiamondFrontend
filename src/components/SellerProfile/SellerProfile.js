@@ -5,6 +5,7 @@ import { UserContext } from '../UserContext'
 import SellerProfileInfo from './SellerProfileInfo';
 import SellerProperties from './SellerProperties';
 import axios from 'axios'
+import SellerBids from './SellerBids';
 function SellerProfile() {
 	let params = useParams();
 	const valuecontext = useContext(UserContext);
@@ -62,6 +63,7 @@ function SellerProfile() {
 					</div>
 					{show == "My Profile" ? <SellerProfileInfo sellerprofile={sellerprofile} /> : null}
 					{show == "My Properties" ? <SellerProperties sellerprofile={sellerprofile} /> : null}
+					{show == "All Bids" ? <SellerBids /> : null}
 
 				</div>
 			</div>

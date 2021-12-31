@@ -85,3 +85,85 @@
     font-size: 15px;
 
   }
+  #bidtitleh4{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: inherit;
+    outline: none;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    display: block;
+    font-size: 16px;
+  }
+  #bidtitlea{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 16px;
+    box-sizing: inherit;
+    outline: none;
+    touch-action: manipulation;
+    color: #2D3954;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  #bidofferdiscription{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    color: #72809D;
+    font-size: 16px;
+    font-family: 'Muli',sans-serif;
+    font-weight: 400;
+    border-collapse: separate;
+    border-spacing: 0;
+    line-height: 25px;
+    box-sizing: inherit;
+    outline: none;
+    display: block;
+  }
+  #byuserh4{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: inherit;
+    outline: none;
+    color: #2D3954;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    margin-bottom: 0;
+    margin-top: 2px;
+    display: block;
+    font-size: 16px;
+  }
+  #byusera{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 26px;
+    font-size: 15px;
+    box-sizing: inherit;
+    outline: none;
+    touch-action: manipulation;
+    color: #2D3954;
+    text-decoration: none;
+    background-color: transparent;
+  }

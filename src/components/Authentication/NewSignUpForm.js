@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../fullcss.css'
 import axios from 'axios'
 import {  useHistory } from "react-router-dom";
-function NewSignUpForm() {
+function NewSignUpForm({setIslogged,setloggeduser}) {
 	const [email, setEmail] = useState("")
 	const [isemailerror, setIsemailerror] = useState(false)
 	const [fullname, setFullname] = useState("")
@@ -74,9 +74,12 @@ function NewSignUpForm() {
 					if(response.data.success==1){
 						setSuccess(response.data.message)
 						if(role==2){
-							history.push('/sellerprofile')
+							setIslogged(true)
+							setloggeduser(response.data.user)
+							localStorage.setItem('data', JSON.stringify(response.data))
+							history.push('/sellerprofile/'+response.data.user.id)
 						}else{
-							history.push('/')
+							setSuccess(response.data.message)
 						}
 					}
 					

@@ -402,7 +402,7 @@ function AddNewProperty() {
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
                                     <TestPlaces setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
-                                    <h3 style={{ marginLeft: '47%', marginTop:'3%' }}>Or</h3>
+                                    <h3 style={{ marginLeft: '47%', marginTop:'1.5%' }}>Or</h3>
                                     <div id="getresbutton" onClick={() => getCurrentLocation()}>
                                         <a id="getrestext">Get Current Location</a>
                                     </div>

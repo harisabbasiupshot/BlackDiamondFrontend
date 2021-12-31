@@ -260,7 +260,7 @@ function PropertyPage() {
                     <Carousel>
                         {imagegallery.map((img, index) => (<div>
                             <img src={"http://127.0.0.1:8000" + img.path} />
-                            <p className="legend">Legend {index + 1}</p>
+                            <p className="legend">Property Ad Image {index + 1}</p>
                         </div>))}
 
 
