@@ -217,14 +217,15 @@ margin-bottom: 2rem;}
     outline: none;
     font-size: 13px;
     font-weight: 500;
-    min-width: 100px;
+    min-width: 80px;
     max-height: 40px;
     padding: 4px 12px;
     float: right;
     border-radius: 2px;
-    background: #3ebd43;
+    background: #00ba74;
     margin-left: 2%;
     color: #fff;
+    text-align: center;
 
 }
 #editbuttonPP{
@@ -241,9 +242,9 @@ margin-bottom: 2rem;}
     padding: 4px 12px;
     cursor: pointer;
     position: absolute;
-    left: 168%;
+    left: 169%;
     border-radius: 2px;
-    background: #3ebd43;
+    background: #00ba74;
     color: rgb(250, 249, 249);
 
 }
@@ -283,7 +284,7 @@ margin-bottom: 2rem;}
     position: absolute;
     left: 175%;
     border-radius: 2px;
-    background: #3ebd43;
+    background: #00ba74;
     color: #fff;
 
 }

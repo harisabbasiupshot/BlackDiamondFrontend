@@ -269,12 +269,12 @@ function EditProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-12">
-                                                <label>Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
+                                                <label id="loginsignlabels">Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
                                                 <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} value={propertytitle} class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Status</label>
+                                                <label id="loginsignlabels">Status</label>
                                                 <select id="status" onChange={e => setStatus(e.target.value)} value={status} class="form-control">
                                                     <option value="For Rent">For Rent</option>
                                                     <option value="For Sale">For Sale</option>
@@ -282,36 +282,36 @@ function EditProperty() {
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Property Type</label>
+                                                <label id="loginsignlabels">Property Type</label>
                                                 <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} class="form-control">
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
                                                 </select>
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Price</label>
+                                                <label id="loginsignlabels">Price</label>
                                                 <input type="text" onChange={(e) => { setPrice(e.target.value) }} value={price} class="form-control" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Area</label>
+                                                <label id="loginsignlabels">Area</label>
                                                 <input onChange={(e) => { setArea(e.target.value) }} value={area} type="number" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Property</label><br />
+                                                <label id="loginsignlabels">Property</label><br />
                                                 <input style={{ marginLeft: '2%' }} checked={OCorVC == "Occupied"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
-                                                <label style={{ marginLeft: '2%' }} for="age1">Occupied</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="age1">Occupied</label>
                                                 <input style={{ marginLeft: '2%' }} checked={OCorVC == "Vacant"} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant" />
-                                                <label style={{ marginLeft: '2%' }} for="age2">Vacant</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="age2">Vacant</label>
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Rental Property</label><br />
+                                                <label id="loginsignlabels">Rental Property</label><br />
                                                 <input style={{ marginLeft: '2%' }} checked={rentalproperty == "Yes"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP1" name="Rental" value="Yes" />
-                                                <label style={{ marginLeft: '2%' }} for="RP1" >Yes</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="RP1" >Yes</label>
                                                 <input style={{ marginLeft: '2%' }} checked={rentalproperty == "No"} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP2" name="Rental" value="No" />
-                                                <label style={{ marginLeft: '2%' }} for="RP2">No</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="RP2">No</label>
                                             </div>
 
                                         </div>
@@ -353,22 +353,22 @@ function EditProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-6">
-                                                <label>Address</label>
+                                                <label id="loginsignlabels">Address</label>
                                                 <input onChange={e => setAddress(e.target.value)} value={address} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>City</label>
+                                                <label id="loginsignlabels">City</label>
                                                 <input onChange={e => setCity(e.target.value)} value={city} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>State</label>
+                                                <label id="loginsignlabels">State</label>
                                                 <input onChange={e => setState(e.target.value)} value={state} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Zip Code</label>
+                                                <label id="loginsignlabels">Zip Code</label>
                                                 <input onChange={e => setZipcode(e.target.value)} value={zipcode} type="text" class="form-control" />
                                             </div>
 
@@ -389,7 +389,7 @@ function EditProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-12">
-                                                <label>Description</label>
+                                                <label id="loginsignlabels">Description</label>
                                                 <textarea class="form-control h-120" value={description} onChange={(e) => { setDescription(e.target.value) }}></textarea>
                                             </div>
 

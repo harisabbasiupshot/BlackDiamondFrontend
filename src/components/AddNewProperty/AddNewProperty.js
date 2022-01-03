@@ -289,12 +289,12 @@ function AddNewProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-12">
-                                                <label>Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
+                                                <label id="loginsignlabels">Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
                                                 <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null }} class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Status</label>
+                                                <label id="loginsignlabels">Status</label>
                                                 <select id="status" onChange={e => setStatus(e.target.value)} value={status} style={{ border: isemailerror ? '1px solid red' : null }} class="form-control">
                                                     <option value="For Rent">For Rent</option>
                                                     <option value="For Sale">For Sale</option>
@@ -302,7 +302,7 @@ function AddNewProperty() {
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Property Type</label>
+                                                <label id="loginsignlabels">Property Type</label>
                                                 <select id="ptypes" onChange={e => onPTChange(e.target.value)} value={propertytype} style={{ border: isemailerror ? '1px solid red' : null }} class="form-control">
 
                                                     {propertytypes.map(item => <option value={item.id}>{item.name}</option>)}
@@ -310,31 +310,31 @@ function AddNewProperty() {
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Price</label>
+                                                <label id="loginsignlabels">Price</label>
                                                 <input type="text" onChange={(e) => { setPrice(e.target.value) }} style={{ border: ispriceerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Area</label>
+                                                <label id="loginsignlabels">Area Covered</label>
                                                 <input onChange={(e) => { setArea(e.target.value) }} style={{ border: isareaerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="SQ. FT" />
                                             </div>
 
                                             <div class="form-group col-md-6" >
-                                                <label>Property</label><br />
+                                                <label id="loginsignlabels">Property</label><br />
                                                 <div >
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age1" name="age" value="Occupied" />
-                                                <label style={{ marginLeft: '2%' }} for="age1">Occupied</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="age1">Occupied</label>
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setOCorVC(e.target.value) }} type="radio" id="age2" name="age" value="Vacant" />
-                                                <label style={{ marginLeft: '2%' }} for="age2">Vacant</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="age2">Vacant</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Rental Property</label><br />
+                                                <label id="loginsignlabels">Rental Property</label><br />
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP1" name="Rental" value="Yes" />
-                                                <label style={{ marginLeft: '2%' }} for="RP1" >Yes</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels"  for="RP1" >Yes</label>
                                                 <input style={{ marginLeft: '2%' }} onChange={(e) => { setRentalproperty(e.target.value) }} type="radio" id="RP2" name="Rental" value="No" />
-                                                <label style={{ marginLeft: '2%' }} for="RP2">No</label>
+                                                <label style={{ marginLeft: '2%' }} id="loginsignlabels" for="RP2">No</label>
                                             </div>
 
                                         </div>
@@ -377,22 +377,22 @@ function AddNewProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-6">
-                                                <label>Address</label>
+                                                <label id="loginsignlabels">Address</label>
                                                 <input onChange={e => setAddress(e.target.value)} style={{ border: isaddresserror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>City</label>
+                                                <label id="loginsignlabels">City</label>
                                                 <input onChange={e => setCity(e.target.value)} style={{ border: iscityerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>State</label>
+                                                <label id="loginsignlabels">State</label>
                                                 <input onChange={e => setState(e.target.value)} style={{ border: isstateerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label>Zip Code</label>
+                                                <label id="loginsignlabels">Zip Code</label>
                                                 <input onChange={e => setZipcode(e.target.value)} style={{ border: iszipcodeerror ? '1px solid red' : null }} type="text" class="form-control" />
                                             </div>
 
@@ -403,9 +403,10 @@ function AddNewProperty() {
                                     <h3>Add Location</h3>
                                     <TestPlaces setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
                                     <h3 style={{ marginLeft: '47%', marginTop:'1.5%' }}>Or</h3>
-                                    <div id="getresbutton" onClick={() => getCurrentLocation()}>
+                                    {/* <div id="getresbutton" onClick={() => getCurrentLocation()}>
                                         <a id="getrestext">Get Current Location</a>
-                                    </div>
+                                    </div> */}
+                                    <button class="btn btn-theme" id="getcurrentlocbutton" onClick={() => getCurrentLocation()} >Get Current Location</button>
                                     {defaultlatitude&&defaultlongitude?<div class="submit-section" style={{marginTop:'1%'}}>
                                         <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
                                     </div>:null}
@@ -414,12 +415,12 @@ function AddNewProperty() {
 
 
                                 <div class="form-submit" style={{marginTop:'20px'}}>
-                                    <h3>Detailed Information</h3>
+                                    <h3 >Detailed Information</h3>
                                     <div class="submit-section">
                                         <div class="form-row">
 
                                             <div class="form-group col-md-12">
-                                                <label>Description</label>
+                                                <label id="loginsignlabels">Description</label>
                                                 <textarea class="form-control h-120" style={{ border: isdescriptionerror ? '1px solid red' : null }} onChange={(e) => { setDescription(e.target.value) }}></textarea>
                                             </div>
 

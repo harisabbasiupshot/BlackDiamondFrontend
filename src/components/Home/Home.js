@@ -38,6 +38,7 @@ function Home() {
             </div>
             <WannaSignUp />
         </section>
+        
     )
 }
 

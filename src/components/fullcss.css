@@ -104,6 +104,36 @@
   background: #00ba74;
   border-color: #00ba74;
 }
+#getcurrentlocbutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  font-size: 1rem;
+  line-height: 1.25;
+  padding: 12px 25px;
+  cursor: pointer;
+  color: #fff;
+  transition: all ease .4s;
+  border: 1px solid #fd5332;
+  border-radius: 4px;
+  margin-left: 40%;
+  margin-bottom: 5px;
+  background: #00ba74;
+  border-color: #00ba74;
+}
 #newloginbutton{
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -585,6 +615,21 @@
   border-radius: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  
+}
+#loginsignlabels{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  color: #72809D;
+  font-size: 16px;
+  font-family: 'Muli',sans-serif;
+  font-weight: 400;
+  box-sizing: inherit;
+  outline: none;
+  touch-action: manipulation;
+  display: inline-block;
+  margin-bottom: .5rem;
 }
 
 .dropdown-content a {
@@ -593,6 +638,7 @@
   text-decoration: none;
   display: block;
 }
+
 
 
 .dropdown:hover .dropdown-content {display: block;}
@@ -855,6 +901,7 @@
   display: block;
   padding: 50px 0;
   background: #00ba74;
+  margin-top: 6%;
 }
 #resultsdiv{
   background: #2D3954;
@@ -863,4 +910,44 @@
 }
 #buttoncolor{
   color:'#495057'
+}
+#totalpropertyfind{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  color: #2D3954;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 21px;
+  flex: 1;
+  margin: 0;
+}
+#totalproprtyfindno{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 26px;
+  font-size: 21px;
+  box-sizing: inherit;
+  outline: none;
+  color: #00ba74;
+}
+#findnewpropertyh5{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: inherit;
+  outline: none;
+  margin-top: 0;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  color: #2D3954;
+  line-height: 22px;
+  font-size: 18px;
+  margin-bottom: 1rem!important;
 }

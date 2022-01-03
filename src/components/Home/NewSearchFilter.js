@@ -94,7 +94,7 @@ function NewSearchFilter({ setAllproperties }) {
 
                 <div class="sidebar-widgets">
 
-                    <h5 class="mb-3">Find New Property</h5>
+                    <h5 class="mb-3" id="findnewpropertyh5">Find New Property</h5>
 
                     <div class="form-group">
                         <div class="input-with-icon">

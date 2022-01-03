@@ -29,7 +29,7 @@ function NewAllProperties({allproperties,setAllproperties}) {
 							
 								<div class="col-lg-12 col-md-12">
 									<div class="filter-fl">
-										<h4>Total Property Find is: <span class="theme-cl">{allproperties.length}</span></h4>
+										<h4 id="totalpropertyfind">Total Property Find is: <span id="totalproprtyfindno">{allproperties.length}</span></h4>
 										<div class="btn-group custom-drop">
 											<button type="button" class="btn btn-order-by-filt light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												Short By<i class="ti-angle-down"></i>

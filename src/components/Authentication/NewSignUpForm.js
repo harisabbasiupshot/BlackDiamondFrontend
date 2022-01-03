@@ -155,7 +155,7 @@ function NewSignUpForm({setIslogged,setloggeduser}) {
 								<div class="form-group">
 									<div class="input-with-icon">
 										<select class="form-control" onChange={(e) => handleSelectChange(e.target.value)}>
-											<option>Seller</option>
+											<option >Seller</option>
 											<option>Buyer</option>
 										</select>
 										<i class="ti-briefcase"></i>

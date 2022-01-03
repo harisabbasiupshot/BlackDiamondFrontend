@@ -29,6 +29,7 @@ function PropertyPage() {
     const [zipcode, setZipcode] = useState("")
     const [sellerinfo, setSellerinfo] = useState("")
     const [bidtitle, setBidtitle] = useState("")
+    const [bidprice, setBidprice] = useState("")
     const [biddescription, setBiddescription] = useState("")
     const [error, setError] = useState(null);
     const [show, setShow] = useState(false);
@@ -187,14 +188,16 @@ function PropertyPage() {
                     <Modal.Title style={{ textAlign: 'center' }}>Bid Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
-                    <label>Bid Title<a href="#" class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
+                    <label>Bid Title<a  class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
                     <input type="text" class="form-control" onChange={e => setBidtitle(e.target.value)} />
-                    <label>Offer Description<a href="#" class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
+                    <label>Bid Price<a  class="tip-topdata" data-tip="Bid Price<"><i class="ti-help"></i></a></label>
+                    <input type="number" class="form-control" onChange={e => setBidprice(e.target.value)} />
+                    <label>Offer Description<a  class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
                     <textarea type="text" class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose} style={{ backgroundColor: "#9c0306" }} >Cancel</Button>
-                    <Button variant="primary" style={{ backgroundColor: "#3ebd43" }} onClick={handleBidSubmit}>Bid</Button>
+                    <Button style={{ backgroundColor: "#00ba74" }} onClick={handleBidSubmit}>Bid</Button>
                 </Modal.Footer>
             </Modal>
             <Modal show={show2} onHide={handleClose2} dialogClassName={"CSRModal"} animation={false}>
@@ -202,7 +205,7 @@ function PropertyPage() {
                     <Modal.Title style={{ textAlign: 'center' }}>Are You Sure You Want To Delete?</Modal.Title>
                 </Modal.Header>
                 <Modal.Footer>
-                    <Button variant="primary" style={{ backgroundColor: "#3ebd43" }} onClick={handleClose2} >No</Button>
+                    <Button variant="primary" style={{ backgroundColor: "#00ba74" }} onClick={handleClose2} >No</Button>
                     <Button variant="secondary"  style={{ backgroundColor: "#9c0306" }} onClick={deleteProperty}>Yes</Button>
 
                 </Modal.Footer>

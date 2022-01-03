@@ -103,7 +103,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
                     <form>
 
                         <div class="form-group">
-                            <label>Email</label>
+                            <label id="loginsignlabels">Email</label>
                             <div class="input-with-icon">
                                 <input type="text" onChange={(e)=>{setEmail(e.target.value)}} style={{border:isemailerror?'1px solid red':null}} class="form-control" placeholder="Email" />
                                 <i class="ti-user"></i>
@@ -111,7 +111,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
                         </div>
 
                         <div class="form-group">
-                            <label>Password</label>
+                            <label id="loginsignlabels">Password</label>
                             <div class="input-with-icon">
                                 <input type="password" onChange={(e)=>{setPassword(e.target.value)}} style={{border:ispassworderror?'1px solid red':null}} class="form-control" placeholder="*******" />
                                 <i class="ti-unlock"></i>
