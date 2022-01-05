@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 
-import { ArrowRight, PersonFill, ArrowUpRightSquareFill, UnlockFill, BoxArrowInRight, Search, } from 'react-bootstrap-icons';
+import { ArrowRight, PersonFill, ArrowUpRightSquareFill, UnlockFill, BoxArrowInRight, Search, HouseFill } from 'react-bootstrap-icons';
 import './fullcss.css'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -125,7 +125,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 </div>
                             </div> : null}
                             <li class="add-listing theme-bg" href="/addnewproperty" style={{ marginLeft: loggeduser ?'16px':'3px' }} id="navaddbutton">
-                                <a href="/addnewproperty">Add Property</a>
+                                <a href="/addnewproperty"><i class="fas fa-home"></i> Add Property</a>
                             </li>
                         </ul>
                     </div>

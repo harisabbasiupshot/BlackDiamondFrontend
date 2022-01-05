@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 function SellerProperties({ sellerprofile }) {
 	const [currentpage, setCurrentpage] = useState(1)
 	const [sellerproperties, setSellerproperties] = useState([])
@@ -30,7 +32,7 @@ function SellerProperties({ sellerprofile }) {
 
 				<div class="col-lg-12 col-md-12">
 					<div class="filter-fl">
-						<h4>Total Property Find is: <span class="theme-cl">{sellerproperties.length}</span></h4>
+						<h4 id="totalpropertyfind">Total <FontAwesomeIcon style={{  }} icon={faHome} size="s" /> Property Find is: <span id="totalproprtyfindno">{sellerproperties.length}</span></h4>
 						<div class="btn-group custom-drop">
 							<button type="button" class="btn btn-order-by-filt light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Short By<i class="ti-angle-down"></i>
@@ -84,7 +86,7 @@ function SellerProperties({ sellerprofile }) {
 										<h4 id="listingprizedivtext">${property.price}</h4>
 									</div>
 									<div id="listingdetailsbutton">
-										<a href={"/property/" + property.id} id="listingdetailsbuttontext">More Info</a>
+										<a href={"/property/" + property.id} id="listingdetailsbuttontext"><i class="fas fa-info-circle"></i> More Info</a>
 									</div>
 								</div>
 

@@ -41,11 +41,12 @@ function BuyerProfile() {
 									<span id="statusbuttonPP2">Buyer</span>
 
 								</div>
-								<span id="sellerprofilelocation"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+								{/* <span id="sellerprofilelocation"><i class="lni-map-marker"></i>3599 Huntz Lane</span> */}
 							</div>
 
 
 							<ul class="agency-detail-info">
+								<li><i class="lni-map-marker"></i>3599 Huntz Lane</li>
 								<li><i class="lni-phone-handset"></i>{buyerprofile.phone}</li>
 								<li><i class="lni-envelope"></i><a href="#">{buyerprofile.email}</a></li>
 							</ul>

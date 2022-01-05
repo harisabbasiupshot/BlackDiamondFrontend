@@ -35,7 +35,7 @@ function TestPlaces({ setDefaultlatitude, setDefaultlongitude }) {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
-              style={{ backgroundColor: '#00ba74', borderRadius: '12px', border: 'none', padding: '1%', color: 'white' }}
+              style={{ backgroundColor: '#00ba74', borderRadius: '3px', border: 'none', padding: '1%', color: 'white', height:'45px', textAlign:'center' }}
               id="searchcityid"
               {...getInputProps({
                 placeholder: 'Search Your City ...',

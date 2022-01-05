@@ -290,7 +290,7 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-12">
                                                 <label id="loginsignlabels">Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
-                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null }} class="form-control" />
+                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null, width:'49.8%' }} class="form-control" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -402,7 +402,7 @@ function AddNewProperty() {
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
                                     <TestPlaces setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
-                                    <h3 style={{ marginLeft: '47%', marginTop:'1.5%' }}>Or</h3>
+                                    <h4 style={{ marginLeft: '47%', marginTop:'1.5%' }}>Or</h4>
                                     {/* <div id="getresbutton" onClick={() => getCurrentLocation()}>
                                         <a id="getrestext">Get Current Location</a>
                                     </div> */}

@@ -8,6 +8,8 @@ import WrappedMap2 from './WrappedMap2';
 import { UserContext } from '../UserContext'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import PropertyBids from './PropertyBids';
+import { ArrowRight, PersonFill, ArrowUpRightSquareFill, UnlockFill, BoxArrowInRight, Search, HouseFill } from 'react-bootstrap-icons';
 function PropertyPage() {
     let history = useHistory();
     let params = useParams();
@@ -37,7 +39,8 @@ function PropertyPage() {
     const [show2, setShow2] = useState(false);
     const handleClose2 = () => setShow2(false);
     const handleShow = () => setShow(true);
-
+    const [success, setSuccess] = useState(null);
+    const [bids, setBids] = useState([]);
     const editProperty = () => {
         history.push('/editproperty/' + params.id)
     }
@@ -46,6 +49,44 @@ function PropertyPage() {
         console.log("Bid Description: ", biddescription)
         console.log("User_id: ", valuecontext.loggeduser.id)
         console.log("Property_id:: ", params.id)
+        console.log("Start Price: ", bidprice)
+        var data2 = {
+            user_id: valuecontext.loggeduser.id,
+            property_id: params.id,
+            title: bidtitle,
+            offer_description: biddescription,
+            start_price: bidprice
+        }
+        console.log(data2)
+        const URL = "http://127.0.0.1:8000/api/add-bid";
+
+        console.log("my data in front bs", data2)
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+
+            }
+        }
+
+        axios(options).then(response => {
+            console.log(response.data)
+            setSuccess(response.data.message)
+            setShow2(false)
+        })
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
 
     }
     const deleteProperty = () => {
@@ -166,11 +207,12 @@ function PropertyPage() {
             })
         axios.get('http://127.0.0.1:8000/api/get-bids', {
             params: {
-                id: 25
+                id: params.id
             }
         })
             .then(response => {
                 console.log("Bids On Property", response.data)
+                setBids(response.data.prperty.bids)
             })
             .catch(function (error) {
                 console.log(error);
@@ -188,17 +230,19 @@ function PropertyPage() {
                     <Modal.Title style={{ textAlign: 'center' }}>Bid Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
-                    <label>Bid Title<a  class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Title<a  class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
                     <input type="text" class="form-control" onChange={e => setBidtitle(e.target.value)} />
-                    <label>Bid Price<a  class="tip-topdata" data-tip="Bid Price<"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Price<a  class="tip-topdata" data-tip="Bid Price<"><i class="ti-help"></i></a></label>
                     <input type="number" class="form-control" onChange={e => setBidprice(e.target.value)} />
-                    <label>Offer Description<a  class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Offer Description<a  class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
                     <textarea type="text" class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose} style={{ backgroundColor: "#9c0306" }} >Cancel</Button>
                     <Button style={{ backgroundColor: "#00ba74" }} onClick={handleBidSubmit}>Bid</Button>
+                    
                 </Modal.Footer>
+                {success ? <div class="alert alert-success" role="alert">{success}</div> : null}
             </Modal>
             <Modal show={show2} onHide={handleClose2} dialogClassName={"CSRModal"} animation={false}>
                 <Modal.Header closeButton>
@@ -217,8 +261,8 @@ function PropertyPage() {
                         <div style={{ display: 'flex' }}>
                             <h4 id="property-name">{propertytitle}</h4>
                             <span id="statusbuttonPP" >{status}</span>
-                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="editbuttonPP" href={"/editproperty/" + params.id} onClick={editProperty}>Edit</span> : null : null}
-                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="deletebuttonPP" onClick={showdeleteProperty}>Delete</span> : null : null}
+                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="editbuttonPP" href={"/editproperty/" + params.id} onClick={editProperty}><i class="fas fa-edit"></i> Edit</span> : null : null}
+                            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ? <span id="deletebuttonPP" onClick={showdeleteProperty}><i class="fas fa-trash-alt"> </i> Delete</span> : null : null}
                             {valuecontext.loggeduser ? valuecontext.loggeduser.role == 3 ? <span id="showbidbuttonPP" onClick={showbidProperty}>BidProperty</span> : null : null}
                         </div>
                         <p id="property-desc">{description}</p>
@@ -259,11 +303,10 @@ function PropertyPage() {
                 <div id="block-header">
                     <h4 id="block-title">Gallery</h4>
                 </div>
-                {imagegallery && <div id="block-body">
-                    <Carousel>
+                {imagegallery && <div id="block-bodygallary">
+                    <Carousel swipeable="true" >
                         {imagegallery.map((img, index) => (<div>
                             <img src={"http://127.0.0.1:8000" + img.path} />
-                            <p className="legend">Property Ad Image {index + 1}</p>
                         </div>))}
 
 
@@ -301,8 +344,12 @@ function PropertyPage() {
                     </div>
                     <div class="clearfix"></div>
                 </div>
-
+                
             </div>
+            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ?<PropertyBids bids={bids}/>:null:null}
+            
+            
+
 
         </div>
     )

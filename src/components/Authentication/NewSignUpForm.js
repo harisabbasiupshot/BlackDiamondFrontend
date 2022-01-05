@@ -106,7 +106,7 @@ function NewSignUpForm({setIslogged,setloggeduser}) {
 	}
 	return (
 		<div style={{ width: '80%', marginLeft: '10%' }} >
-			<div class="modal-body">
+			<div class="modal-body" style={{marginTop:'1.5%'}}>
 				<h4 class="modal-header-title">Sign Up</h4>
 				<div class="login-form">
 					<form>
@@ -181,7 +181,7 @@ function NewSignUpForm({setIslogged,setloggeduser}) {
 				</div>
 				
 				<div class="text-center">
-					<p class="mt-5"><i class="ti-user mr-1"></i>Already Have An Account? <a href="/sign-in" class="link">Go For LogIn</a></p>
+					<p class="mt-5" style={{color:'#2D3954', fontWeight:'500'}}><i class="ti-user mr-1"></i>Already Have An Account? <a href="/sign-in" class="link" style={{color:'#2D3954', fontWeight:'500'}}>Go For LogIn</a></p>
 				</div>
 			</div>
 		</div>

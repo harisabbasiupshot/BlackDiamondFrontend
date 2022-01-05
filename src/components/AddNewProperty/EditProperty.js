@@ -294,7 +294,7 @@ function EditProperty() {
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                                <label id="loginsignlabels">Area</label>
+                                                <label id="loginsignlabels">Area Covered</label>
                                                 <input onChange={(e) => { setArea(e.target.value) }} value={area} type="number" class="form-control" />
                                             </div>
 

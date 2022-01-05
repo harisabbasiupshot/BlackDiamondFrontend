@@ -3,8 +3,10 @@ import '../fullcss.css'
 import axios from 'axios'
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 const { createSliderWithTooltip } = Slider;
-const Range = createSliderWithTooltip(Slider.Range); 
+const Range = createSliderWithTooltip(Slider.Range);
 
 function NewSearchFilter({ setAllproperties }) {
     const [searchParam, setSearchParam] = useState("")
@@ -33,7 +35,7 @@ function NewSearchFilter({ setAllproperties }) {
                 searchParam: searchParam,
                 propert_type_id: propert_type_id,
                 start_price: minimum,
-                end_price: maximum 
+                end_price: maximum
             }
         })
             .then(response => {
@@ -111,9 +113,9 @@ function NewSearchFilter({ setAllproperties }) {
                         </div>
                     </div>
 
-                    
-                    <div class="form-group" style={{ marginTop: '50px',  }}>
-                        <div class="input-with-icon" style={{width:'90%',marginLeft:'20px'}}>
+
+                    <div class="form-group" style={{ marginTop: '50px', }}>
+                        <div class="input-with-icon" style={{ width: '90%', marginLeft: '20px' }}>
                             <Range
                                 marks={{
                                     0: `$ 0`,
@@ -142,6 +144,9 @@ function NewSearchFilter({ setAllproperties }) {
                             <i class="ti-briefcase"></i>
                         </div>
                     </div>
+                   
+                        
+
 
 
 
@@ -153,7 +158,7 @@ function NewSearchFilter({ setAllproperties }) {
 
 
 
-                        <button id="findnewhomebutton" onClick={getResults}>Find Properties</button>
+                        <button id="findnewpropssearchbutton" onClick={getResults}><FontAwesomeIcon style={{ paddingRight: '3px' }} icon={faSearch}  />Find Properties</button>
 
                     </div>
 
