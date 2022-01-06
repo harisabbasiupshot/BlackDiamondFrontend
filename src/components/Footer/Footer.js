@@ -12,9 +12,9 @@ function Footer() {
 								<div class="footer-widget">
 									<img src="assets/img/logo-light.png" class="img-footer" alt=""/>
 									<div class="footer-add">
-										<p>Collins Street West, Victoria 8007, Australia.</p>
+										<p>Collins Street West, Victoria 8007, United States.</p>
 										<p>+1 246-345-0695</p>
-										<p>info@example.com</p>
+										<p>blackdiamond@example.com</p>
 									</div>
 									
 								</div>
@@ -69,7 +69,7 @@ function Footer() {
 						<div class="row align-items-center">
 							
 							<div class="col-lg-6 col-md-6">
-								<p class="mb-0">© 2019 Rikada. Designd By <a href="https://themezhub.com/">Themez Hub</a> All Rights Reserved</p>
+								<p class="mb-0">© 2022 Black-Diamond. </p>
 							</div>
 							
 							<div class="col-lg-6 col-md-6 text-right">

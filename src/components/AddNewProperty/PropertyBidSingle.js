@@ -28,7 +28,7 @@ function PropertyBidSingle({bid}) {
                 <div class="title">
                     <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
                     <span id="bidofferdiscription"> {bid.offer_description} </span>
-                    <span class="table-property-price">$420,000</span>
+                    <span class="table-property-price">Starts from: $420,000</span>
                     <h5 id="byuserh4"><a id="byusera">By {biduser?biduser.name:""}</a></h5>
                 </div>
             </td>

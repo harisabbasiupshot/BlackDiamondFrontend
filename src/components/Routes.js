@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter as Router, Switch, Route, Link, withRouter, useHistory, Redirect } from "react-router-dom";
 
-import NabBar2 from './NavBar2'
 import Settings from './Settings'
 import { UserContext } from './UserContext'
 import ForgetPassword from './Authentication/ForgetPassword';
@@ -99,8 +98,7 @@ function Routes(props) {
 
         {/* <NabBar2 loggeduser={loggeduser} islogged={islogged}  logout={logout}/> */}
         <Navbar loggeduser={loggeduser} islogged={islogged} logout={logout} />
-        <br></br>
-        <br></br>
+        
 
         <Switch>
           <UserContext.Provider value={value12}>

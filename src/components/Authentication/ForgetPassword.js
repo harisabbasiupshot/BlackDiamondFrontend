@@ -99,7 +99,7 @@ function ForgetPassword({}) {
                     <form>
 
                         <div class="form-group">
-                            <label>Email</label>
+                            <label id="loginsignlabels">Email</label>
                             <div class="input-with-icon">
                                 <input type="text" onChange={(e)=>{setEmail(e.target.value)}} class="form-control" placeholder="Email" />
                                 <i class="ti-user"></i>

@@ -593,7 +593,7 @@
   height: 200px;
   margin: 32px 0 32px 32px;
   border-radius: 3px;
-  width: 240px;
+  width: 220px;
 }
 #submitpropertytitle{
   -webkit-text-size-adjust: 100%;
@@ -1726,6 +1726,7 @@
   padding: 0;
   text-align: left;
   min-width: 100%;
+  
 }
 #conciergeBlock-textWrapper{
   -webkit-text-size-adjust: 100%;
@@ -2564,7 +2565,7 @@
   position: relative;
   z-index: 30;
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: .078125rem;
   text-shadow: 0 0 5px rgba(0,0,0,.75);
   margin-left: 0;
@@ -4163,4 +4164,14 @@
 }
 #backgroundoverlay{
   background-color: rgba(0,0,0,.50);
+  padding: 30px;
+  width: 60%;
+}
+.banner-settings{
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+.height-53{
+  height: 53px;
 }

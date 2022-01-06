@@ -1,6 +1,22 @@
-import React from 'react'
-
+import React,{useState,useEffect} from 'react'
+import axios from 'axios'
 function BestAgent() {
+	const [ceomessage, setCeomessage] = useState("My Profile")
+	useEffect(() => {
+        
+        axios.get('http://127.0.0.1:8000/api/ceo-message')
+            .then(response => {
+                console.log("CEO MESSAGE: ", response.data.message)
+				setCeomessage(response.data.message)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+
+
+
+    }, []);
   return (
     <section class="image-cover" style={{background:"url(assets/img/tour-6.jpg) no-repeat"}} data-overlay="8">
 				<div class="container">

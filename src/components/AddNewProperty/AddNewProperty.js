@@ -289,8 +289,8 @@ function AddNewProperty() {
                                         <div class="form-row">
 
                                             <div class="form-group col-md-12">
-                                                <label id="loginsignlabels">Property Title<a href="#" class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></a></label>
-                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null, width:'49.8%' }} class="form-control" />
+                                                <label id="loginsignlabels">Property Title</label>
+                                                <input type="text" onChange={(e) => { setPropertytitle(e.target.value) }} style={{ border: ispropertytitleerror ? '1px solid red' : null }} class="form-control height-53" />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -311,12 +311,12 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">Price</label>
-                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} style={{ border: ispriceerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="USD" />
+                                                <input type="text" onChange={(e) => { setPrice(e.target.value) }} style={{ border: ispriceerror ? '1px solid red' : null }} type="number" class="form-control height-53" placeholder="USD" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">Area Covered</label>
-                                                <input onChange={(e) => { setArea(e.target.value) }} style={{ border: isareaerror ? '1px solid red' : null }} type="number" class="form-control" placeholder="SQ. FT" />
+                                                <input onChange={(e) => { setArea(e.target.value) }} style={{ border: isareaerror ? '1px solid red' : null }} type="number" class="form-control height-53" placeholder="SQ. FT" />
                                             </div>
 
                                             <div class="form-group col-md-6" >
@@ -378,22 +378,22 @@ function AddNewProperty() {
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">Address</label>
-                                                <input onChange={e => setAddress(e.target.value)} style={{ border: isaddresserror ? '1px solid red' : null }} type="text" class="form-control" />
+                                                <input onChange={e => setAddress(e.target.value)} style={{ border: isaddresserror ? '1px solid red' : null }} type="text" class="form-control height-53" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">City</label>
-                                                <input onChange={e => setCity(e.target.value)} style={{ border: iscityerror ? '1px solid red' : null }} type="text" class="form-control" />
+                                                <input onChange={e => setCity(e.target.value)} style={{ border: iscityerror ? '1px solid red' : null }} type="text" class="form-control height-53" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">State</label>
-                                                <input onChange={e => setState(e.target.value)} style={{ border: isstateerror ? '1px solid red' : null }} type="text" class="form-control" />
+                                                <input onChange={e => setState(e.target.value)} style={{ border: isstateerror ? '1px solid red' : null }} type="text" class="form-control height-53" />
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label id="loginsignlabels">Zip Code</label>
-                                                <input onChange={e => setZipcode(e.target.value)} style={{ border: iszipcodeerror ? '1px solid red' : null }} type="text" class="form-control" />
+                                                <input onChange={e => setZipcode(e.target.value)} style={{ border: iszipcodeerror ? '1px solid red' : null }} type="text" class="form-control height-53" />
                                             </div>
 
                                         </div>

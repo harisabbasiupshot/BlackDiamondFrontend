@@ -30,7 +30,7 @@ function Navbar({ loggeduser, islogged, logout }) {
     }, [])
 
     return (
-        <div class="header header-light head-shadow header-fixed">
+        <div class="header header-light head-shadow">
             <div class="container">
                 <nav id="navigation" class="navigation navigation-landscape">
                     <div class="nav-header">

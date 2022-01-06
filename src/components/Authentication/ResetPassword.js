@@ -117,14 +117,14 @@ function ResetPassword(props) {
                     <form>
 
                         <div class="form-group">
-                            <label>Verification Code</label>
+                            <label id="loginsignlabels">Verification Code</label>
                             <div class="input-with-icon">
                                 <input type="text" onChange={(e)=>{setVerificationcode(e.target.value)}} class="form-control" placeholder="Enter Verification Code" />
                                 <i class="ti-user"></i>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>New Password</label>
+                            <label id="loginsignlabels">New Password</label>
                             <div class="input-with-icon">
                                 <input type="password" onChange={(e)=>{setPass(e.target.value)}} class="form-control" placeholder="*******" />
                                 <i class="ti-unlock"></i>

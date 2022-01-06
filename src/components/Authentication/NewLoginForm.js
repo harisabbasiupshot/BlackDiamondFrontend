@@ -128,7 +128,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
                 </div>
                 
                 <div class="text-center">
-                    <p class="mt-5" ><a href="/forgetpassword" class="link" style={{color:'#2D3954', fontWeight:'500'}}>Forgot password?  </a><a href="/sign-up" class="link" style={{color:'#2D3954', fontWeight:'500'}}>Don't Have An Account? Sign Up</a></p>
+                    <p class="mt-5" ><a href="/forgetpassword" class="link" style={{color:'#2D3954', fontWeight:'500'}}>Forgot password?  </a><br/><a href="/sign-up" class="link" style={{color:'#2D3954', fontWeight:'500'}}>Don't Have An Account? Sign Up</a></p>
                 </div>
             </div>
         </div>

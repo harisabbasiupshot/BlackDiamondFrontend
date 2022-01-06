@@ -13,7 +13,7 @@
     width: 100%;
     min-height: 1px;
     padding-right: 15px;
-    margin-left: 10%;
+    margin-left: 9.5%;
     padding-left: 15px;
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
@@ -257,10 +257,11 @@ margin-bottom: 2rem;}
     padding: 4px 12px;
     cursor: pointer;
     position: absolute;
-    left: 166%;
+    left: 164%;
     border-radius: 2px;
     background: #00ba74;
     color: rgb(250, 249, 249);
+    min-height: 40px;
 
 }
 #deletebuttonPP{
@@ -278,10 +279,11 @@ margin-bottom: 2rem;}
     width: fit-content;
     cursor: pointer;
     position: absolute;
-    left: 180%;
+    left: 178%;
     border-radius: 2px;
     background: #8b0101;
     color: #fff;
+    min-height: 40px;
 
 }
 #showbidbuttonPP{
@@ -302,6 +304,7 @@ margin-bottom: 2rem;}
     border-radius: 2px;
     background: #00ba74;
     color: #fff;
+    min-height: 42px;
 
 }
 .CSRModal{

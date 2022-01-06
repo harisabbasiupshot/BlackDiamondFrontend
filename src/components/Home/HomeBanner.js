@@ -9,7 +9,7 @@ function HomeBanner() {
         history.push('/newproperties');
     }
     return (
-        <section class="bg-light">
+        <section class="bg-light banner-settings" >
             <div id="maindivvblockk">
                 <div id="conciergeBlock-textWrapper">
                     <div id="backgroundoverlay">

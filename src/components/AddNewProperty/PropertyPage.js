@@ -224,17 +224,17 @@ function PropertyPage() {
     }, []);
 
     return (
-        <div>
+        <div >
             <Modal show={show} onHide={handleClose} dialogClassName={"CSRModal"} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title style={{ textAlign: 'center' }}>Bid Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
-                    <label id="bidslabels">Bid Title<a  class="tip-topdata" data-tip="Bid Title<"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Title<a  class="tip-topdata" data-tip="Enter Your Bid Title Please"><i class="ti-help"></i></a></label>
                     <input type="text" class="form-control" onChange={e => setBidtitle(e.target.value)} />
-                    <label id="bidslabels">Bid Price<a  class="tip-topdata" data-tip="Bid Price<"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Price<a  class="tip-topdata" data-tip="Enter Your Bid Price Please"><i class="ti-help"></i></a></label>
                     <input type="number" class="form-control" onChange={e => setBidprice(e.target.value)} />
-                    <label id="bidslabels">Offer Description<a  class="tip-topdata" data-tip="Offer Description"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Offer Description<a  class="tip-topdata" data-tip="Enter Your Offer Description Please"><i class="ti-help"></i></a></label>
                     <textarea type="text" class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>
@@ -257,7 +257,7 @@ function PropertyPage() {
             <div id="mainpropertydiv">
                 <div id="single-advance-caption">
 
-                    <div id="property-name-info" style={{ marginLeft: '-9px' }}>
+                    <div id="property-name-info" >
                         <div style={{ display: 'flex' }}>
                             <h4 id="property-name">{propertytitle}</h4>
                             <span id="statusbuttonPP" >{status}</span>
@@ -268,14 +268,25 @@ function PropertyPage() {
                         <p id="property-desc">{description}</p>
                     </div>
 
-                    <div id="property-price-info">
-                        <h4 id="property-price">${price}</h4>
-                        <p id="property-sqa">{area}sqft</p>
-                    </div>
+                    
 
 
 
                 </div>
+
+            </div>
+            <div id="block-wrap">
+
+                <div id="block-header">
+                    <h4 id="block-title">Price & Area Covered</h4>
+                </div>
+                <div id="block-body">
+                        <h4 id="property-price">${price}</h4>
+                        <p id="property-sqa"><i class="fas fa-chart-area"></i> {area}sqft</p>
+
+                </div>
+
+
 
             </div>
             <div id="block-wrap">
@@ -288,7 +299,7 @@ function PropertyPage() {
                     <ul id="dw-proprty-info">
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Rental Property</strong>{rentalproperty}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">OCorVC</strong>{OCorVC}</li>
-                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area</strong>{area} SQ. FT</li>
+                        <li id="propertyliitem"><strong id="propertyliitemstrong">Area Covered</strong>{area} SQ. FT</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Type</strong>{propertytype}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">Price</strong>${price}</li>
                         <li id="propertyliitem"><strong id="propertyliitemstrong">City</strong>{city}</li>

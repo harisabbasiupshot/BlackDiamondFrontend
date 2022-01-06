@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, withRouter, useHistory } from "react-router-dom";
 import '../fullcss.css'
 import axios from 'axios'
+import BuyerBids from './BuyerBids';
 
 function BuyerProfile() {
 	let params = useParams();
@@ -25,7 +26,6 @@ function BuyerProfile() {
 	}, [])
 
 	return (
-		<div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12">
 					<div class="agency agency-list shadow-0 mt-2 mb-2">
@@ -62,12 +62,12 @@ function BuyerProfile() {
 					</div>
 
 				</div>
+				<BuyerBids />
 
 
 			</div>
 
 
-		</div>
 	)
 }
 
