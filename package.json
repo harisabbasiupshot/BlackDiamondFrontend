@@ -29,6 +29,7 @@
     "react-facebook-login": "^4.1.1",
     "react-font": "^1.2.1",
     "react-google-login": "^5.2.2",
+    "react-image-gallery": "^1.2.7",
     "react-mui-multiselect-dropdown": "^1.0.2",
     "react-places-autocomplete": "^7.3.0",
     "react-player": "^2.9.0",

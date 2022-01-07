@@ -10,7 +10,7 @@ import { useParams, withRouter, useHistory } from "react-router-dom";
 import TestPlaces from './TestPlaces'
 
 function AddNewProperty() {
-    let history = useHistory();
+    let history = useHistory(); 
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
     const [imagegallery2, setImagegallery2] = useState([])
