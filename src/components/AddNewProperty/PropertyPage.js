@@ -12,7 +12,7 @@ import PropertyBids from './PropertyBids';
 import { ArrowRight, PersonFill, ArrowUpRightSquareFill, UnlockFill, BoxArrowInRight, Search, HouseFill } from 'react-bootstrap-icons';
 function PropertyPage() {
     let history = useHistory();
-    let params = useParams();
+    let params = useParams(); 
     const valuecontext = useContext(UserContext);
     const [imagegallery, setImagegallery] = useState([])
     const [imagegallery2, setImagegallery2] = useState([])

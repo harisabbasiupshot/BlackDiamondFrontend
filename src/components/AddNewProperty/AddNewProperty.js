@@ -16,7 +16,7 @@ function AddNewProperty() {
     const [imagegallery2, setImagegallery2] = useState([])
     const [propertytitle, setPropertytitle] = useState("")
     const [status, setStatus] = useState("For Rent")
-    const [propertytype, setPropertytype] = useState(1)
+    const [propertytype, setPropertytype] = useState(1) 
     const [propertytypes, setPropertytypes] = useState([])
     const [price, setPrice] = useState("")
     const [area, setArea] = useState("")
