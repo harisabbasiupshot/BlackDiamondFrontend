@@ -9,7 +9,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
     const [error, setError] = useState(null);
     const [ispassworderror, setIspassworderror] = useState(false)
     const [success, setSuccess] = useState(null);
-    let history = useHistory();
+    let history = useHistory(); 
     function validateEmail(email) 
     {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

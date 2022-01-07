@@ -65,7 +65,10 @@
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   display: inline-block;
-  background: #00ba74;
+  background: linear-gradient(to right, #2D3954 50%, #00ba74 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
   text-align: center;
   float: none;
   border: none!important;
@@ -73,6 +76,9 @@
   top: 15px;
   position: relative;
   height: 50px;
+}
+#navaddbutton:hover {
+  background-position: left bottom;
 }
 #submitpropertybutton{
   -webkit-text-size-adjust: 100%;
@@ -303,13 +309,19 @@
   padding: 12px 25px;
   cursor: pointer;
   color: rgb(255, 255, 255);
-  transition: all ease .4s;
   border: 1px solid #fd5332;
   border-radius: 4px;
   margin-right: 4px;
   margin-bottom: 5px;
-  background: #00ba74;
+  background: linear-gradient(to right, #2D3954 50%, #00ba74 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
   border-color: #00ba74;
+}
+#findnewhomebutton:hover {
+  background-position: left bottom;
+  border-color: white;
 }
 #findnewpropssearchbutton{
   -webkit-text-size-adjust: 100%;
@@ -339,8 +351,16 @@
   border-radius: 4px;
   margin-right: 4px;
   margin-bottom: 5px;
-  background: #00ba74;
+  background: linear-gradient(to right, #2D3954 50%, #00ba74 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
   border-color: #00ba74;
+}
+#findnewpropssearchbutton:hover{
+  background-position: left bottom;
+  border-color: white;
+
 }
 #listingdetailsbutton{
   -webkit-text-size-adjust: 100%;
@@ -370,6 +390,10 @@
   border-radius: 2px;
   background: #00ba74;
   border-color: #00ba74;
+}
+#listingdetailsbuttontext:hover{
+  background: #2D3954;
+  
 }
 #listingprizediv{
   -webkit-text-size-adjust: 100%;
@@ -938,8 +962,8 @@
   
   padding: '5px'
 }
-#buttoncolor{
-  color:'#495057'
+#buttoncolor a{
+  color:#63717e
 }
 #totalpropertyfind{
   -webkit-text-size-adjust: 100%;

@@ -17,6 +17,7 @@ function Navbar({ loggeduser, islogged, logout }) {
     useEffect(() => {
         console.log("params", params)
         console.log("params true wale", window.location.pathname)
+        
         if (window.location.pathname == "/") {
             setActivenavbar("Home")
         } else if (window.location.pathname == "/sign-in") {
@@ -107,7 +108,7 @@ function Navbar({ loggeduser, islogged, logout }) {
 
                             
 
-                            {!islogged ? <li href="/sign-up" class={activenavbar == "Sign Up" ? "active" : null}><a href="/sign-up"  >Sign Up</a></li> : null}
+                            
 
                         </ul>
 

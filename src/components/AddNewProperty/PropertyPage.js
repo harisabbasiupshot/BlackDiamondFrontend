@@ -230,11 +230,11 @@ function PropertyPage() {
                     <Modal.Title style={{ textAlign: 'center' }}>Bid Property</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ alignItems: 'center' }}>
-                    <label id="bidslabels">Bid Title<a  class="tip-topdata" data-tip="Enter Your Bid Title Please"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Title<a  class="tip-topdata" data-tip="Enter Your Bid Title Please"><i class="ti-help coloriconnew"></i></a></label>
                     <input type="text" class="form-control" onChange={e => setBidtitle(e.target.value)} />
-                    <label id="bidslabels">Bid Price<a  class="tip-topdata" data-tip="Enter Your Bid Price Please"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Bid Price<a  class="tip-topdata" data-tip="Enter Your Bid Price Please"><i class="ti-help coloriconnew"></i></a></label>
                     <input type="number" class="form-control" onChange={e => setBidprice(e.target.value)} />
-                    <label id="bidslabels">Offer Description<a  class="tip-topdata" data-tip="Enter Your Offer Description Please"><i class="ti-help"></i></a></label>
+                    <label id="bidslabels">Offer Description<a  class="tip-topdata" data-tip="Enter Your Offer Description Please"><i class="ti-help coloriconnew"></i></a></label>
                     <textarea type="text" class="form-control" onChange={e => setBiddescription(e.target.value)} />
                 </Modal.Body>
                 <Modal.Footer>

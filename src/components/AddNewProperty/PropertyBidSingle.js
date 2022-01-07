@@ -10,7 +10,7 @@ function PropertyBidSingle({bid}) {
         console.log("We will reject bid of id: ", id)
     }
     useEffect(() => {
-        console.log(bid.user_id)
+        console.log(bid)
         axios.get('http://127.0.0.1:8000/api/get-user?id='+bid.user_id)
             .then(response => {
                 console.log("Bid User Info", response.data)
@@ -28,13 +28,13 @@ function PropertyBidSingle({bid}) {
                 <div class="title">
                     <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
                     <span id="bidofferdiscription"> {bid.offer_description} </span>
-                    <span class="table-property-price">Starts from: $420,000</span>
+                    <span class="table-property-price">Starts from: ${bid.start_price}</span>
                     <h5 id="byuserh4"><a id="byusera">By {biduser?biduser.name:""}</a></h5>
                 </div>
             </td>
             <td class="action">
-                <a class="delete" onClick={() => OnReject(4)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Delete</a>
-                <a class="delete" onClick={() => OnAccept(4)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>
+                <a class="delete" onClick={() => OnReject(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Delete</a>
+                <a class="delete" onClick={() => OnAccept(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>
             </td>
 
         </tr>

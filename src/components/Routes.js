@@ -132,10 +132,11 @@ function Routes(props) {
             <Route path="/settings" >
               <Settings />
             </Route>
+            <Footer />
 
           </UserContext.Provider>
         </Switch>
-        <Footer />
+        
 
 
       </>

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios'
 function BestAgent() {
 	const [ceomessage, setCeomessage] = useState("My Profile")
@@ -44,7 +44,7 @@ function BestAgent() {
 									</div>
 								</div><div class="item slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style={{width: "770px"}}>
 									<div class="smart-tes-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+										<p>{ceomessage}</p>
 									</div>
 									
 									<div class="smart-tes-author">

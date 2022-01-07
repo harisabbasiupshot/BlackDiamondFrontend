@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import NewAllProperties from './NewAllProperties';
 import NewSearchFilter from './NewSearchFilter';
 import WannaSignUp from './WannaSignUp';
@@ -6,6 +6,7 @@ import '../fullcss.css'
 
 function Home() {
     const [allproperties, setAllproperties] = useState([])
+    
     
     return (
         <section >

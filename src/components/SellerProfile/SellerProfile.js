@@ -8,6 +8,7 @@ import axios from 'axios'
 import SellerBids from './SellerBids';
 function SellerProfile() {
 	let params = useParams();
+	let history = useHistory();
 	const valuecontext = useContext(UserContext);
 	const [show, setShow] = useState("My Profile")
 	const [sellerprofile, setSellerprofile] = useState([])
@@ -15,6 +16,14 @@ function SellerProfile() {
 		axios.get('http://127.0.0.1:8000/api/get-user?id=' + id)
 			.then(response => {
 				console.log("Seller Info", response.data)
+				if(response.data.user){
+					
+				}else{
+					history.push('/')
+				}
+				if(response.data.user.role!=2){
+					history.push('/')
+				}
 				setSellerprofile(response.data.user)
 			})
 			.catch(function (error) {
@@ -36,7 +45,7 @@ function SellerProfile() {
 	}
 	return (
 		<section>
-			<div class="container-fluid">
+			<div class="container-fluid marginmanaged">
 				<div class="row">
 					<div class="col-lg-3 col-md-4">
 						<div class="dashboard-navbar">

@@ -108,7 +108,7 @@ function NewSearchFilter({ setAllproperties }) {
                     <div class="form-group">
                         <div class="input-with-icon">
                             {/* <input type="text" class="form-control" placeholder="Location" /> */}
-                            <button class="form-control" id="buttoncolor" style={{ border: latitude && longitude ? '1px solid #00ba74' : null, textAlign: "left" }} onClick={getUserLocation}>Get My Location</button>
+                            <button class="form-control" id="buttoncolor"  style={{ border: latitude && longitude ? '1px solid #00ba74' : null, textAlign: "left" }} onClick={getUserLocation}><a>Get My Location</a></button>
                             <i class="ti-location-pin"></i>
                         </div>
                     </div>

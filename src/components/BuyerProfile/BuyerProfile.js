@@ -6,11 +6,20 @@ import BuyerBids from './BuyerBids';
 
 function BuyerProfile() {
 	let params = useParams();
+	let history = useHistory();
 	const [buyerprofile, setBuyerprofile] = useState("")
 	const getProfile=(id)=>{
 		axios.get('http://127.0.0.1:8000/api/get-user?id='+id)
             .then(response => {
                 console.log("Buyer Info", response.data)
+				if(response.data.user){
+					
+				}else{
+					history.push('/')
+				}
+				if(response.data.user.role!=3){
+					history.push('/')
+				}
 				setBuyerprofile(response.data.user)
             })
             .catch(function (error) {

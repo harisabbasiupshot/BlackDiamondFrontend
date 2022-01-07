@@ -56,6 +56,9 @@
     list-style: none;
     padding: 8px 0;
   }
+  #dashboardoption:hover {
+    color:#00ba74;
+  }
   #myaccountseller{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
@@ -149,6 +152,7 @@
     margin-top: 2px;
     display: block;
     font-size: 16px;
+    padding-top: 3px;
   }
   #byusera{
     -webkit-text-size-adjust: 100%;
@@ -171,4 +175,7 @@
     width: 80%;
     margin-left: 10%;
 
+  }
+  .marginmanaged{
+    margin-top: -5%;
   }
