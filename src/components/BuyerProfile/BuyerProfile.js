@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams, withRouter, useHistory } from "react-router-dom";
+import { UserContext } from '../UserContext'
 import '../fullcss.css'
 import axios from 'axios'
 import BuyerBids from './BuyerBids';
@@ -7,7 +8,13 @@ import BuyerBids from './BuyerBids';
 function BuyerProfile() {
 	let params = useParams();
 	let history = useHistory();
+	const valuecontext = useContext(UserContext);
 	const [buyerprofile, setBuyerprofile] = useState("")
+	const showSubBidPage=()=>{
+		history.push('/subscribebid')
+
+	}
+	
 	const getProfile=(id)=>{
 		axios.get('http://127.0.0.1:8000/api/get-user?id='+id)
             .then(response => {
@@ -28,6 +35,7 @@ function BuyerProfile() {
             })
 
 	}
+	
 	useEffect(() => {
 		console.log("Buyer info id: ", params.id)
 		getProfile(params.id)
@@ -67,9 +75,12 @@ function BuyerProfile() {
 							<div id="dashboard-stat-content"><h4 id="dashboard-stat-iconh4">10</h4> <span id="dashboard-stat-iconspan">Bids Remaining</span></div>
 							<div id="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
 						</div>
-
+						
 					</div>
-
+					{valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(buyerprofile.id) ? <span id="subscribebidsbutton" onClick={showSubBidPage} > Subscribe To Bids</span> : null : null}
+					<div class="positionpaydiv">
+					
+					</div>	
 				</div>
 				<BuyerBids />
 

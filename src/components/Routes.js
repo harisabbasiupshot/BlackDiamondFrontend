@@ -21,6 +21,7 @@ import Navbar from './Navbar';
 import BestAgent from './Home/BestAgent';
 import WannaSignUp from './Home/WannaSignUp';
 import HomeBanner from './Home/HomeBanner';
+import SubscribeBids from './BuyerProfile/SubscribeBids';
 /* 
 import Template from './Template';
 import OurServices from './OurServices';
@@ -129,6 +130,7 @@ function Routes(props) {
             <Route path="/buyerprofile/:id" component={BuyerProfile} />
             <Route path="/forgetpassword" component={ForgetPassword} />
             <Route path="/reset" component={ResetPassword} />
+            <Route path="/subscribebid" component={SubscribeBids} />
             <Route path="/settings" >
               <Settings />
             </Route>

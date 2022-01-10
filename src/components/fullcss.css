@@ -4199,3 +4199,28 @@
 .height-53{
   height: 53px;
 }
+#subscribebidsbutton{
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: capitalize;
+  font-family: 'Poppins',sans-serif;
+  line-height: 36px;
+  box-sizing: inherit;
+  outline: none;
+  font-size: 13px;
+  font-weight: 500;
+  height: 20%;
+  width: fit-content;
+  padding: 4px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  background: #00ba74;
+  position: relative;
+  left: 80%;
+  color: rgb(250, 249, 249);
+  min-height: 40px;
+
+}
+.positionpaydiv{
+  margin-left: 80.7%;
+}
