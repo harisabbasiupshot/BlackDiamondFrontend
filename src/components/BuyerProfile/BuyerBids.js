@@ -1,12 +1,32 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import '../SellerProfile/SellerProfile.css'
-const OnAccept = (id) => {
-    console.log("We will accept bid of id: ",id)
-}
-const OnReject = (id) => {
-    console.log("We will reject bid of id: ",id)
-}
-function BuyerBids() {
+import axios from 'axios'
+import { UserContext } from '../UserContext'
+function BuyerBids({id,buyerprofile}) {
+    const [bids, setBids] = useState(null);
+    const valuecontext = useContext(UserContext);
+    
+    const OnCancel = (id) => {
+        console.log("We will calcel bid of id: ",id)
+    }
+    const getBuyerBids=(id)=>{
+        axios.get('http://127.0.0.1:8000/api/get-buyer-bids?id='+id)
+            .then(response => {
+                console.log("Bids Of Buyer..", response.data.buyer_bids)
+                setBids(response.data.buyer_bids)
+                //setBids(response.data.prperty.bids)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+    
+    }
+    useEffect(() => {
+        getBuyerBids(id)
+    
+    }, [])
+
     return (<div id="propertypagebidsdiv">
 
 
@@ -20,69 +40,31 @@ function BuyerBids() {
 
             <tbody>
                 <tr>
-                    <th><i class="fa fa-file-text"></i> Bids</th>
+                    <th><i class="fa fa-file-text"></i> {bids?bids.length==0?"No":bids.length:null} Bids</th>
                     <th></th>
                 </tr>
-
-                <tr>
+                {bids&&bids.map(bid => (
+                    <tr>
                     <td class="property-container">
                         <div class="title">
-                            <h4 id="bidtitleh4"><a id="bidtitlea">Serene Uptown</a></h4>
-                            <span id="bidofferdiscription">6 Bishop Ave. Perkasie, PA </span>
-                            <span class="table-property-price">Starts from: $900s</span>
-                            <h5 id="byuserh4"><a id="byusera">By Hassam Khan</a></h5>
+                            <h4 id="bidtitleh4"><a id="bidtitlea">{bid.title}</a></h4>
+                            <span id="bidofferdiscription">{bid.offer_description} </span>
+                            <span class="table-property-price">Starts from: ${bid.start_price}</span>
+                            <h5 id="byuserh4"><a id="byusera">By {buyerprofile?buyerprofile.name:null}</a></h5>
                         </div>
                     </td>
-                    <td class="action">
-                        <a class="delete" onClick={() => OnReject(1)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Cancel</a>
+                    {valuecontext.loggeduser ? valuecontext.loggeduser.id==buyerprofile.id?<td class="action">
+                        <a class="delete" onClick={() => OnCancel(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Cancel</a>
                         
-                    </td>
+                    </td>:null:null}
                 </tr>
 
-                <tr>
-                    <td class="property-container">
-                        <div class="title">
-                            <h4 id="bidtitleh4"><a id="bidtitlea">Oak Tree Villas</a></h4>
-                            <span id="bidofferdiscription">71 Lower River Dr. Bronx, NY</span>
-                            <span class="table-property-price">Starts from: $535,000</span>
-                            <h5 id="byuserh4"><a id="byusera">By Hassam Khan</a></h5>
-                        </div>
-                    </td>
-                    <td class="action">
-                        <a class="delete" onClick={() => OnReject(2)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Cancel</a>
-                        
-                    </td>
-                </tr>
+                ))}
+                
 
-                <tr>
-                    <td class="property-container">
-                        <div class="title">
-                            <h4 id="bidtitleh4"><a id="bidtitlea">Selway Villas</a></h4>
-                            <span id="bidofferdiscription">33 William St. Northbrook, IL </span>
-                            <span class="table-property-price">Starts from: $420,000</span>
-                            <h5 id="byuserh4"><a id="byusera">By Hassam Khan</a></h5>
-                        </div>
-                    </td>
-                    <td class="action">
-                        <a class="delete" onClick={() => OnReject(3)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Cancel</a>
-                        
-                    </td>
-                </tr>
+               
 
-                <tr>
-                    <td class="property-container">
-                        <div class="title">
-                            <h4 id="bidtitleh4"><a href="#" id="bidtitlea">Town Manchester</a></h4>
-                            <span id="bidofferdiscription"> 7843 Durham Avenue, MD  </span>
-                            <span class="table-property-price">Starts from: $420,000</span>
-                            <h5 id="byuserh4"><a id="byusera">By Hassam Khan</a></h5>
-                        </div>
-                    </td>
-                    <td class="action">
-                        <a class="delete" onClick={() => OnReject(4)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Cancel</a>
-                    </td>
-
-                </tr>
+                
                 {/* {bids.map(bid => (
                     <PropertyBidSingle bid={bid} />
                                    

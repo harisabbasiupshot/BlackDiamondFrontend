@@ -357,7 +357,7 @@ function PropertyPage() {
                 </div>
                 
             </div>
-            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ?<PropertyBids bids={bids}/>:null:null}
+            {valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(sellerinfo.id) ?<PropertyBids bids={bids} setBids={setBids}/>:null:null}
             
             
 

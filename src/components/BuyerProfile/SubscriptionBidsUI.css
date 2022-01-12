@@ -93,7 +93,7 @@
     background-clip: padding-box;
     background-origin: padding-box;
     text-align: center;
-    background-color: transparent !important;
+    background-color: white;
     opacity: 1;
     border-radius: 10px !important;
     color: #111111;

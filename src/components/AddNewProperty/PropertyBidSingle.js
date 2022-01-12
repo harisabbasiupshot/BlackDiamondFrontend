@@ -1,20 +1,118 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
-function PropertyBidSingle({bid}) {
+import '../fullcss.css'
+function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, setShow3,getNewBids }) {
     const [biduser, setBiduser] = useState(null);
     const OnAccept = (id) => {
         console.log("We will accept bid of id: ", id)
+        const data2 = {
+            id: id,
+            status: 1
+        }
+        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+
+            }
+        }
+
+        axios(options).then(response => {
+            console.log(response.data)
+            setAcceptedbidid(id)
+            setShow2(true)
+
+
+        })
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
+    }
+    const onCalcel = (id) => {
+        console.log("We will reject bid of id: ", id)
+        const data2 = {
+            id: id,
+            status: 2
+        }
+        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+
+            }
+        }
+
+        axios(options).then(response => {
+            console.log(response.data)
+            getNewBids()
+
+        })
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
     }
     const OnReject = (id) => {
         console.log("We will reject bid of id: ", id)
+        const data2 = {
+            id: id,
+            status: 3
+        }
+        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+
+            }
+        }
+
+        axios(options).then(response => {
+            console.log(response.data)
+            setShow3(true)
+
+        })
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
     }
     useEffect(() => {
         console.log(bid)
-        axios.get('http://127.0.0.1:8000/api/get-user?id='+bid.user_id)
+        axios.get('http://127.0.0.1:8000/api/get-user?id=' + bid.user_id)
             .then(response => {
                 console.log("Bid User Info", response.data)
-				setBiduser(response.data.user)
+                setBiduser(response.data.user)
             })
             .catch(function (error) {
                 console.log(error);
@@ -29,15 +127,20 @@ function PropertyBidSingle({bid}) {
                     <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
                     <span id="bidofferdiscription"> {bid.offer_description} </span>
                     <span class="table-property-price">Starts from: ${bid.start_price}</span>
-                    <h5 id="byuserh4"><a id="byusera">By {biduser?biduser.name:""}</a></h5>
+                    <h5 id="byuserh4"><a id="byusera">By {biduser ? biduser.name : ""}</a></h5>
                 </div>
             </td>
             <td class="action">
-                <a class="delete" onClick={() => OnReject(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Delete</a>
-                <a class="delete" onClick={() => OnAccept(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>
+                {bid.status == 3? <span id="statusbuttonPP" style={{backgroundColor:'#8b0101'}} >Rejected</span> : bid.status == 1?null:<a class="delete forhover" onClick={() => OnReject(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Reject</a>}
+                {bid.status == 1? <span id="statusbuttonPP" >Accepted</span> : bid.status == 3?null:<a class="delete" onClick={() => OnAccept(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>}
             </td>
 
+
+
+
+
         </tr>
+
     )
 }
 

@@ -40,6 +40,7 @@
     "react-simple-chatbot": "^0.6.1",
     "react-stripe-checkout": "^2.6.3",
     "react-three-renderer": "^3.2.4",
+    "react-toastify": "^8.1.0",
     "reactjs-media": "^1.5.1",
     "socket.io-client": "^4.2.0",
     "styled-components": "^5.3.0",

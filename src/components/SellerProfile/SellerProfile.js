@@ -51,7 +51,7 @@ function SellerProfile() {
 						<div class="dashboard-navbar">
 
 							<div class="d-user-avater">
-								<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="img-fluid avater" alt="" />
+								<img src={sellerprofile.profile_image?"http://127.0.0.1:8000"+sellerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}class="img-fluid avater" alt="" />
 								<h4 id="sellernme">{sellerprofile.name}</h4>
 								<span id="statusbuttonSP">Seller</span><br />
 								<span id="sellerlocationdetail">Canada USA</span><br />

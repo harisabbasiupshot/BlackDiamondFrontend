@@ -10,11 +10,53 @@ function BuyerProfile() {
 	let history = useHistory();
 	const valuecontext = useContext(UserContext);
 	const [buyerprofile, setBuyerprofile] = useState("")
+	const [remainingbids, setRemainingbids] = useState("")
+	
 	const showSubBidPage=()=>{
 		history.push('/subscribebid')
 
 	}
-	
+	const getRemainingBids=(id)=>{
+		const data2={
+			user_id:id
+		}
+		const URL = "http://127.0.0.1:8000/api/get-remaining-bids";
+
+        console.log("my data in front bs", data2)
+        const options = {
+            method: 'post',
+            url: URL,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            data: data2,
+
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
+
+            }
+        }
+
+        axios(options).then(response => {
+            console.log("remaining bids",response.data.remaining_bids)
+			
+			if(response.data.remaining_bids==null){
+				setRemainingbids(10)
+			}else{
+				setRemainingbids(response.data.remaining_bids.remaining_bids)
+			}
+            
+        })
+
+
+            .catch(error => {
+
+                console.log("Error is: ", error.response)
+            });
+
+	}
+
 	const getProfile=(id)=>{
 		axios.get('http://127.0.0.1:8000/api/get-user?id='+id)
             .then(response => {
@@ -35,10 +77,23 @@ function BuyerProfile() {
             })
 
 	}
-	
+	const getBuyerBids=(id)=>{
+		axios.get('http://127.0.0.1:8000/api/get-buyer-bids?id='+id)
+            .then(response => {
+                console.log("Bids Of Buyer", response.data.buyer_bids)
+                //setBids(response.data.prperty.bids)
+            })
+            .catch(function (error) {
+                console.log(error);
+                console.log("Aey te error hai bro")
+            })
+
+	}
 	useEffect(() => {
 		console.log("Buyer info id: ", params.id)
 		getProfile(params.id)
+		getRemainingBids(params.id)
+		getBuyerBids(params.id)
 
 	}, [])
 
@@ -48,7 +103,7 @@ function BuyerProfile() {
 					<div class="agency agency-list shadow-0 mt-2 mb-2">
 
 						<a href="agency-page.html" id="sellerprofileimgdiv">
-							<img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sellerprofileimg" alt="" />
+							<img src={buyerprofile.profile_image?"http://127.0.0.1:8000"+buyerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"} id="sellerprofileimg"  alt="" />
 						</a>
 
 						<div class="agency-content">
@@ -72,7 +127,7 @@ function BuyerProfile() {
 							<div class="clearfix"></div>
 						</div>
 						<div id="bidsremaining">
-							<div id="dashboard-stat-content"><h4 id="dashboard-stat-iconh4">10</h4> <span id="dashboard-stat-iconspan">Bids Remaining</span></div>
+							<div id="dashboard-stat-content"><h4 id="dashboard-stat-iconh4">{remainingbids?remainingbids:remainingbids}</h4> <span id="dashboard-stat-iconspan">Bids Remaining</span></div>
 							<div id="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
 						</div>
 						
@@ -82,7 +137,7 @@ function BuyerProfile() {
 					
 					</div>	
 				</div>
-				<BuyerBids />
+				<BuyerBids id={params.id} buyerprofile={buyerprofile} />
 
 
 			</div>
