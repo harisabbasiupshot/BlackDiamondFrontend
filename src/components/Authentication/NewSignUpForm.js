@@ -12,7 +12,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 	const [phone, setPhone] = useState("")
 	const [isphoneerror, setIsphoneerror] = useState(false)
 	const [role, setRole] = useState(2)
-	const [image, setImage] = useState(2)
+	const [image, setImage] = useState(null)
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
 	let history = useHistory();
@@ -28,14 +28,14 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 			}
 		})
 	}
-	const onIMGChangeHandler=async(event)=>{
+	const onIMGChangeHandler = async (event) => {
 
-        console.log(event.target.files[0])
+		console.log(event.target.files[0])
 		const base64 = await convertBase64(event.target.files[0])
-        console.log(base64)
+		console.log(base64)
 		setImage(base64)
-    
-    }
+
+	}
 	const handleSelectChange = (value) => {
 		console.log(value)
 		if (value == "Buyer") {
@@ -199,7 +199,10 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 							</div> */}
 
 						</div>
-
+						{image&&<div class="form-group" style={{paddingLeft:'28%'}}>
+							<img src={image} width={500} height={333} style={{border:'4px solid #2D3954'}}></img>
+							<div class="alert alert-success managewidth" role="alert">Image Uploaded</div>
+						</div>}
 						<div class="form-group">
 							<button type="submit" onClick={e => { e.preventDefault(); handleChange() }} class="btn btn-md full-width pop-login" id="newsignupbutton">Sign Up</button>
 						</div>

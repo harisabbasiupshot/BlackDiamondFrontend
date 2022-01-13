@@ -221,6 +221,28 @@ margin-bottom: 2rem;}
     background-color: transparent;
     color: #2b4db9;
 }
+#statusbuttonPP3{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-transform: capitalize;
+    font-family: 'Poppins',sans-serif;
+    line-height: 36px;
+    box-sizing: inherit;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 80px;
+    max-height: 40px;
+    padding: 4px 12px;
+    float: right;
+    border-radius: 2px;
+    background: #00ba74;
+    margin-left: 2%;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+
+}
 #statusbuttonPP{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;

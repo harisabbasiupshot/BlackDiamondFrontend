@@ -4305,3 +4305,11 @@
 	outline: 1px dotted #000;
 	outline: -webkit-focus-ring-color auto 5px;
 }
+.managewidth{
+  width:500px ;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  color: white;
+    background-color: #00ba74;
+}

@@ -11,6 +11,7 @@ function BuyerProfile() {
 	const valuecontext = useContext(UserContext);
 	const [buyerprofile, setBuyerprofile] = useState("")
 	const [remainingbids, setRemainingbids] = useState("")
+	const [profileimage, setProfileimage] = useState(0)
 	
 	const showSubBidPage=()=>{
 		history.push('/subscribebid')
@@ -70,6 +71,7 @@ function BuyerProfile() {
 					history.push('/')
 				}
 				setBuyerprofile(response.data.user)
+				setProfileimage(response.data.user.profile_image)
             })
             .catch(function (error) {
                 console.log(error);
@@ -103,7 +105,7 @@ function BuyerProfile() {
 					<div class="agency agency-list shadow-0 mt-2 mb-2">
 
 						<a href="agency-page.html" id="sellerprofileimgdiv">
-							<img src={buyerprofile.profile_image?"http://127.0.0.1:8000"+buyerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"} id="sellerprofileimg"  alt="" />
+							{profileimage==0?null:<img src={buyerprofile.profile_image?"http://127.0.0.1:8000"+buyerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"} id="sellerprofileimg"  alt="" />}
 						</a>
 
 						<div class="agency-content">

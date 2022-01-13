@@ -72,7 +72,7 @@ function SellerProfile() {
 					</div>
 					{show == "My Profile" ? <SellerProfileInfo sellerprofile={sellerprofile} /> : null}
 					{show == "My Properties" ? <SellerProperties sellerprofile={sellerprofile} /> : null}
-					{show == "All Bids" ? <SellerBids /> : null}
+					{show == "All Bids" ? null : null}
 
 				</div>
 			</div>
