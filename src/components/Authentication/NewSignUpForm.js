@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../fullcss.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { useHistory } from "react-router-dom";
 function NewSignUpForm({ setIslogged, setloggeduser }) {
@@ -13,6 +15,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 	const [isphoneerror, setIsphoneerror] = useState(false)
 	const [role, setRole] = useState(2)
 	const [image, setImage] = useState(null)
+	const [showimg, setShowimg] = useState(null)
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
 	let history = useHistory();
@@ -32,8 +35,10 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 
 		console.log(event.target.files[0])
 		const base64 = await convertBase64(event.target.files[0])
-		console.log(base64)
+		//console.log(base64)
 		setImage(base64)
+		setShowimg(true)
+		
 
 	}
 	const handleSelectChange = (value) => {
@@ -53,6 +58,10 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return re.test(email);
 	}
+	const handleDelete = () => {
+		setShowimg(false)
+		setImage(null)
+    }
 	const handleChange = () => {
 		console.log("EMail in signup form", email)
 		const data = new FormData()
@@ -61,7 +70,10 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 		data.set("name", fullname);
 		data.set("role", role);
 		data.set("phone", phone);
-		data.set("image", image);
+		if(showimg){
+			data.set("image", image);
+		}
+		
 		if (fullname == "" || email == "" || phone == "" || password == "" || role == 0) {
 			if (email == "") {
 				setIsemailerror(true)
@@ -185,10 +197,18 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<div class="input-with-icon">
-										<input type="file" name="file" id="file" class="inputfile" onChange={onIMGChangeHandler} />
-										<label for="file" >Upload Profile Picture</label>
-									</div>
+
+								</div>
+							</div>
+							<div class="form-group centerilizeddiv">
+
+								<div class="input-with-icon">
+									<input type="file" name="file" id="file" class="inputfile" onChange={(e)=>onIMGChangeHandler(e)} onClick={(event)=> {
+    event.target.value = null
+  }} />
+									<label for="file" >Upload Profile Picture </label>
+
+
 								</div>
 							</div>
 							{/* <div class="col-lg-6 col-md-6" >
@@ -199,9 +219,13 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 							</div> */}
 
 						</div>
-						{image&&<div class="form-group" style={{paddingLeft:'28%'}}>
-							<img src={image} width={500} height={333} style={{border:'4px solid #2D3954'}}></img>
-							<div class="alert alert-success managewidth" role="alert">Image Uploaded</div>
+						{showimg && <div class="form-group" style={{ paddingLeft: '28%' }}>
+							<div class="input-with-icon">
+								<img src={image} width={500} height={333} style={{ border: '4px solid #2D3954' }}></img>
+								
+								<div class="alert alert-success managewidth" role="alert"><a class="imageuploadedfont">Image Uploaded </a>
+								<FontAwesomeIcon style={{ cursor: 'pointer', float:'right', marginTop:'1%' }} onClick={() => handleDelete()} icon={faTrashAlt} color="red" size="xs" /></div>
+							</div>
 						</div>}
 						<div class="form-group">
 							<button type="submit" onClick={e => { e.preventDefault(); handleChange() }} class="btn btn-md full-width pop-login" id="newsignupbutton">Sign Up</button>

@@ -118,9 +118,15 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 <a href="/sign-in" >
                                     <i class="fas fa-user-circle mr-1"></i>Signin</a>
                             </li> : null}
+                            
                             {loggeduser ? <div class="dropdown">
                                 <a href={loggeduser.role == 2 ? "/sellerprofile/" + loggeduser.id : "/buyerprofile/" + loggeduser.id} id="loggeduser">
-                                    <i class="fas fa-user-circle mr-1" ></i>{loggeduser ? loggeduser.name : "Logged User"}</a>
+                                <img
+                src={loggeduser.profile_image?"http://127.0.0.1:8000"+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                alt=""
+                height={30}
+                className="rounded-circle avatar-img z-depth-1-half"
+              /> {loggeduser ? loggeduser.name : "Logged User"}</a>
                                 <div class="dropdown-content">
                                     <a href="" onClick={logout} >Logout</a>
                                 </div>

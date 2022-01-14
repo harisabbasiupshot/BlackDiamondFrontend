@@ -41,8 +41,8 @@ function Footer() {
 								<div class="footer-widget">
 									<h4 class="widget-title">The Highlights</h4>
 									<ul class="footer-menu">
-										<li><a href="#">Houses</a></li>
-										<li><a href="#">Shop</a></li>
+										<li><a href="/newproperties">Houses</a></li>
+										<li><a href="/newproperties">Shop</a></li>
 									</ul>
 								</div>
 							</div>
@@ -67,7 +67,7 @@ function Footer() {
 											: null
 											: null}
 											{valuecontext.loggeduser ? valuecontext.loggeduser.role == 3 ? <li>
-											<a href={"/buyerprofile/" + valuecontext.loggeduser.id}>Subscribe To Bids</a></li>
+											<a href={"/subscribebid"}>Subscribe To Bids</a></li>
 											: null
 											: null}
 									</ul>

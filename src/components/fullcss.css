@@ -4287,16 +4287,19 @@
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #00ba74;
+  background: linear-gradient(to right, #2D3954 50%, #00ba74 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
   display: inline-block;
   padding: 10px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 25px;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-  background-color: #2D3954;
+  background-position: left bottom;
 }
 .inputfile + label {
 	cursor: pointer; /* "hand" cursor */
@@ -4312,4 +4315,17 @@
   border-bottom-left-radius: 5px;
   color: white;
     background-color: #00ba74;
+    
+}
+.centerilizeddiv{
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+.movebottom{
+  margin-top: 1%;
+}
+.imageuploadedfont{
+  font-size: 16px;
+    font-weight: 400;
 }
