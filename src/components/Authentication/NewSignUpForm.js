@@ -38,7 +38,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 		//console.log(base64)
 		setImage(base64)
 		setShowimg(true)
-		
+
 
 	}
 	const handleSelectChange = (value) => {
@@ -61,7 +61,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 	const handleDelete = () => {
 		setShowimg(false)
 		setImage(null)
-    }
+	}
 	const handleChange = () => {
 		console.log("EMail in signup form", email)
 		const data = new FormData()
@@ -70,10 +70,10 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 		data.set("name", fullname);
 		data.set("role", role);
 		data.set("phone", phone);
-		if(showimg){
+		if (showimg) {
 			data.set("image", image);
 		}
-		
+
 		if (fullname == "" || email == "" || phone == "" || password == "" || role == 0) {
 			if (email == "") {
 				setIsemailerror(true)
@@ -203,9 +203,9 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 							<div class="form-group centerilizeddiv">
 
 								<div class="input-with-icon">
-									<input type="file" name="file" id="file" class="inputfile" onChange={(e)=>onIMGChangeHandler(e)} onClick={(event)=> {
-    event.target.value = null
-  }} />
+									<input type="file" name="file" id="file" class="inputfile" onChange={(e) => onIMGChangeHandler(e)} onClick={(event) => {
+										event.target.value = null
+									}} />
 									<label for="file" >Upload Profile Picture </label>
 
 
@@ -219,12 +219,14 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 							</div> */}
 
 						</div>
-						{showimg && <div class="form-group" style={{ paddingLeft: '28%' }}>
-							<div class="input-with-icon">
-								<img src={image} width={500} height={333} style={{ border: '4px solid #2D3954' }}></img>
+						
+						{showimg &&<div class="sampleimagediv">
+							<div class="sampleimagedivteam">
+								<div class="team-front"> <img src={image} class="img-fluid"/>
+									<h3 class="imgteam"><i class="fas fa-check-double"></i>Image Uploaded Successfully</h3>
+									<button class="deleteimgggbuton" onClick={() => handleDelete()}><i class="fa fa-trash"></i> Delete</button>
+								</div>
 								
-								<div class="alert alert-success managewidth" role="alert"><a class="imageuploadedfont">Image Uploaded </a>
-								<FontAwesomeIcon style={{ cursor: 'pointer', float:'right', marginTop:'1%' }} onClick={() => handleDelete()} icon={faTrashAlt} color="red" size="xs" /></div>
 							</div>
 						</div>}
 						<div class="form-group">

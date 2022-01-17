@@ -125,6 +125,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                 src={loggeduser.profile_image?"http://127.0.0.1:8000"+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                 alt=""
                 height={30}
+                id="navuserimg"
                 className="rounded-circle avatar-img z-depth-1-half"
               /> {loggeduser ? loggeduser.name : "Logged User"}</a>
                                 <div class="dropdown-content">
