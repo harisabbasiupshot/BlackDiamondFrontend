@@ -118,21 +118,7 @@ function PropertyBids({ bids,setBids }) {
 
                         {bids.map(bid => (
                             <PropertyBidSingle bid={bid} setAcceptedbidid={setAcceptedbidid} acceptedbidid={acceptedbidid} setShow2={setShow2} setShow3={setShow3} getNewBids={getNewBids} />
-                            /* <tr>
-                            <td class="property-container">
-                                <div class="title">
-                                    <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
-                                    <span id="bidofferdiscription"> {bid.offer_description} </span>
-                                    <span class="table-property-price">$420,000</span>
-                                    <h5 id="byuserh4"><a id="byusera">By </a></h5>
-                                </div>
-                            </td>
-                            <td class="action">
-                                <a  class="delete" onClick={() => OnReject(4)} style={{cursor:'pointer'}}><i class="ti-close" ></i> Delete</a>
-                                <a  class="delete" onClick={() => OnAccept(4)} style={{cursor:'pointer'}}><i class="ti-check-box" ></i> Accept</a>
-                            </td>
                             
-                        </tr> */
 
 
 

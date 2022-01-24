@@ -94,10 +94,7 @@ function Routes(props) {
   return (<Router>
     <div id="main-wrapper">
       <>
-        {/* <NabBar2 credits={credits} type={type} islogged={islogged} setIsadmin={setIsadmin} isadmin={isadmin} user3={user3} user2={user2} logout={logout} userid={userid} />
-                <Navbar3 credits={credits} type={type} islogged={islogged} setIsadmin={setIsadmin} isadmin={isadmin} user3={user3} user2={user2} logout={logout} userid={userid} /> */}
-
-        {/* <NabBar2 loggeduser={loggeduser} islogged={islogged}  logout={logout}/> */}
+        
         <Navbar loggeduser={loggeduser} islogged={islogged} logout={logout} />
         
 

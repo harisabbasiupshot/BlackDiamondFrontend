@@ -38,11 +38,7 @@ function WrappedMap2({ lat, lng, id }) {
     const handleClick = (event) => {
         console.log(event.latLng.lat())
         console.log(event.latLng.lng())
-        /* setMarker({
-            lat:event.latLng.lat(),
-            lng:event.latLng.lng(),
-            time:new Date()
-        }) */
+        
 
     }
     return (

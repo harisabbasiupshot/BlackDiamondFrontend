@@ -74,24 +74,7 @@ function ForgetPassword({}) {
     return (
         
              
-            /* 
-                <div>
-            <form >
-                <h3>Retrieve Password Using Email</h3>
-
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" onChange={(e)=>{setEmail(e.target.value)}} className="form-control" placeholder="Enter email" />
-                </div>
-                <button type="submit" onClick={handleChange} className="btn btn-primary btn-block">Submit</button>
-                
-
-            </form>
-            {message? <div class="alert alert-success" role="alert">{message}</div> : null}
             
-            
-            
-            </div> */
             <div style={{width:'80%', marginLeft:'10%'}}>
             <div class="modal-body">
                 <h4 class="modal-header-title">Retrieve Password Using Email</h4>

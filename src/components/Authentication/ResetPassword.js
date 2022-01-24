@@ -75,41 +75,7 @@ function ResetPassword(props) {
         
              
             
-       /*  <div style={{width:'80%', marginLeft:'10%'}}>
-        <div class="modal-body">
-            <h4 class="modal-header-title">Log In</h4>
-            <div class="login-form">
-                <form>
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <div class="input-with-icon">
-                            <input type="text"  class="form-control" placeholder="Email" />
-                            <i class="ti-user"></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-                        <div class="input-with-icon">
-                            <input type="password" onChange={(e)=>{setPass(e.target.value)}} class="form-control" placeholder="*******" />
-                            <i class="ti-unlock"></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" onClick={e => {e.preventDefault();handleChange()}} id="newloginbutton" >Login</button>
-                    </div>
-
-                </form>
-                {message? <div class="alert alert-success" role="alert">{message}</div> : null}
-            </div>
-            
-            <div class="text-center">
-                <p class="mt-5"><a href="/forgetpassword" class="link">Forgot password?</a></p>
-            </div>
-        </div>
-    </div> */
+       
             <div style={{width:'80%', marginLeft:'10%'}}>
             <div class="modal-body">
                 <h4 class="modal-header-title">Reset Password</h4>

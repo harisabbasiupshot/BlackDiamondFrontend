@@ -64,7 +64,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 <div class="dropdown">
                                     <a href="/" id="loggeduser">
                                         {"Home"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
-                                    <div class="dropdown-content">
+                                    <div class="dropdown-content managedrop">
                                         <a href="" style={{borderBottom:'1px solid white'}} >Home Layout 1</a>
                                         <a href=""  >Home Layout 2</a>
                                     </div>
@@ -74,7 +74,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 <div class="dropdown">
                                     <a  id="loggeduser">
                                         {"Listings"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
-                                    <div class="dropdown-content">
+                                    <div class="dropdown-content managedrop">
                                         <a href="" style={{borderBottom:'1px solid white'}} >List Layout</a>
                                         <a href=""  >Grid Layout</a>
                                     </div>
@@ -85,7 +85,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 <div class="dropdown">
                                     <a  id="loggeduser">
                                         {"Features"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
-                                    <div class="dropdown-content">
+                                    <div class="dropdown-content managedrop">
                                         <a href="" style={{borderBottom:'1px solid white'}} >My Account</a>
                                         <a href="" style={{borderBottom:'1px solid white'}} >Agents</a>
                                         <a href=""  >Submit Property</a>
@@ -96,7 +96,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                                 <div class="dropdown">
                                     <a  id="loggeduser">
                                         {"Pages"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
-                                    <div class="dropdown-content">
+                                    <div class="dropdown-content managedrop">
                                         <a href="" style={{borderBottom:'1px solid white'}}  >Blogs Page</a>
                                         <a href="" style={{borderBottom:'1px solid white'}} >Blog Detail</a>
                                         <a href="" style={{borderBottom:'1px solid white'}} >Shortcodes</a>
@@ -128,7 +128,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                 id="navuserimg"
                 className="rounded-circle avatar-img z-depth-1-half"
               /> {loggeduser ? loggeduser.name : "Logged User"}</a>
-                                <div class="dropdown-content">
+                                <div class="dropdown-content managedrop">
                                     <a href="" onClick={logout} >Logout</a>
                                 </div>
                             </div> : null}

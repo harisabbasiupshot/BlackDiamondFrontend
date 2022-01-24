@@ -123,7 +123,7 @@ function NewSearchFilter({ setAllproperties }) {
                                 }}
                                 min={0}
                                 max={100000}
-                                defaultValue={[0, 50000]}
+                                defaultValue={[0, 75000]}
                                 tipFormatter={value => `$ ${value}`}
                                 tipProps={{
                                     placement: "top",

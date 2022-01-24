@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { withRouter, useHistory } from 'react-router-dom'; 
 import '../fullcss.css'
 function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, setShow3,getNewBids }) {
     const [biduser, setBiduser] = useState(null);
+    let history = useHistory(); 
     const OnAccept = (id) => {
         console.log("We will accept bid of id: ", id)
         const data2 = {
@@ -120,28 +122,38 @@ function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, set
             })
 
     }, []);
-    return (
-        <tr>
-            <td class="property-container">
-                <div class="title">
-                    <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
-                    <span id="bidofferdiscription"> {bid.offer_description} </span>
-                    <span class="table-property-price">Starts from: ${bid.start_price}</span>
-                    <h5 id="byuserh4"><a id="byusera">By {biduser ? biduser.name : ""}</a></h5>
-                </div>
-            </td>
-            <td class="action">
-                {bid.status == 3? <span id="statusbuttonPP" style={{backgroundColor:'#8b0101'}} >Rejected</span> : bid.status == 1?null:<a class="delete forhover" onClick={() => OnReject(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Reject</a>}
-                {bid.status == 1? <span id="statusbuttonPP" >Accepted</span> : bid.status == 3?null:<a class="delete" onClick={() => OnAccept(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>}
-            </td>
+    const openBuyerprofile = (id) => {
+        console.log("CC",id)
+        history.push('/buyerprofile/'+id);
+    }
+    if(biduser){
+        return (
+            <tr>
+                <td class="property-container">
+                    <div class="title">
+                        <h4 id="bidtitleh4"><a href="#" id="bidtitlea">{bid.title}</a></h4>
+                        <span id="bidofferdiscription"> {bid.offer_description} </span>
+                        <span class="table-property-price">Starts from: ${bid.start_price}</span>
+                        <h5 id="byuserh4"   ><a id="byusera" href={"/buyerprofile/"+biduser.id} style={{cursor:'pointer'}}>By {biduser ? biduser.name : ""}</a></h5>
+                    </div>
+                </td>
+                <td class="action">
+                    {bid.status == 3? <span id="statusbuttonPP" style={{backgroundColor:'#8b0101'}} >Rejected</span> : bid.status == 1?null:<a class="delete forhover" onClick={() => OnReject(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-close" ></i> Reject</a>}
+                    {bid.status == 1? <span id="statusbuttonPP" >Accepted</span> : bid.status == 3?null:<a class="delete" onClick={() => OnAccept(bid.id)} style={{ cursor: 'pointer' }}><i class="ti-check-box" ></i> Accept</a>}
+                </td> 
+    
+    
+    
+    
+    
+            </tr>
+    
+        )
 
-
-
-
-
-        </tr>
-
-    )
+    }else{
+        return (<div></div>)
+    }
+    
 }
 
 export default PropertyBidSingle

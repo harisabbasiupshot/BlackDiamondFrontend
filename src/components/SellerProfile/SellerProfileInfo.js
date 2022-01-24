@@ -86,38 +86,7 @@ function SellerProfileInfo({sellerprofile}) {
 									</div>
 								</div>
 								
-								{/* <div class="form-submit">	
-									<h4>Social Accounts</h4>
-									<div class="submit-section">
-										<div class="form-row">
-										
-											<div class="form-group col-md-6">
-												<label>Facebook</label>
-												<input type="text" class="form-control" value="https://facebook.com/"/>
-											</div>
-											
-											<div class="form-group col-md-6">
-												<label>Twitter</label>
-												<input type="email" class="form-control" value="https://twitter.com/"/>
-											</div>
-											
-											<div class="form-group col-md-6">
-												<label>Google Plus</label>
-												<input type="text" class="form-control" value="https://googleplus.com/"/>
-											</div>
-											
-											<div class="form-group col-md-6">
-												<label>LinkedIn</label>
-												<input type="text" class="form-control" value="https://linkedin.com/"/>
-											</div>
-											
-											<div class="form-group col-lg-12 col-md-12">
-												<button class="btn btn-theme" type="submit">Save Changes</button>
-											</div>
-											
-										</div>
-									</div>
-								</div> */}
+								
 								
 							</div>
 						</div>

@@ -115,7 +115,7 @@ function BuyerProfile() {
 									<span id="statusbuttonPP2">Buyer</span>
 
 								</div>
-								{/* <span id="sellerprofilelocation"><i class="lni-map-marker"></i>3599 Huntz Lane</span> */}
+								
 							</div>
 
 
@@ -133,12 +133,14 @@ function BuyerProfile() {
 							<div id="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
 						</div>
 						
+						
 					</div>
 					{valuecontext.loggeduser ? valuecontext.loggeduser.id == parseInt(buyerprofile.id) ? <span id="subscribebidsbutton" onClick={showSubBidPage} > Subscribe To Bids</span> : null : null}
 					<div class="positionpaydiv">
 					
 					</div>	
 				</div>
+				
 				<BuyerBids id={params.id} buyerprofile={buyerprofile} />
 
 

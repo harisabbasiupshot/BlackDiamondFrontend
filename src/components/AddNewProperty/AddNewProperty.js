@@ -244,13 +244,7 @@ function AddNewProperty() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-        /* navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-            setDefaultlatitude(position.coords.latitude)
-            setDefaultlongitude(position.coords.longitude) 
-            
-        }); */
+        
     }, []);
 
     return (
@@ -402,10 +396,8 @@ function AddNewProperty() {
                                 <div class="form-submit">
                                     <h3>Add Location</h3>
                                     <TestPlaces setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />
-                                    <h4 style={{ marginLeft: '47%', marginTop:'1.5%' }}>Or</h4>
-                                    {/* <div id="getresbutton" onClick={() => getCurrentLocation()}>
-                                        <a id="getrestext">Get Current Location</a>
-                                    </div> */}
+                                    <h4 style={{ position:'relative',left:'47.6%', marginTop:'1.5%' }}>Or</h4>
+                                    
                                     <button class="btn btn-theme" id="getcurrentlocbutton" onClick={() => getCurrentLocation()} >Get Current Location</button>
                                     {defaultlatitude&&defaultlongitude?<div class="submit-section" style={{marginTop:'1%'}}>
                                         <WrappedMap marker={marker} setMarker={setMarker} defaultlatitude={defaultlatitude} defaultlongitude={defaultlongitude} setDefaultlatitude={setDefaultlatitude} setDefaultlongitude={setDefaultlongitude} />

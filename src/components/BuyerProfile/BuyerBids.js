@@ -73,13 +73,7 @@ function BuyerBids({ id, buyerprofile }) {
 
 
 
-                    {/* {bids.map(bid => (
-                    <PropertyBidSingle bid={bid} />
-                                   
-                                
-
-
-                ))} */}
+                    
 
                 </tbody>
             </table>

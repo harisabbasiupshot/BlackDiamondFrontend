@@ -135,7 +135,8 @@
   transition: all ease .4s;
   border: 1px solid #fd5332;
   border-radius: 4px;
-  margin-left: 40%;
+  position: relative;
+  left: 40%;
   margin-bottom: 5px;
   background: #00ba74;
   border-color: #00ba74;
@@ -4212,12 +4213,13 @@
   font-weight: 500;
   height: 20%;
   width: fit-content;
-  padding: 4px 12px;
+  padding: 9px 12px;
   cursor: pointer;
   border-radius: 2px;
   background: #00ba74;
   position: relative;
   left: 80%;
+  bottom: 2%;
   color: rgb(250, 249, 249);
   min-height: 40px;
 
@@ -4615,4 +4617,7 @@
   font-weight: normal;
   border: none;
   cursor: pointer;
+}
+.managedrop{
+  margin-top: 2px;
 }

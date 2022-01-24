@@ -211,12 +211,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 
 								</div>
 							</div>
-							{/* <div class="col-lg-6 col-md-6" >
-								<div className="form-group">
-									<label style={{marginLeft:'80%'}} id="uploadprofilepic">Upload Profile Pic</label>
-									<input style={{marginLeft:'80%'}} type="file" name="file" onChange={onIMGChangeHandler} />
-								</div>
-							</div> */}
+							
 
 						</div>
 						

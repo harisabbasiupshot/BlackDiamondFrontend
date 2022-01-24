@@ -25,7 +25,7 @@ function TestPlaces({ setDefaultlatitude, setDefaultlongitude }) {
     setInputvalue(value)
   }
   return (
-    <div style={{ marginLeft: '40%' }}>
+    <div style={{ position:'relative',left:'39.7%' }}>
       <PlacesAutocomplete
         value={inputvalue}
         onChange={setInputvalue}
