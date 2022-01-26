@@ -278,8 +278,8 @@ margin-bottom: 2rem;}
     width: fit-content;
     padding: 4px 12px;
     cursor: pointer;
-    position: relative;
-    left: 133%;
+    position: absolute;
+    left: 165%;
     border-radius: 2px;
     background: #00ba74;
     color: rgb(250, 249, 249);
@@ -300,8 +300,8 @@ margin-bottom: 2rem;}
     height: 20%;
     width: fit-content;
     cursor: pointer;
-    position: relative;
-    left: 136%;
+    position: absolute;
+    left: 179%;
     border-radius: 2px;
     background: #8b0101;
     color: #fff;
@@ -350,4 +350,13 @@ margin-bottom: 2rem;}
   .coloriconnew{
       color: white;
   }
-  
+  @media(max-width: 900px) {
+    #editbuttonPP{
+        left: 145%;
+    }
+  }
+  @media(max-width: 1200px) and (min-width: 900px) {
+    #editbuttonPP{
+        left: 145%;
+    }
+  }

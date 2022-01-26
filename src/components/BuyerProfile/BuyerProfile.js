@@ -128,10 +128,16 @@ function BuyerProfile() {
 
 							<div class="clearfix"></div>
 						</div>
-						<div id="bidsremaining">
+						{/* <div id="bidsremaining">
 							<div id="dashboard-stat-content"><h4 id="dashboard-stat-iconh4">{remainingbids?remainingbids:remainingbids}</h4> <span id="dashboard-stat-iconspan">Bids Remaining</span></div>
 							<div id="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
-						</div>
+						</div> */}
+						<div class="col-lg-4 col-md-6 col-sm-12 managtoping">
+									<div class="dashboard-stat widget-4">
+										<div class="dashboard-stat-content"><h4>{remainingbids?remainingbids:remainingbids}</h4> <span>Bids Remaining</span></div>
+										<div class="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
+									</div>	
+								</div>
 						
 						
 					</div>

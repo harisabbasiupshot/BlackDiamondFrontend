@@ -1745,7 +1745,7 @@
   justify-content: center;
   flex: 10;
   color: var(--cx-color-white);
-  background-image: url("https://remax-static.imgix.net/web/corporate-home-hero.jpg");
+  background-image: url(assets/css/img/homepage-hero-2022.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -4620,4 +4620,8 @@
 }
 .managedrop{
   margin-top: 2px;
+}
+.managtoping{
+  margin-top: 32px;
+  width: 92%;
 }

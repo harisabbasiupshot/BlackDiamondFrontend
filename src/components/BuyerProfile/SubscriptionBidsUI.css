@@ -8,7 +8,7 @@
     box-sizing: border-box;
     position: relative;
     margin: 0 auto;
-    width: 1140px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,7 @@
     border-radius: 10px !important;
     color: #111111;
     flex: 0 0 25%;
-    max-width: 25%;
+    max-width: 89%;
     min-height: 476px;
     border: 8px solid transparent;
     margin-left: 6%;
@@ -250,3 +250,16 @@
     min-height: 100%;
     max-width: 100%;
 }
+@media(max-width: 900px) {
+    .u-layout-row{
+        flex-direction: column;
+    }
+  }
+  @media(max-width: 900px) {
+    .maindivpurchase {
+        margin: 55px 25% 0;
+    }
+    .sharpesticons{
+        margin: 55px 25% 0;
+    }
+  }
