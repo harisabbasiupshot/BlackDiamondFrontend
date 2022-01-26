@@ -67,6 +67,8 @@ function Routes(props) {
 
 
   useEffect(() => {
+    console.log("Env",process.env.REACT_APP_GOOGLE_API_KEY)
+    console.log("Env 2",process.env.REACT_APP_PRODUCTION) 
 
 
   }, [test]);

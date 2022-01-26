@@ -29,7 +29,7 @@ function Settings({setUser2}) {
             })
     }
     const updatesetting=()=>{
-        const URL = "http://localhost:5000/updatesetting";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/updatesetting";
         const data = new FormData() 
         data.append('file', selectedfile)
         data.set("email", value12.email2);

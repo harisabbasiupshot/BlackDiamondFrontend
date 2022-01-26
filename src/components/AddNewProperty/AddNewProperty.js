@@ -198,7 +198,7 @@ function AddNewProperty() {
 
         }
         console.log(data2)
-        const URL = "http://127.0.0.1:8000/api/save-property";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/save-property";
 
         console.log("my data in front bs", data2)
         const options = {
@@ -235,7 +235,7 @@ function AddNewProperty() {
     }
     useEffect(() => {
         console.log(valuecontext.loggeduser)
-        axios.get('http://127.0.0.1:8000/api/property_types')
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/property_types')
             .then(response => {
                 console.log("API types", response.data)
                 setPropertytypes(response.data)

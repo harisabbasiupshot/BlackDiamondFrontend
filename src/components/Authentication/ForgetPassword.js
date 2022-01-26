@@ -11,7 +11,7 @@ function ForgetPassword({}) {
     const handleChange= async ()=>{
         
         
-        const URL = "http://127.0.0.1:8000/api/reset-password-code";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/reset-password-code";
         var data2 ={
             email: email
             

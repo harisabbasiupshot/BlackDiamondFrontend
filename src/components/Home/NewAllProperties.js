@@ -10,7 +10,7 @@ function NewAllProperties({allproperties,setAllproperties}) {
 		console.log("CHange page event called",pagenumber)
 	}
 	const getAllProperties=()=>{
-		axios.get('http://127.0.0.1:8000/api/get-all-properties')
+		axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-all-properties')
             .then(response => {
                 console.log("All Properties", response.data)
 				setAllproperties(response.data.prperties.reverse())
@@ -54,7 +54,7 @@ function NewAllProperties({allproperties,setAllproperties}) {
 										
 									<div class="listing-img-wrapper" >
 										<a href={"/property/"+property.id}>
-											<img src={"http://127.0.0.1:8000"+property.images[0].path} class="img-fluid mx-auto" style={{minHeight:'250px'}} alt=""/>
+											<img src={"http://"+process.env.REACT_APP_PRODUCTION+property.images[0].path} class="img-fluid mx-auto" style={{minHeight:'250px'}} alt=""/>
 										</a>
 										<div class="listing-like-top">
 											<i class="ti-heart"></i>

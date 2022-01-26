@@ -4,7 +4,7 @@ function BestAgent() {
 	const [ceomessage, setCeomessage] = useState("My Profile")
 	useEffect(() => {
         
-        axios.get('http://127.0.0.1:8000/api/ceo-message')
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/ceo-message')
             .then(response => {
                 console.log("CEO MESSAGE: ", response.data.message)
 				setCeomessage(response.data.message)

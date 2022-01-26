@@ -11,7 +11,7 @@ function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, set
             id: id,
             status: 1
         }
-        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/accept-reject-bid";
         const options = {
             method: 'post',
             url: URL,
@@ -47,7 +47,7 @@ function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, set
             id: id,
             status: 2
         }
-        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/accept-reject-bid";
         const options = {
             method: 'post',
             url: URL,
@@ -81,7 +81,7 @@ function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, set
             id: id,
             status: 3
         }
-        const URL = "http://127.0.0.1:8000/api/accept-reject-bid";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/accept-reject-bid";
         const options = {
             method: 'post',
             url: URL,
@@ -111,7 +111,7 @@ function PropertyBidSingle({ bid, setAcceptedbidid, acceptedbidid, setShow2, set
     }
     useEffect(() => {
         console.log(bid)
-        axios.get('http://127.0.0.1:8000/api/get-user?id=' + bid.user_id)
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-user?id=' + bid.user_id)
             .then(response => {
                 console.log("Bid User Info", response.data)
                 setBiduser(response.data.user)

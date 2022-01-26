@@ -29,7 +29,7 @@ function SubscribeBids() {
             draggable: true,
             progress: undefined,
             });
-        /* axios.post('http://127.0.0.1:8000/api/subscribe-customer-to-plan', {
+        /* axios.post('http://'+process.env.REACT_APP_PRODUCTION+'/api/subscribe-customer-to-plan', {
             params: {
                 user_id: valuecontext.loggeduser.id,
                 subscription_id: subscription_id,
@@ -43,7 +43,7 @@ function SubscribeBids() {
             .catch(function (error) {
                 console.log('Error is ', error);
             }); */
-        const URL = "http://127.0.0.1:8000/api/subscribe-customer-to-plan";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/subscribe-customer-to-plan";
 
         console.log("my data in front bs", data2)
         const options = {
@@ -78,7 +78,7 @@ function SubscribeBids() {
     useEffect(() => {
 
 
-        axios.get('http://127.0.0.1:8000/api/get-all-plans')
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-all-plans')
             .then(response => {
                 console.log("Plans", response.data)
                 setAllPlans(response.data.plans)

@@ -58,7 +58,7 @@ function PropertyPage() {
             start_price: bidprice
         }
         console.log(data2)
-        const URL = "http://127.0.0.1:8000/api/add-bid";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/add-bid";
 
         console.log("my data in front bs", data2)
         const options = {
@@ -90,7 +90,7 @@ function PropertyPage() {
 
     }
     const deleteProperty = () => {
-        const URL = "http://127.0.0.1:8000/api/delete-property";
+        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/delete-property";
         var data2 = {
             id: params.id
         }
@@ -128,7 +128,7 @@ function PropertyPage() {
 
     }
     const getUserInfo = (id) => {
-        axios.get('http://127.0.0.1:8000/api/get-user?id=' + id)
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-user?id=' + id)
             .then(response => {
                 console.log("Seller Info", response.data)
                 setSellerinfo(response.data.user)
@@ -153,7 +153,7 @@ function PropertyPage() {
 
 
         var defaultdata
-        axios.get('http://127.0.0.1:8000/api/get-single-property?id=' + params.id)
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-single-property?id=' + params.id)
             .then(response => {
                 console.log("Property Info", response.data)
                 if (response.data.property.propert_type_id == 1) {
@@ -205,7 +205,7 @@ function PropertyPage() {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-        axios.get('http://127.0.0.1:8000/api/get-bids', {
+        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
             params: {
                 id: params.id
             }
@@ -317,7 +317,7 @@ function PropertyPage() {
                 {imagegallery && <div id="block-bodygallary">
                     <Carousel swipeable="true" >
                         {imagegallery.map((img, index) => (<div>
-                            <img src={"http://127.0.0.1:8000" + img.path} />
+                            <img src={"http://'+process.env.REACT_APP_PRODUCTION+'" + img.path} />
                         </div>))}
 
 

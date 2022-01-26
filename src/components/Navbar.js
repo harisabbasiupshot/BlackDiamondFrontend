@@ -122,7 +122,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                             {loggeduser ? <div class="dropdown">
                                 <a href={loggeduser.role == 2 ? "/sellerprofile/" + loggeduser.id : "/buyerprofile/" + loggeduser.id} id="loggeduser">
                                 <img
-                src={loggeduser.profile_image?"http://127.0.0.1:8000"+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                src={loggeduser.profile_image?"http://"+process.env.REACT_APP_PRODUCTION+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                 alt=""
                 height={30}
                 id="navuserimg"
