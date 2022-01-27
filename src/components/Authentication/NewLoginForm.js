@@ -42,7 +42,7 @@ function NewLoginForm({setIslogged,setloggeduser}) {
             
         }
         
-        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/login-user";
+        const URL = process.env.REACT_APP_PRODUCTION+"/api/login-user";
         var data2 ={
             email: email,
             password: password,

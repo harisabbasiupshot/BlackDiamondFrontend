@@ -65,8 +65,8 @@ function Navbar({ loggeduser, islogged, logout }) {
                                     <a href="/" id="loggeduser">
                                         {"Home"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
                                     <div class="dropdown-content managedrop">
-                                        <a href="" style={{borderBottom:'1px solid white'}} >Home Layout 1</a>
-                                        <a href=""  >Home Layout 2</a>
+                                        {/* <a href="" style={{borderBottom:'1px solid white'}} >Home Layout 1</a>
+                                        <a href=""  >Home Layout 2</a> */}
                                     </div>
                                 </div>
                             </li>
@@ -75,8 +75,8 @@ function Navbar({ loggeduser, islogged, logout }) {
                                     <a  id="loggeduser">
                                         {"Listings"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
                                     <div class="dropdown-content managedrop">
-                                        <a href="" style={{borderBottom:'1px solid white'}} >List Layout</a>
-                                        <a href=""  >Grid Layout</a>
+                                        {/* <a href="" style={{borderBottom:'1px solid white'}} >List Layout</a>
+                                        <a href=""  >Grid Layout</a> */}
                                     </div>
                                 </div>
                             </li>
@@ -86,9 +86,8 @@ function Navbar({ loggeduser, islogged, logout }) {
                                     <a  id="loggeduser">
                                         {"Features"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
                                     <div class="dropdown-content managedrop">
-                                        <a href="" style={{borderBottom:'1px solid white'}} >My Account</a>
-                                        <a href="" style={{borderBottom:'1px solid white'}} >Agents</a>
-                                        <a href=""  >Submit Property</a>
+                                        <a href={loggeduser ?loggeduser.role == 2 ? "/sellerprofile/" + loggeduser.id : "/buyerprofile/" + loggeduser.id:null} style={{borderBottom:'1px solid white'}} >My Account</a>
+                                        <a href="/addnewproperty"  >Submit Property</a>
                                     </div>
                                 </div>
                             </li>
@@ -97,11 +96,10 @@ function Navbar({ loggeduser, islogged, logout }) {
                                     <a  id="loggeduser">
                                         {"Pages"}<FontAwesomeIcon style={{ paddingLeft: '3px' }} icon={faChevronDown} size="xs" /></a>
                                     <div class="dropdown-content managedrop">
-                                        <a href="" style={{borderBottom:'1px solid white'}}  >Blogs Page</a>
+                                       {/*  <a href="" style={{borderBottom:'1px solid white'}}  >Blogs Page</a>
                                         <a href="" style={{borderBottom:'1px solid white'}} >Blog Detail</a>
                                         <a href="" style={{borderBottom:'1px solid white'}} >Shortcodes</a>
-                                        <a href="" style={{borderBottom:'1px solid white'}} >Pricing</a>
-                                        <a href=""  >Error Page</a>
+                                        <a href=""  >Pricing</a> */}
                                     </div>
                                 </div>
                             </li>
@@ -122,7 +120,7 @@ function Navbar({ loggeduser, islogged, logout }) {
                             {loggeduser ? <div class="dropdown">
                                 <a href={loggeduser.role == 2 ? "/sellerprofile/" + loggeduser.id : "/buyerprofile/" + loggeduser.id} id="loggeduser">
                                 <img
-                src={loggeduser.profile_image?"http://"+process.env.REACT_APP_PRODUCTION+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                src={loggeduser.profile_image?process.env.REACT_APP_PRODUCTION+loggeduser.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                 alt=""
                 height={30}
                 id="navuserimg"

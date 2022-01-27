@@ -64,7 +64,7 @@ function EditProperty() {
         array1 = array1.filter((_, index) => index != index2);
         console.log("updated array1", array1)
         setImagegallery2(array1)
-        axios.post('http://'+process.env.REACT_APP_PRODUCTION+'/api/delete-image?id='+id)
+        axios.post(process.env.REACT_APP_PRODUCTION+'/api/delete-image?id='+id)
             .then(response => {
                 console.log("Response After Delete", response.data)
             })
@@ -135,7 +135,7 @@ function EditProperty() {
 
         }
         console.log(data2)
-        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/save-property";
+        const URL = process.env.REACT_APP_PRODUCTION+"/api/save-property";
         const options = {
             method: 'post',
             url: URL,
@@ -171,7 +171,7 @@ function EditProperty() {
     useEffect(() => {
         console.log(valuecontext.loggeduser)
         console.log(params.id)
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/property_types')
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/property_types')
             .then(response => {
                 console.log("API types", response.data)
                 setPropertytypes(response.data)
@@ -181,7 +181,7 @@ function EditProperty() {
                 console.log("Aey te error hai bro")
             })
         var defaultdata = []
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-single-property?id=' + params.id)
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-single-property?id=' + params.id)
             .then(response => {
                 console.log("Property Info", response.data)
                 console.log("Ids ", valuecontext.loggeduser.id, response.data.property.seller_id)
@@ -329,7 +329,7 @@ function EditProperty() {
                                                 </div>
                                                 <div style={{ display: 'flex' }}>
                                                 {imagegallery2 && <div style={{ display: 'flex' }}>{imagegallery2.map((img, index) => (<div>
-                                                    {img.path ? <img src={"http://'+process.env.REACT_APP_PRODUCTION+'" + img.path ? "http://'+process.env.REACT_APP_PRODUCTION+'" + img.path : img} width={500} height={333}></img> : null}
+                                                    {img.path ? <img src={process.env.REACT_APP_PRODUCTION +img.path ? process.env.REACT_APP_PRODUCTION+img.path : img} width={500} height={333}></img> : null}
 
                                                     <FontAwesomeIcon style={{ float: 'right', marginTop: '7px', cursor: 'pointer' }} onClick={() => handleDelete2(index, img.id)} icon={faTrashAlt} color="red" size="xs" />
                                                 </div>))}

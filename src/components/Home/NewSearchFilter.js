@@ -28,7 +28,7 @@ function NewSearchFilter({ setAllproperties }) {
     }
     const getResults = () => {
         console.log("Maximum: ", maximum, " Minimum: ", minimum)
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/search-property', {
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/search-property', {
             params: {
                 latitude: latitude,
                 longitude: longitude,
@@ -62,7 +62,7 @@ function NewSearchFilter({ setAllproperties }) {
         });
     }
     useEffect(() => {
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/search-property', {
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/search-property', {
             params: {
                 propert_type_id: 2
             }
@@ -74,7 +74,7 @@ function NewSearchFilter({ setAllproperties }) {
                 console.log(error);
                 console.log("Aey te error hai bro")
             })
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/property_types')
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/property_types')
             .then(response => {
                 console.log("API types", response.data)
                 setPropertytypes(response.data)

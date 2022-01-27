@@ -12,7 +12,7 @@ function ResetPassword(props) {
     const handleChange= async ()=>{
         
         
-        const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/reset-password?email="+email+"&verification_code="+verificationcode+"&password="+pass;
+        const URL = process.env.REACT_APP_PRODUCTION+"/api/reset-password?email="+email+"&verification_code="+verificationcode+"&password="+pass;
         var data2 ={
             email: email,
             verificationcode: verificationcode,

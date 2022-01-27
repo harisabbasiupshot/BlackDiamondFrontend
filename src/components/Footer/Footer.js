@@ -32,7 +32,7 @@ function Footer() {
 									<h4 class="widget-title">Property</h4>
 									<ul class="footer-menu">
 										<li><a href="/newproperties">New Properties</a></li>
-										<li><a href="/addnewproperty">Add Property</a></li>
+										{valuecontext.loggeduser ? valuecontext.loggeduser.role == 2?<li><a href="/addnewproperty">Add Property</a></li>:null:null}
 									</ul>
 								</div>
 							</div>

@@ -10,7 +10,7 @@ function SellerProperties({ sellerprofile }) {
 		console.log("CHange page event called", pagenumber)
 	}
 	const getProperties = () => {
-		axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/seller-properties?seller_id='+sellerprofile.id)
+		axios.get(process.env.REACT_APP_PRODUCTION+'/api/seller-properties?seller_id='+sellerprofile.id)
 			.then(response => {
 				console.log("All Properties", response.data)
 				setSellerproperties(response.data.perperties.reverse())
@@ -55,7 +55,7 @@ function SellerProperties({ sellerprofile }) {
 
 							<div class="listing-img-wrapper">
 								<a href={"/property/" + property.id}>
-									<img src={"http://'+process.env.REACT_APP_PRODUCTION+'" + property.images[0].path} class="img-fluid mx-auto" style={{ minHeight: '250px' }} alt="" />
+									<img src={process.env.REACT_APP_PRODUCTION + property.images[0].path} class="img-fluid mx-auto" style={{ minHeight: '250px' }} alt="" />
 								</a>
 								<div class="listing-like-top">
 									<i class="ti-heart"></i>

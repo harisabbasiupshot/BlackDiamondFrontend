@@ -100,7 +100,7 @@ function NewSignUpForm({ setIslogged, setloggeduser }) {
 		} else {
 			if (validateEmail(email)) {
 				console.log(email + ": Email true")
-				const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/register-user";
+				const URL = process.env.REACT_APP_PRODUCTION+"/api/register-user";
 				axios.post(URL, data)
 					.then((response) => {
 						console.log("Response is ", response.data)

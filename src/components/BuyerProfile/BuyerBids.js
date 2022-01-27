@@ -14,7 +14,7 @@ function BuyerBids({ id, buyerprofile }) {
         history.push('/property/' + idd);
     }
     const getBuyerBids = (id) => {
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-buyer-bids?id=' + id)
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-buyer-bids?id=' + id)
             .then(response => {
                 console.log("Bids Of Buyer..", response.data.buyer_bids)
                 setBids(response.data.buyer_bids)

@@ -23,7 +23,7 @@ function PropertyBids({ bids,setBids }) {
     const handleClose2 = () => {
         setShow2(false)
         console.log("ok howa")
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
             params: {
                 id: params.id
             }
@@ -40,7 +40,7 @@ function PropertyBids({ bids,setBids }) {
     const handleClose3 = () => {
         setShow3(false)
         console.log("ok howa")
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
             params: {
                 id: params.id
             }
@@ -55,7 +55,7 @@ function PropertyBids({ bids,setBids }) {
             })
     };
     const getNewBids = () => {
-        axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
+        axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-bids', {
             params: {
                 id: params.id
             }

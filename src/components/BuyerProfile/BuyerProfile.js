@@ -21,7 +21,7 @@ function BuyerProfile() {
 		const data2={
 			user_id:id
 		}
-		const URL = "http://"+process.env.REACT_APP_PRODUCTION+"/api/get-remaining-bids";
+		const URL = process.env.REACT_APP_PRODUCTION+"/api/get-remaining-bids";
 
         console.log("my data in front bs", data2)
         const options = {
@@ -59,7 +59,7 @@ function BuyerProfile() {
 	}
 
 	const getProfile=(id)=>{
-		axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-user?id='+id)
+		axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-user?id='+id)
             .then(response => {
                 console.log("Buyer Info", response.data)
 				if(response.data.user){
@@ -80,7 +80,7 @@ function BuyerProfile() {
 
 	}
 	const getBuyerBids=(id)=>{
-		axios.get('http://'+process.env.REACT_APP_PRODUCTION+'/api/get-buyer-bids?id='+id)
+		axios.get(process.env.REACT_APP_PRODUCTION+'/api/get-buyer-bids?id='+id)
             .then(response => {
                 console.log("Bids Of Buyer", response.data.buyer_bids)
                 //setBids(response.data.prperty.bids)
@@ -105,7 +105,7 @@ function BuyerProfile() {
 					<div class="agency agency-list shadow-0 mt-2 mb-2">
 
 						<a href="agency-page.html" id="sellerprofileimgdiv">
-							{profileimage==0?null:<img src={buyerprofile.profile_image?"http://"+process.env.REACT_APP_PRODUCTION+buyerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"} id="sellerprofileimg"  alt="" />}
+							{profileimage==0?null:<img src={buyerprofile.profile_image?process.env.REACT_APP_PRODUCTION+buyerprofile.profile_image:"https://cdn-icons-png.flaticon.com/512/149/149071.png"} id="sellerprofileimg"  alt="" />}
 						</a>
 
 						<div class="agency-content">
